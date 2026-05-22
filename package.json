@@ -1,0 +1,15 @@
+{
+  "name": "bfrost-workers",
+  "private": true,
+  "description": "BFrost community worker registry — validation and tooling.",
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/validate.js",
+    "regenerate": "node scripts/regenerate-index.js",
+    "check": "npm run validate && echo 'All workers valid.'"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  }
+}

@@ -1,47 +1,60 @@
 [
   {
-    "id": "wordpress-publisher",
-    "name": "WordPress Publisher",
-    "tagline": "Publishes news.article items from the Item Bus to your WordPress site via the REST API.",
-    "description": "A consumer worker that subscribes to `news.article` items on the BFrost Item Bus and turns each one into a WordPress post. Supports configurable publish status (draft, publish, pending), custom post types, and per-run deduplication so the same article is never posted twice.\n\nThis is a real, working reference worker shipped with the BFrost repository. Copy it from `workers/examples/wordpress-publisher/` into your `workers/local/` directory to get started.",
-    "author": "@bfrost-team",
-    "repoUrl": "https://github.com/ccascio/BFrost",
-    "readmeUrl": "https://raw.githubusercontent.com/ccascio/BFrost/main/workers/examples/wordpress-publisher/README.md",
-    "category": "Productivity",
-    "tags": ["publishing", "wordpress", "cms", "consumer"],
-    "trust": "Community",
-    "latestVersion": "1.2.0",
+    "id": "rss-harvester",
+    "name": "RSS Harvester",
+    "tagline": "Polls RSS and Atom feeds on a schedule and publishes news.article items to the Item Bus.",
+    "description": "A producer worker that fetches one or more RSS/Atom feed URLs on a configurable schedule and pushes each new entry as a `news.article` item onto the BFrost Item Bus. Deduplication is keyed on the entry's `<link>` element — an article is only published once per source URL.\n\nFeed URLs are declared in worker settings as a newline-separated list. Supports both RSS 2.0 and Atom 1.0.",
+    "author": "@bobsdev",
+    "repoUrl": "https://github.com/bobsdev/rss-harvester",
+    "category": "AI / Research",
+    "tags": [
+      "rss",
+      "atom",
+      "feeds",
+      "news",
+      "producer",
+      "harvester"
+    ],
+    "trust": "Review",
+    "latestVersion": "1.0.2",
     "bfrostEngine": ">=0.2.0",
     "license": "MIT",
-    "createdAt": "2026-01-15T10:00:00Z",
-    "updatedAt": "2026-04-20T14:30:00Z",
+    "createdAt": "2026-03-30T07:00:00Z",
+    "updatedAt": "2026-05-14T19:00:00Z",
     "capabilities": {
-      "jobs": ["wordpress-publish"],
+      "jobs": [
+        "rss-fetch"
+      ],
       "tools": [],
       "channels": [],
       "providers": [],
-      "itemProduces": [],
-      "itemConsumes": ["news.article"]
+      "itemProduces": [
+        "news.article"
+      ],
+      "itemConsumes": []
     },
-    "permissions": ["network:https", "storage:worker-kv"],
+    "permissions": [
+      "network:https",
+      "storage:worker-kv"
+    ],
     "downloadCount": 0,
     "versions": [
       {
-        "version": "1.2.0",
+        "version": "1.0.2",
         "bfrostEngine": ">=0.2.0",
-        "releaseUrl": "https://github.com/ccascio/BFrost/tree/main/workers/examples/wordpress-publisher",
-        "changelog": "Added configurable publish status (draft, publish, pending) and custom post type support.",
-        "publishedAt": "2026-04-20T14:30:00Z",
+        "releaseUrl": "https://github.com/bobsdev/rss-harvester/releases/tag/v1.0.2",
+        "changelog": "Fix: handle feeds with missing pubDate by falling back to current time.",
+        "publishedAt": "2026-05-14T19:00:00Z",
         "yanked": false,
         "bundleSha256": "",
         "bundleSizeBytes": 0
       },
       {
-        "version": "1.1.0",
+        "version": "1.0.1",
         "bfrostEngine": ">=0.2.0",
-        "releaseUrl": "https://github.com/ccascio/BFrost/tree/main/workers/examples/wordpress-publisher",
-        "changelog": "Per-run deduplication: the same article is never posted twice.",
-        "publishedAt": "2026-03-10T09:00:00Z",
+        "releaseUrl": "https://github.com/bobsdev/rss-harvester/releases/tag/v1.0.1",
+        "changelog": "Added Atom 1.0 support alongside RSS 2.0.",
+        "publishedAt": "2026-04-28T10:00:00Z",
         "yanked": false,
         "bundleSha256": "",
         "bundleSizeBytes": 0
@@ -49,9 +62,9 @@
       {
         "version": "1.0.0",
         "bfrostEngine": ">=0.2.0",
-        "releaseUrl": "https://github.com/ccascio/BFrost/tree/main/workers/examples/wordpress-publisher",
-        "changelog": "Initial release. Posts news.article items as WordPress posts via the REST API.",
-        "publishedAt": "2026-01-15T10:00:00Z",
+        "releaseUrl": "https://github.com/bobsdev/rss-harvester/releases/tag/v1.0.0",
+        "changelog": "Initial release. RSS 2.0 polling with deduplication by entry link.",
+        "publishedAt": "2026-03-30T07:00:00Z",
         "yanked": false,
         "bundleSha256": "",
         "bundleSizeBytes": 0
@@ -66,7 +79,13 @@
     "author": "@alice",
     "repoUrl": "https://github.com/alice-dev/mastodon-publisher",
     "category": "Communication",
-    "tags": ["mastodon", "fediverse", "social", "publisher", "consumer"],
+    "tags": [
+      "mastodon",
+      "fediverse",
+      "social",
+      "publisher",
+      "consumer"
+    ],
     "trust": "Community",
     "latestVersion": "0.4.1",
     "bfrostEngine": ">=0.3.0",
@@ -74,14 +93,21 @@
     "createdAt": "2026-02-08T16:00:00Z",
     "updatedAt": "2026-05-01T11:20:00Z",
     "capabilities": {
-      "jobs": ["mastodon-post"],
+      "jobs": [
+        "mastodon-post"
+      ],
       "tools": [],
       "channels": [],
       "providers": [],
       "itemProduces": [],
-      "itemConsumes": ["news.article"]
+      "itemConsumes": [
+        "news.article"
+      ]
     },
-    "permissions": ["network:https", "storage:worker-kv"],
+    "permissions": [
+      "network:https",
+      "storage:worker-kv"
+    ],
     "downloadCount": 0,
     "versions": [
       {
@@ -127,47 +153,60 @@
     ]
   },
   {
-    "id": "rss-harvester",
-    "name": "RSS Harvester",
-    "tagline": "Polls RSS and Atom feeds on a schedule and publishes news.article items to the Item Bus.",
-    "description": "A producer worker that fetches one or more RSS/Atom feed URLs on a configurable schedule and pushes each new entry as a `news.article` item onto the BFrost Item Bus. Deduplication is keyed on the entry's `<link>` element — an article is only published once per source URL.\n\nFeed URLs are declared in worker settings as a newline-separated list. Supports both RSS 2.0 and Atom 1.0.",
-    "author": "@bobsdev",
-    "repoUrl": "https://github.com/bobsdev/rss-harvester",
-    "category": "AI / Research",
-    "tags": ["rss", "atom", "feeds", "news", "producer", "harvester"],
-    "trust": "Review",
-    "latestVersion": "1.0.2",
+    "id": "wordpress-publisher",
+    "name": "WordPress Publisher",
+    "tagline": "Publishes news.article items from the Item Bus to your WordPress site via the REST API.",
+    "description": "A consumer worker that subscribes to `news.article` items on the BFrost Item Bus and turns each one into a WordPress post. Supports configurable publish status (draft, publish, pending), custom post types, and per-run deduplication so the same article is never posted twice.\n\nThis is a real, working reference worker shipped with the BFrost repository. Copy it from `workers/examples/wordpress-publisher/` into your `workers/local/` directory to get started.",
+    "author": "@bfrost-team",
+    "repoUrl": "https://github.com/ccascio/BFrost",
+    "readmeUrl": "https://raw.githubusercontent.com/ccascio/BFrost/main/workers/examples/wordpress-publisher/README.md",
+    "category": "Productivity",
+    "tags": [
+      "publishing",
+      "wordpress",
+      "cms",
+      "consumer"
+    ],
+    "trust": "Community",
+    "latestVersion": "1.2.0",
     "bfrostEngine": ">=0.2.0",
     "license": "MIT",
-    "createdAt": "2026-03-30T07:00:00Z",
-    "updatedAt": "2026-05-14T19:00:00Z",
+    "createdAt": "2026-01-15T10:00:00Z",
+    "updatedAt": "2026-04-20T14:30:00Z",
     "capabilities": {
-      "jobs": ["rss-fetch"],
+      "jobs": [
+        "wordpress-publish"
+      ],
       "tools": [],
       "channels": [],
       "providers": [],
-      "itemProduces": ["news.article"],
-      "itemConsumes": []
+      "itemProduces": [],
+      "itemConsumes": [
+        "news.article"
+      ]
     },
-    "permissions": ["network:https", "storage:worker-kv"],
+    "permissions": [
+      "network:https",
+      "storage:worker-kv"
+    ],
     "downloadCount": 0,
     "versions": [
       {
-        "version": "1.0.2",
+        "version": "1.2.0",
         "bfrostEngine": ">=0.2.0",
-        "releaseUrl": "https://github.com/bobsdev/rss-harvester/releases/tag/v1.0.2",
-        "changelog": "Fix: handle feeds with missing pubDate by falling back to current time.",
-        "publishedAt": "2026-05-14T19:00:00Z",
+        "releaseUrl": "https://github.com/ccascio/BFrost/tree/main/workers/examples/wordpress-publisher",
+        "changelog": "Added configurable publish status (draft, publish, pending) and custom post type support.",
+        "publishedAt": "2026-04-20T14:30:00Z",
         "yanked": false,
         "bundleSha256": "",
         "bundleSizeBytes": 0
       },
       {
-        "version": "1.0.1",
+        "version": "1.1.0",
         "bfrostEngine": ">=0.2.0",
-        "releaseUrl": "https://github.com/bobsdev/rss-harvester/releases/tag/v1.0.1",
-        "changelog": "Added Atom 1.0 support alongside RSS 2.0.",
-        "publishedAt": "2026-04-28T10:00:00Z",
+        "releaseUrl": "https://github.com/ccascio/BFrost/tree/main/workers/examples/wordpress-publisher",
+        "changelog": "Per-run deduplication: the same article is never posted twice.",
+        "publishedAt": "2026-03-10T09:00:00Z",
         "yanked": false,
         "bundleSha256": "",
         "bundleSizeBytes": 0
@@ -175,9 +214,9 @@
       {
         "version": "1.0.0",
         "bfrostEngine": ">=0.2.0",
-        "releaseUrl": "https://github.com/bobsdev/rss-harvester/releases/tag/v1.0.0",
-        "changelog": "Initial release. RSS 2.0 polling with deduplication by entry link.",
-        "publishedAt": "2026-03-30T07:00:00Z",
+        "releaseUrl": "https://github.com/ccascio/BFrost/tree/main/workers/examples/wordpress-publisher",
+        "changelog": "Initial release. Posts news.article items as WordPress posts via the REST API.",
+        "publishedAt": "2026-01-15T10:00:00Z",
         "yanked": false,
         "bundleSha256": "",
         "bundleSizeBytes": 0

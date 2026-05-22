@@ -1,0 +1,45 @@
+name: Regenerate index.json
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'workers/**'
+
+jobs:
+  regenerate:
+    name: Rebuild index.json from workers/
+    runs-on: ubuntu-latest
+    # Only run on the canonical repo, not forks
+    if: github.repository == 'ccascio/bfrost-workers'
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Use the built-in token so the commit is attributed to github-actions[bot]
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Regenerate index.json
+        run: npm run regenerate
+
+      - name: Commit updated index.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.json
+          # Only commit if there are staged changes
+          git diff --cached --quiet || git commit -m "chore: regenerate index.json [skip ci]"
+          git push
