@@ -6,22 +6,36 @@
   "author": "@bobsdev",
   "repoUrl": "https://github.com/bobsdev/rss-harvester",
   "category": "AI / Research",
-  "tags": ["rss", "atom", "feeds", "news", "producer", "harvester"],
-  "trust": "Review",
+  "tags": [
+    "rss",
+    "atom",
+    "feeds",
+    "news",
+    "producer",
+    "harvester"
+  ],
+  "trust": "Community",
   "latestVersion": "1.0.2",
   "bfrostEngine": ">=0.2.0",
   "license": "MIT",
   "createdAt": "2026-03-30T07:00:00Z",
   "updatedAt": "2026-05-14T19:00:00Z",
   "capabilities": {
-    "jobs": ["rss-fetch"],
+    "jobs": [
+      "rss-fetch"
+    ],
     "tools": [],
     "channels": [],
     "providers": [],
-    "itemProduces": ["news.article"],
+    "itemProduces": [
+      "news.article"
+    ],
     "itemConsumes": []
   },
-  "permissions": ["network:https", "storage:worker-kv"],
+  "permissions": [
+    "network:https",
+    "storage:worker-kv"
+  ],
   "downloadCount": 0,
   "versions": [
     {

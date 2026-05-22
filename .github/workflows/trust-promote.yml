@@ -1,0 +1,52 @@
+name: Auto-promote trust
+
+on:
+  schedule:
+    # Run daily at 08:00 UTC
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run — print promotions without committing'
+        type: boolean
+        default: false
+
+jobs:
+  promote:
+    name: Promote Review → Community workers
+    runs-on: ubuntu-latest
+    # Only run on the canonical repo, not forks
+    if: github.repository == 'ccascio/bfrost-workers'
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run trust promotion
+        run: node scripts/trust-promote.js
+
+      - name: Regenerate index.json
+        run: node scripts/regenerate-index.js
+
+      - name: Commit promotions
+        if: ${{ !inputs.dry_run }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add workers/ index.json
+          git diff --cached --quiet || git commit -m "chore: auto-promote workers from Review to Community [skip ci]"
+          git push

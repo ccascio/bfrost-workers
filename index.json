@@ -15,7 +15,7 @@
       "producer",
       "harvester"
     ],
-    "trust": "Review",
+    "trust": "Community",
     "latestVersion": "1.0.2",
     "bfrostEngine": ">=0.2.0",
     "license": "MIT",
