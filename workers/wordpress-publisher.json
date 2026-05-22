@@ -1,0 +1,59 @@
+{
+  "id": "wordpress-publisher",
+  "name": "WordPress Publisher",
+  "tagline": "Publishes news.article items from the Item Bus to your WordPress site via the REST API.",
+  "description": "A consumer worker that subscribes to `news.article` items on the BFrost Item Bus and turns each one into a WordPress post. Supports configurable publish status (draft, publish, pending), custom post types, and per-run deduplication so the same article is never posted twice.\n\nThis is a real, working reference worker shipped with the BFrost repository. Copy it from `workers/examples/wordpress-publisher/` into your `workers/local/` directory to get started.",
+  "author": "@bfrost-team",
+  "repoUrl": "https://github.com/ccascio/BFrost",
+  "readmeUrl": "https://raw.githubusercontent.com/ccascio/BFrost/main/workers/examples/wordpress-publisher/README.md",
+  "category": "Productivity",
+  "tags": ["publishing", "wordpress", "cms", "consumer"],
+  "trust": "Community",
+  "latestVersion": "1.2.0",
+  "bfrostEngine": ">=0.2.0",
+  "license": "MIT",
+  "createdAt": "2026-01-15T10:00:00Z",
+  "updatedAt": "2026-04-20T14:30:00Z",
+  "capabilities": {
+    "jobs": ["wordpress-publish"],
+    "tools": [],
+    "channels": [],
+    "providers": [],
+    "itemProduces": [],
+    "itemConsumes": ["news.article"]
+  },
+  "permissions": ["network:https", "storage:worker-kv"],
+  "downloadCount": 0,
+  "versions": [
+    {
+      "version": "1.2.0",
+      "bfrostEngine": ">=0.2.0",
+      "releaseUrl": "https://github.com/ccascio/BFrost/tree/main/workers/examples/wordpress-publisher",
+      "changelog": "Added configurable publish status (draft, publish, pending) and custom post type support.",
+      "publishedAt": "2026-04-20T14:30:00Z",
+      "yanked": false,
+      "bundleSha256": "",
+      "bundleSizeBytes": 0
+    },
+    {
+      "version": "1.1.0",
+      "bfrostEngine": ">=0.2.0",
+      "releaseUrl": "https://github.com/ccascio/BFrost/tree/main/workers/examples/wordpress-publisher",
+      "changelog": "Per-run deduplication: the same article is never posted twice.",
+      "publishedAt": "2026-03-10T09:00:00Z",
+      "yanked": false,
+      "bundleSha256": "",
+      "bundleSizeBytes": 0
+    },
+    {
+      "version": "1.0.0",
+      "bfrostEngine": ">=0.2.0",
+      "releaseUrl": "https://github.com/ccascio/BFrost/tree/main/workers/examples/wordpress-publisher",
+      "changelog": "Initial release. Posts news.article items as WordPress posts via the REST API.",
+      "publishedAt": "2026-01-15T10:00:00Z",
+      "yanked": false,
+      "bundleSha256": "",
+      "bundleSizeBytes": 0
+    }
+  ]
+}

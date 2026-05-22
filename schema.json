@@ -1,0 +1,119 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/schema.json",
+  "title": "WorkerEntry",
+  "description": "A single entry in the BFrost worker registry. Canonical definition lives in BFrost/src/types.ts.",
+  "type": "object",
+  "required": [
+    "id", "name", "tagline", "description",
+    "author", "repoUrl", "category", "tags",
+    "trust", "latestVersion", "bfrostEngine", "license",
+    "createdAt", "updatedAt", "capabilities", "permissions",
+    "downloadCount", "versions"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9.-]{0,127}$",
+      "description": "Unique, immutable identifier. Lowercase alphanumeric with hyphens or dots."
+    },
+    "unlistedToken": {
+      "type": "string",
+      "minLength": 16,
+      "description": "Present only for unlisted workers. Cryptographically random hex string."
+    },
+    "name": { "type": "string", "minLength": 1 },
+    "tagline": { "type": "string", "maxLength": 120 },
+    "description": { "type": "string", "minLength": 1 },
+    "author": { "type": "string", "minLength": 1 },
+    "repoUrl": { "type": "string", "format": "uri" },
+    "readmeUrl": { "type": "string", "format": "uri" },
+    "category": {
+      "type": "string",
+      "enum": [
+        "AI / Research",
+        "Communication",
+        "Productivity",
+        "AI / Inference",
+        "Developer Tools",
+        "Backup"
+      ]
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "trust": {
+      "type": "string",
+      "enum": ["Trusted", "Verified", "Community", "Review"]
+    },
+    "latestVersion": {
+      "type": "string",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(-(0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(\\.(0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?$",
+      "description": "Valid semver."
+    },
+    "bfrostEngine": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Semver range, e.g. '>=0.3.0'."
+    },
+    "license": { "type": "string", "minLength": 1 },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" },
+    "capabilities": {
+      "type": "object",
+      "required": ["jobs", "tools", "channels", "providers", "itemProduces", "itemConsumes"],
+      "additionalProperties": false,
+      "properties": {
+        "jobs":         { "type": "array", "items": { "type": "string" } },
+        "tools":        { "type": "array", "items": { "type": "string" } },
+        "channels":     { "type": "array", "items": { "type": "string" } },
+        "providers":    { "type": "array", "items": { "type": "string" } },
+        "itemProduces": { "type": "array", "items": { "type": "string" } },
+        "itemConsumes": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "permissions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "network:http",
+          "network:https",
+          "storage:worker-kv",
+          "filesystem:scoped-read",
+          "filesystem:scoped-write",
+          "filesystem:workspace-read",
+          "operator-notify",
+          "local-process"
+        ]
+      }
+    },
+    "downloadCount": { "type": "integer", "minimum": 0 },
+    "versions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "version", "bfrostEngine", "releaseUrl",
+          "changelog", "publishedAt", "yanked",
+          "bundleSha256", "bundleSizeBytes"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "version": { "type": "string" },
+          "bfrostEngine": { "type": "string" },
+          "releaseUrl": { "type": "string", "format": "uri" },
+          "changelog": { "type": "string" },
+          "publishedAt": { "type": "string", "format": "date-time" },
+          "yanked": { "type": "boolean" },
+          "yankReason": { "type": "string" },
+          "bundleSha256": { "type": "string" },
+          "bundleSizeBytes": { "type": "integer", "minimum": 0 }
+        }
+      }
+    }
+  }
+}
