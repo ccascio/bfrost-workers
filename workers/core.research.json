@@ -1,0 +1,40 @@
+{
+    "id": "core.research",
+    "name": "Research Notes",
+    "tagline": "Writes a Markdown research note for each topic on a schedule. Notes are saved locally to read, edit, and keep.",
+    "description": "A producer worker that searches Google Custom Search for your configured research topics, fetches article content, and uses an LLM to synthesize a durable Markdown research note saved to your local filesystem.\n\nConfigurable topics, result count, date restriction, and synthesis prompt. Notes are indexed in worker KV for easy browsing.\n\nThis is a built-in BFrost plugin worker. If you have deleted it, you can restore it here.",
+    "author": "@bfrost",
+    "repoUrl": "https://github.com/ccascio/bfrost-workers",
+    "category": "Core / Plugin",
+    "tags": ["research", "notes", "google", "markdown", "producer", "built-in", "core"],
+    "trust": "Core",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.2.0",
+    "license": "MIT",
+    "builtIn": true,
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-05-24T00:00:00Z",
+    "capabilities": {
+        "jobs": ["personal-research"],
+        "tools": [],
+        "channels": [],
+        "providers": [],
+        "itemProduces": [],
+        "itemConsumes": []
+    },
+    "permissions": ["network:https", "storage:worker-kv", "filesystem:scoped-write"],
+    "downloadCount": 0,
+    "versions": [
+        {
+            "version": "0.1.0",
+            "bfrostEngine": ">=0.2.0",
+            "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/core-v0.1.0",
+            "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/core-v0.1.0/core.research.tar.gz",
+            "changelog": "Initial installable package for the Research Notes built-in worker.",
+            "publishedAt": "2026-05-24T00:00:00Z",
+            "yanked": false,
+            "bundleSha256": "b3f682bad9e4c00b6e946a60e7aecd07a7a7a112d2facfe1f1b4a77de005bff9",
+            "bundleSizeBytes": 5360
+        }
+    ]
+}

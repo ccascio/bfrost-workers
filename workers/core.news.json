@@ -1,0 +1,40 @@
+{
+    "id": "core.news",
+    "name": "Daily News Digest",
+    "tagline": "Pulls articles from your chosen sources, scores them for quality, and queues a short digest for review.",
+    "description": "A producer worker that searches Google Custom Search for articles matching your configured interests, scores them by source quality, deduplicates them, and queues them for review.\n\nOptionally fetches article content for richer previews. Source quality rules (allow/block/prefer hosts and a minimum score) are configurable from the dashboard.\n\nThis is a built-in BFrost plugin worker. If you have deleted it, you can restore it here.",
+    "author": "@bfrost",
+    "repoUrl": "https://github.com/ccascio/bfrost-workers",
+    "category": "Core / Plugin",
+    "tags": ["news", "digest", "google", "rss", "producer", "built-in", "core"],
+    "trust": "Core",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.2.0",
+    "license": "MIT",
+    "builtIn": true,
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-05-24T00:00:00Z",
+    "capabilities": {
+        "jobs": ["news-digest"],
+        "tools": [],
+        "channels": [],
+        "providers": [],
+        "itemProduces": ["news.article"],
+        "itemConsumes": []
+    },
+    "permissions": ["network:https", "storage:worker-kv"],
+    "downloadCount": 0,
+    "versions": [
+        {
+            "version": "0.1.0",
+            "bfrostEngine": ">=0.2.0",
+            "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/core-v0.1.0",
+            "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/core-v0.1.0/core.news.tar.gz",
+            "changelog": "Initial installable package for the Daily News Digest built-in worker.",
+            "publishedAt": "2026-05-24T00:00:00Z",
+            "yanked": false,
+            "bundleSha256": "d089f0ef29db9b727153c423bdfd269502d0f6c4632ea54178b600f97c16bce4",
+            "bundleSizeBytes": 6440
+        }
+    ]
+}

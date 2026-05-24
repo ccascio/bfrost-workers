@@ -1,0 +1,40 @@
+{
+    "id": "core.publisher.x",
+    "name": "Post to X",
+    "tagline": "Turns approved digest items into X posts. Drafts go out only after you say yes — nothing posted behind your back.",
+    "description": "A consumer worker that selects approved queue items, generates X posts with an LLM, and either posts them directly or stages them as drafts for review.\n\nConfigurable character limit, tone, template, and post timing. Requires X OAuth credentials.\n\nThis is a built-in BFrost plugin worker. If you have deleted it, you can restore it here.",
+    "author": "@bfrost",
+    "repoUrl": "https://github.com/ccascio/bfrost-workers",
+    "category": "Core / Plugin",
+    "tags": ["x", "twitter", "post", "publish", "consumer", "built-in", "core"],
+    "trust": "Core",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.2.0",
+    "license": "MIT",
+    "builtIn": true,
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-05-24T00:00:00Z",
+    "capabilities": {
+        "jobs": ["post-to-x"],
+        "tools": [],
+        "channels": [],
+        "providers": [],
+        "itemProduces": [],
+        "itemConsumes": ["news.article"]
+    },
+    "permissions": ["network:https", "storage:worker-kv"],
+    "downloadCount": 0,
+    "versions": [
+        {
+            "version": "0.1.0",
+            "bfrostEngine": ">=0.2.0",
+            "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/core-v0.1.0",
+            "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/core-v0.1.0/core.publisher.x.tar.gz",
+            "changelog": "Initial installable package for the Post to X built-in worker.",
+            "publishedAt": "2026-05-24T00:00:00Z",
+            "yanked": false,
+            "bundleSha256": "0b75ebae83c3e4a473948352835118b07a1e3011f23480fd23aee1e72fac2adb",
+            "bundleSizeBytes": 6750
+        }
+    ]
+}

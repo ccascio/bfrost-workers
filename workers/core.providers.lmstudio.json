@@ -1,0 +1,39 @@
+{
+    "id": "core.providers.lmstudio",
+    "name": "LM Studio Provider",
+    "tagline": "Run AI models locally via LM Studio — no API keys, no monthly bill, your data stays on your machine.",
+    "description": "Built-in local LLM provider that connects BFrost to LM Studio's REST API. BFrost can start, stop, and load models through the LM Studio server so all inference stays on your hardware.\n\nThis is a core infrastructure worker — it ships with every BFrost installation and cannot be removed.",
+    "author": "@bfrost",
+    "repoUrl": "https://github.com/ccascio/bfrost",
+    "category": "Core / Provider",
+    "tags": ["lmstudio", "local-ai", "llm", "provider", "privacy", "built-in", "core"],
+    "trust": "Core",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.1.0",
+    "license": "MIT",
+    "builtIn": true,
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-05-24T00:00:00Z",
+    "capabilities": {
+        "jobs": [],
+        "tools": [],
+        "channels": [],
+        "providers": ["lmstudio"],
+        "itemProduces": [],
+        "itemConsumes": []
+    },
+    "permissions": ["network:http", "local-process"],
+    "downloadCount": 0,
+    "versions": [
+        {
+            "version": "0.1.0",
+            "bfrostEngine": ">=0.1.0",
+            "releaseUrl": "https://github.com/ccascio/bfrost",
+            "changelog": "Ships with BFrost. No standalone install needed.",
+            "publishedAt": "2026-01-01T00:00:00Z",
+            "yanked": false,
+            "bundleSha256": "",
+            "bundleSizeBytes": 0
+        }
+    ]
+}

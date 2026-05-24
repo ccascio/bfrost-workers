@@ -1,0 +1,39 @@
+{
+    "id": "core.providers.anthropic",
+    "name": "Anthropic Provider",
+    "tagline": "Use your Anthropic account to power BFrost with Claude — no local GPU required.",
+    "description": "Built-in cloud LLM provider that routes all model calls to Anthropic's API using your API key. Supports the full Claude model family for chat, reasoning, and tool use.\n\nThis is a core infrastructure worker — it ships with every BFrost installation and cannot be removed.",
+    "author": "@bfrost",
+    "repoUrl": "https://github.com/ccascio/bfrost",
+    "category": "Core / Provider",
+    "tags": ["anthropic", "claude", "llm", "provider", "cloud", "built-in", "core"],
+    "trust": "Core",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.1.0",
+    "license": "MIT",
+    "builtIn": true,
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-05-24T00:00:00Z",
+    "capabilities": {
+        "jobs": [],
+        "tools": [],
+        "channels": [],
+        "providers": ["anthropic"],
+        "itemProduces": [],
+        "itemConsumes": []
+    },
+    "permissions": ["network:https"],
+    "downloadCount": 0,
+    "versions": [
+        {
+            "version": "0.1.0",
+            "bfrostEngine": ">=0.1.0",
+            "releaseUrl": "https://github.com/ccascio/bfrost",
+            "changelog": "Ships with BFrost. No standalone install needed.",
+            "publishedAt": "2026-01-01T00:00:00Z",
+            "yanked": false,
+            "bundleSha256": "",
+            "bundleSizeBytes": 0
+        }
+    ]
+}

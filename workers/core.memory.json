@@ -1,0 +1,39 @@
+{
+    "id": "core.memory",
+    "name": "Assistant Memory",
+    "tagline": "Lets the assistant remember things you tell it across conversations. Memories stay on your machine.",
+    "description": "Built-in tool worker that gives the BFrost assistant persistent memory. Tell it your preferences, recurring instructions, or facts to remember — they are stored locally and recalled automatically in future conversations.\n\nThis is a core infrastructure worker — it ships with every BFrost installation and cannot be removed.",
+    "author": "@bfrost",
+    "repoUrl": "https://github.com/ccascio/bfrost",
+    "category": "Core / Tool",
+    "tags": ["memory", "assistant", "tools", "privacy", "built-in", "core"],
+    "trust": "Core",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.1.0",
+    "license": "MIT",
+    "builtIn": true,
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-05-24T00:00:00Z",
+    "capabilities": {
+        "jobs": [],
+        "tools": ["saveMemory", "recallMemory"],
+        "channels": [],
+        "providers": [],
+        "itemProduces": [],
+        "itemConsumes": []
+    },
+    "permissions": ["storage:worker-kv"],
+    "downloadCount": 0,
+    "versions": [
+        {
+            "version": "0.1.0",
+            "bfrostEngine": ">=0.1.0",
+            "releaseUrl": "https://github.com/ccascio/bfrost",
+            "changelog": "Ships with BFrost. No standalone install needed.",
+            "publishedAt": "2026-01-01T00:00:00Z",
+            "yanked": false,
+            "bundleSha256": "",
+            "bundleSizeBytes": 0
+        }
+    ]
+}

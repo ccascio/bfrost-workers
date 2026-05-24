@@ -275,5 +275,682 @@
         "yankReason": "Superseded by source-backed bundle with current BFrost worker contract."
       }
     ]
+  },
+  {
+    "id": "core.providers.anthropic",
+    "name": "Anthropic Provider",
+    "tagline": "Use your Anthropic account to power BFrost with Claude — no local GPU required.",
+    "description": "Built-in cloud LLM provider that routes all model calls to Anthropic's API using your API key. Supports the full Claude model family for chat, reasoning, and tool use.\n\nThis is a core infrastructure worker — it ships with every BFrost installation and cannot be removed.",
+    "author": "@bfrost",
+    "repoUrl": "https://github.com/ccascio/bfrost",
+    "category": "Core / Provider",
+    "tags": [
+      "anthropic",
+      "claude",
+      "llm",
+      "provider",
+      "cloud",
+      "built-in",
+      "core"
+    ],
+    "trust": "Core",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.1.0",
+    "license": "MIT",
+    "builtIn": true,
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-05-24T00:00:00Z",
+    "capabilities": {
+      "jobs": [],
+      "tools": [],
+      "channels": [],
+      "providers": [
+        "anthropic"
+      ],
+      "itemProduces": [],
+      "itemConsumes": []
+    },
+    "permissions": [
+      "network:https"
+    ],
+    "downloadCount": 0,
+    "versions": [
+      {
+        "version": "0.1.0",
+        "bfrostEngine": ">=0.1.0",
+        "releaseUrl": "https://github.com/ccascio/bfrost",
+        "changelog": "Ships with BFrost. No standalone install needed.",
+        "publishedAt": "2026-01-01T00:00:00Z",
+        "yanked": false,
+        "bundleSha256": "",
+        "bundleSizeBytes": 0
+      }
+    ]
+  },
+  {
+    "id": "core.article-fetch",
+    "name": "Article Reader",
+    "tagline": "Lets the assistant open a web page and read it back in clean text — the same kind of reader-view your browser gives you.",
+    "description": "Built-in tool worker that fetches a URL, strips ads and navigation, and returns the main article content as clean text. Used internally by the news digest and research workers, and available to the assistant for on-demand reading.\n\nThis is a core infrastructure worker — it ships with every BFrost installation and cannot be removed.",
+    "author": "@bfrost",
+    "repoUrl": "https://github.com/ccascio/bfrost",
+    "category": "Core / Tool",
+    "tags": [
+      "article",
+      "reader",
+      "fetch",
+      "tools",
+      "web",
+      "built-in",
+      "core"
+    ],
+    "trust": "Core",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.1.0",
+    "license": "MIT",
+    "builtIn": true,
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-05-24T00:00:00Z",
+    "capabilities": {
+      "jobs": [],
+      "tools": [
+        "fetchArticle"
+      ],
+      "channels": [],
+      "providers": [],
+      "itemProduces": [],
+      "itemConsumes": []
+    },
+    "permissions": [
+      "network:https"
+    ],
+    "downloadCount": 0,
+    "versions": [
+      {
+        "version": "0.1.0",
+        "bfrostEngine": ">=0.1.0",
+        "releaseUrl": "https://github.com/ccascio/bfrost",
+        "changelog": "Ships with BFrost. No standalone install needed.",
+        "publishedAt": "2026-01-01T00:00:00Z",
+        "yanked": false,
+        "bundleSha256": "",
+        "bundleSizeBytes": 0
+      }
+    ]
+  },
+  {
+    "id": "core.memory",
+    "name": "Assistant Memory",
+    "tagline": "Lets the assistant remember things you tell it across conversations. Memories stay on your machine.",
+    "description": "Built-in tool worker that gives the BFrost assistant persistent memory. Tell it your preferences, recurring instructions, or facts to remember — they are stored locally and recalled automatically in future conversations.\n\nThis is a core infrastructure worker — it ships with every BFrost installation and cannot be removed.",
+    "author": "@bfrost",
+    "repoUrl": "https://github.com/ccascio/bfrost",
+    "category": "Core / Tool",
+    "tags": [
+      "memory",
+      "assistant",
+      "tools",
+      "privacy",
+      "built-in",
+      "core"
+    ],
+    "trust": "Core",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.1.0",
+    "license": "MIT",
+    "builtIn": true,
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-05-24T00:00:00Z",
+    "capabilities": {
+      "jobs": [],
+      "tools": [
+        "saveMemory",
+        "recallMemory"
+      ],
+      "channels": [],
+      "providers": [],
+      "itemProduces": [],
+      "itemConsumes": []
+    },
+    "permissions": [
+      "storage:worker-kv"
+    ],
+    "downloadCount": 0,
+    "versions": [
+      {
+        "version": "0.1.0",
+        "bfrostEngine": ">=0.1.0",
+        "releaseUrl": "https://github.com/ccascio/bfrost",
+        "changelog": "Ships with BFrost. No standalone install needed.",
+        "publishedAt": "2026-01-01T00:00:00Z",
+        "yanked": false,
+        "bundleSha256": "",
+        "bundleSizeBytes": 0
+      }
+    ]
+  },
+  {
+    "id": "core.items.query",
+    "name": "Bus & History Inspector",
+    "tagline": "Lets the assistant look up what is in your queue, search past items, and summarise recent runs — just ask.",
+    "description": "Built-in tool worker that exposes Item Bus queries and run history to the BFrost assistant. Use natural language to ask what news articles are queued, look up recent research notes, or check how a job performed last week.\n\nThis is a core infrastructure worker — it ships with every BFrost installation and cannot be removed.",
+    "author": "@bfrost",
+    "repoUrl": "https://github.com/ccascio/bfrost",
+    "category": "Core / Tool",
+    "tags": [
+      "items",
+      "queue",
+      "history",
+      "tools",
+      "assistant",
+      "built-in",
+      "core"
+    ],
+    "trust": "Core",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.1.0",
+    "license": "MIT",
+    "builtIn": true,
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-05-24T00:00:00Z",
+    "capabilities": {
+      "jobs": [],
+      "tools": [
+        "queryItems",
+        "recentRuns"
+      ],
+      "channels": [],
+      "providers": [],
+      "itemProduces": [],
+      "itemConsumes": []
+    },
+    "permissions": [
+      "storage:worker-kv"
+    ],
+    "downloadCount": 0,
+    "versions": [
+      {
+        "version": "0.1.0",
+        "bfrostEngine": ">=0.1.0",
+        "releaseUrl": "https://github.com/ccascio/bfrost",
+        "changelog": "Ships with BFrost. No standalone install needed.",
+        "publishedAt": "2026-01-01T00:00:00Z",
+        "yanked": false,
+        "bundleSha256": "",
+        "bundleSizeBytes": 0
+      }
+    ]
+  },
+  {
+    "id": "core.control",
+    "name": "Conversational Control Panel",
+    "tagline": "Tell the assistant to enable a job, change its schedule, or trigger a run — without opening the dashboard.",
+    "description": "Built-in tool worker that gives the BFrost assistant a set of control functions: list jobs and their schedules, enable or disable any job, change a cron expression, or trigger an immediate run — all from a chat message.\n\nThis is a core infrastructure worker — it ships with every BFrost installation and cannot be removed.",
+    "author": "@bfrost",
+    "repoUrl": "https://github.com/ccascio/bfrost",
+    "category": "Core / Tool",
+    "tags": [
+      "control",
+      "scheduler",
+      "tools",
+      "assistant",
+      "built-in",
+      "core"
+    ],
+    "trust": "Core",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.1.0",
+    "license": "MIT",
+    "builtIn": true,
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-05-24T00:00:00Z",
+    "capabilities": {
+      "jobs": [],
+      "tools": [
+        "listJobs",
+        "enableJob",
+        "disableJob",
+        "setJobSchedule",
+        "triggerJob"
+      ],
+      "channels": [],
+      "providers": [],
+      "itemProduces": [],
+      "itemConsumes": []
+    },
+    "permissions": [],
+    "downloadCount": 0,
+    "versions": [
+      {
+        "version": "0.1.0",
+        "bfrostEngine": ">=0.1.0",
+        "releaseUrl": "https://github.com/ccascio/bfrost",
+        "changelog": "Ships with BFrost. No standalone install needed.",
+        "publishedAt": "2026-01-01T00:00:00Z",
+        "yanked": false,
+        "bundleSha256": "",
+        "bundleSizeBytes": 0
+      }
+    ]
+  },
+  {
+    "id": "core.news",
+    "name": "Daily News Digest",
+    "tagline": "Pulls articles from your chosen sources, scores them for quality, and queues a short digest for review.",
+    "description": "A producer worker that searches Google Custom Search for articles matching your configured interests, scores them by source quality, deduplicates them, and queues them for review.\n\nOptionally fetches article content for richer previews. Source quality rules (allow/block/prefer hosts and a minimum score) are configurable from the dashboard.\n\nThis is a built-in BFrost plugin worker. If you have deleted it, you can restore it here.",
+    "author": "@bfrost",
+    "repoUrl": "https://github.com/ccascio/bfrost-workers",
+    "category": "Core / Plugin",
+    "tags": [
+      "news",
+      "digest",
+      "google",
+      "rss",
+      "producer",
+      "built-in",
+      "core"
+    ],
+    "trust": "Core",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.2.0",
+    "license": "MIT",
+    "builtIn": true,
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-05-24T00:00:00Z",
+    "capabilities": {
+      "jobs": [
+        "news-digest"
+      ],
+      "tools": [],
+      "channels": [],
+      "providers": [],
+      "itemProduces": [
+        "news.article"
+      ],
+      "itemConsumes": []
+    },
+    "permissions": [
+      "network:https",
+      "storage:worker-kv"
+    ],
+    "downloadCount": 0,
+    "versions": [
+      {
+        "version": "0.1.0",
+        "bfrostEngine": ">=0.2.0",
+        "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/core-v0.1.0",
+        "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/core-v0.1.0/core.news.tar.gz",
+        "changelog": "Initial installable package for the Daily News Digest built-in worker.",
+        "publishedAt": "2026-05-24T00:00:00Z",
+        "yanked": false,
+        "bundleSha256": "d089f0ef29db9b727153c423bdfd269502d0f6c4632ea54178b600f97c16bce4",
+        "bundleSizeBytes": 6440
+      }
+    ]
+  },
+  {
+    "id": "core.channels.discord",
+    "name": "Discord Channel",
+    "tagline": "Have BFrost ping a Discord channel when a job runs, fails, or needs your attention.",
+    "description": "Built-in channel adapter that sends operator notifications to a Discord webhook. BFrost posts a message to the configured webhook URL whenever a scheduled job finishes, an error occurs, or an item needs approval.\n\nThis is a core infrastructure worker — it ships with every BFrost installation and cannot be removed.",
+    "author": "@bfrost",
+    "repoUrl": "https://github.com/ccascio/bfrost",
+    "category": "Core / Channel",
+    "tags": [
+      "discord",
+      "channel",
+      "webhook",
+      "notifications",
+      "built-in",
+      "core"
+    ],
+    "trust": "Core",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.1.0",
+    "license": "MIT",
+    "builtIn": true,
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-05-24T00:00:00Z",
+    "capabilities": {
+      "jobs": [],
+      "tools": [],
+      "channels": [
+        "discord"
+      ],
+      "providers": [],
+      "itemProduces": [],
+      "itemConsumes": []
+    },
+    "permissions": [
+      "network:https",
+      "operator-notify"
+    ],
+    "downloadCount": 0,
+    "versions": [
+      {
+        "version": "0.1.0",
+        "bfrostEngine": ">=0.1.0",
+        "releaseUrl": "https://github.com/ccascio/bfrost",
+        "changelog": "Ships with BFrost. No standalone install needed.",
+        "publishedAt": "2026-01-01T00:00:00Z",
+        "yanked": false,
+        "bundleSha256": "",
+        "bundleSizeBytes": 0
+      }
+    ]
+  },
+  {
+    "id": "core.search.google",
+    "name": "Google Web Search",
+    "tagline": "Gives the assistant and other workers a way to look things up on the web using your Google Custom Search account.",
+    "description": "Built-in tool worker that wraps Google Custom Search API. The assistant can run web searches on demand; the news digest and research workers use it internally to gather sources.\n\nRequires a Google Custom Search Engine ID and API key configured in worker settings.\n\nThis is a core infrastructure worker — it ships with every BFrost installation and cannot be removed.",
+    "author": "@bfrost",
+    "repoUrl": "https://github.com/ccascio/bfrost",
+    "category": "Core / Tool",
+    "tags": [
+      "google",
+      "search",
+      "web",
+      "tools",
+      "assistant",
+      "built-in",
+      "core"
+    ],
+    "trust": "Core",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.1.0",
+    "license": "MIT",
+    "builtIn": true,
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-05-24T00:00:00Z",
+    "capabilities": {
+      "jobs": [],
+      "tools": [
+        "webSearch"
+      ],
+      "channels": [],
+      "providers": [],
+      "itemProduces": [],
+      "itemConsumes": []
+    },
+    "permissions": [
+      "network:https"
+    ],
+    "downloadCount": 0,
+    "versions": [
+      {
+        "version": "0.1.0",
+        "bfrostEngine": ">=0.1.0",
+        "releaseUrl": "https://github.com/ccascio/bfrost",
+        "changelog": "Ships with BFrost. No standalone install needed.",
+        "publishedAt": "2026-01-01T00:00:00Z",
+        "yanked": false,
+        "bundleSha256": "",
+        "bundleSizeBytes": 0
+      }
+    ]
+  },
+  {
+    "id": "core.providers.lmstudio",
+    "name": "LM Studio Provider",
+    "tagline": "Run AI models locally via LM Studio — no API keys, no monthly bill, your data stays on your machine.",
+    "description": "Built-in local LLM provider that connects BFrost to LM Studio's REST API. BFrost can start, stop, and load models through the LM Studio server so all inference stays on your hardware.\n\nThis is a core infrastructure worker — it ships with every BFrost installation and cannot be removed.",
+    "author": "@bfrost",
+    "repoUrl": "https://github.com/ccascio/bfrost",
+    "category": "Core / Provider",
+    "tags": [
+      "lmstudio",
+      "local-ai",
+      "llm",
+      "provider",
+      "privacy",
+      "built-in",
+      "core"
+    ],
+    "trust": "Core",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.1.0",
+    "license": "MIT",
+    "builtIn": true,
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-05-24T00:00:00Z",
+    "capabilities": {
+      "jobs": [],
+      "tools": [],
+      "channels": [],
+      "providers": [
+        "lmstudio"
+      ],
+      "itemProduces": [],
+      "itemConsumes": []
+    },
+    "permissions": [
+      "network:http",
+      "local-process"
+    ],
+    "downloadCount": 0,
+    "versions": [
+      {
+        "version": "0.1.0",
+        "bfrostEngine": ">=0.1.0",
+        "releaseUrl": "https://github.com/ccascio/bfrost",
+        "changelog": "Ships with BFrost. No standalone install needed.",
+        "publishedAt": "2026-01-01T00:00:00Z",
+        "yanked": false,
+        "bundleSha256": "",
+        "bundleSizeBytes": 0
+      }
+    ]
+  },
+  {
+    "id": "core.providers.openai",
+    "name": "OpenAI Provider",
+    "tagline": "Use your OpenAI account to power BFrost with GPT models — no local GPU required.",
+    "description": "Built-in cloud LLM provider that routes all model calls to OpenAI's API using your API key. Supports GPT-4o, GPT-4, and other available models for chat and tool use.\n\nThis is a core infrastructure worker — it ships with every BFrost installation and cannot be removed.",
+    "author": "@bfrost",
+    "repoUrl": "https://github.com/ccascio/bfrost",
+    "category": "Core / Provider",
+    "tags": [
+      "openai",
+      "gpt",
+      "llm",
+      "provider",
+      "cloud",
+      "built-in",
+      "core"
+    ],
+    "trust": "Core",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.1.0",
+    "license": "MIT",
+    "builtIn": true,
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-05-24T00:00:00Z",
+    "capabilities": {
+      "jobs": [],
+      "tools": [],
+      "channels": [],
+      "providers": [
+        "openai"
+      ],
+      "itemProduces": [],
+      "itemConsumes": []
+    },
+    "permissions": [
+      "network:https"
+    ],
+    "downloadCount": 0,
+    "versions": [
+      {
+        "version": "0.1.0",
+        "bfrostEngine": ">=0.1.0",
+        "releaseUrl": "https://github.com/ccascio/bfrost",
+        "changelog": "Ships with BFrost. No standalone install needed.",
+        "publishedAt": "2026-01-01T00:00:00Z",
+        "yanked": false,
+        "bundleSha256": "",
+        "bundleSizeBytes": 0
+      }
+    ]
+  },
+  {
+    "id": "core.publisher.x",
+    "name": "Post to X",
+    "tagline": "Turns approved digest items into X posts. Drafts go out only after you say yes — nothing posted behind your back.",
+    "description": "A consumer worker that selects approved queue items, generates X posts with an LLM, and either posts them directly or stages them as drafts for review.\n\nConfigurable character limit, tone, template, and post timing. Requires X OAuth credentials.\n\nThis is a built-in BFrost plugin worker. If you have deleted it, you can restore it here.",
+    "author": "@bfrost",
+    "repoUrl": "https://github.com/ccascio/bfrost-workers",
+    "category": "Core / Plugin",
+    "tags": [
+      "x",
+      "twitter",
+      "post",
+      "publish",
+      "consumer",
+      "built-in",
+      "core"
+    ],
+    "trust": "Core",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.2.0",
+    "license": "MIT",
+    "builtIn": true,
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-05-24T00:00:00Z",
+    "capabilities": {
+      "jobs": [
+        "post-to-x"
+      ],
+      "tools": [],
+      "channels": [],
+      "providers": [],
+      "itemProduces": [],
+      "itemConsumes": [
+        "news.article"
+      ]
+    },
+    "permissions": [
+      "network:https",
+      "storage:worker-kv"
+    ],
+    "downloadCount": 0,
+    "versions": [
+      {
+        "version": "0.1.0",
+        "bfrostEngine": ">=0.2.0",
+        "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/core-v0.1.0",
+        "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/core-v0.1.0/core.publisher.x.tar.gz",
+        "changelog": "Initial installable package for the Post to X built-in worker.",
+        "publishedAt": "2026-05-24T00:00:00Z",
+        "yanked": false,
+        "bundleSha256": "0b75ebae83c3e4a473948352835118b07a1e3011f23480fd23aee1e72fac2adb",
+        "bundleSizeBytes": 6750
+      }
+    ]
+  },
+  {
+    "id": "core.research",
+    "name": "Research Notes",
+    "tagline": "Writes a Markdown research note for each topic on a schedule. Notes are saved locally to read, edit, and keep.",
+    "description": "A producer worker that searches Google Custom Search for your configured research topics, fetches article content, and uses an LLM to synthesize a durable Markdown research note saved to your local filesystem.\n\nConfigurable topics, result count, date restriction, and synthesis prompt. Notes are indexed in worker KV for easy browsing.\n\nThis is a built-in BFrost plugin worker. If you have deleted it, you can restore it here.",
+    "author": "@bfrost",
+    "repoUrl": "https://github.com/ccascio/bfrost-workers",
+    "category": "Core / Plugin",
+    "tags": [
+      "research",
+      "notes",
+      "google",
+      "markdown",
+      "producer",
+      "built-in",
+      "core"
+    ],
+    "trust": "Core",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.2.0",
+    "license": "MIT",
+    "builtIn": true,
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-05-24T00:00:00Z",
+    "capabilities": {
+      "jobs": [
+        "personal-research"
+      ],
+      "tools": [],
+      "channels": [],
+      "providers": [],
+      "itemProduces": [],
+      "itemConsumes": []
+    },
+    "permissions": [
+      "network:https",
+      "storage:worker-kv",
+      "filesystem:scoped-write"
+    ],
+    "downloadCount": 0,
+    "versions": [
+      {
+        "version": "0.1.0",
+        "bfrostEngine": ">=0.2.0",
+        "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/core-v0.1.0",
+        "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/core-v0.1.0/core.research.tar.gz",
+        "changelog": "Initial installable package for the Research Notes built-in worker.",
+        "publishedAt": "2026-05-24T00:00:00Z",
+        "yanked": false,
+        "bundleSha256": "b3f682bad9e4c00b6e946a60e7aecd07a7a7a112d2facfe1f1b4a77de005bff9",
+        "bundleSizeBytes": 5360
+      }
+    ]
+  },
+  {
+    "id": "core.channels.telegram",
+    "name": "Telegram Channel",
+    "tagline": "Chat with your BFrost assistant from Telegram — text, voice notes, and photos all work.",
+    "description": "Built-in channel adapter that connects your BFrost assistant to a Telegram bot. Once your bot token is configured, BFrost listens for messages and replies inline. Voice notes are transcribed automatically when Whisper is available.\n\nThis is a core infrastructure worker — it ships with every BFrost installation and cannot be removed.",
+    "author": "@bfrost",
+    "repoUrl": "https://github.com/ccascio/bfrost",
+    "category": "Core / Channel",
+    "tags": [
+      "telegram",
+      "channel",
+      "messaging",
+      "voice",
+      "built-in",
+      "core"
+    ],
+    "trust": "Core",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.1.0",
+    "license": "MIT",
+    "builtIn": true,
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-05-24T00:00:00Z",
+    "capabilities": {
+      "jobs": [],
+      "tools": [],
+      "channels": [
+        "telegram"
+      ],
+      "providers": [],
+      "itemProduces": [],
+      "itemConsumes": []
+    },
+    "permissions": [
+      "network:https",
+      "operator-notify"
+    ],
+    "downloadCount": 0,
+    "versions": [
+      {
+        "version": "0.1.0",
+        "bfrostEngine": ">=0.1.0",
+        "releaseUrl": "https://github.com/ccascio/bfrost",
+        "changelog": "Ships with BFrost. No standalone install needed.",
+        "publishedAt": "2026-01-01T00:00:00Z",
+        "yanked": false,
+        "bundleSha256": "",
+        "bundleSizeBytes": 0
+      }
+    ]
   }
 ]

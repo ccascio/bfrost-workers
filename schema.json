@@ -29,6 +29,10 @@
     "author": { "type": "string", "minLength": 1 },
     "repoUrl": { "type": "string", "format": "uri" },
     "readmeUrl": { "type": "string", "format": "uri" },
+    "builtIn": {
+      "type": "boolean",
+      "description": "True for workers that ship with BFrost. Infrastructure workers are always included; plugin workers (news, publisher-x, research) can be deleted and restored."
+    },
     "category": {
       "type": "string",
       "enum": [
@@ -37,7 +41,11 @@
         "Productivity",
         "AI / Inference",
         "Developer Tools",
-        "Backup"
+        "Backup",
+        "Core / Channel",
+        "Core / Provider",
+        "Core / Plugin",
+        "Core / Tool"
       ]
     },
     "tags": {
@@ -46,7 +54,7 @@
     },
     "trust": {
       "type": "string",
-      "enum": ["Trusted", "Verified", "Community", "Review"]
+      "enum": ["Trusted", "Verified", "Community", "Review", "Core"]
     },
     "latestVersion": {
       "type": "string",

@@ -1,0 +1,39 @@
+{
+    "id": "core.control",
+    "name": "Conversational Control Panel",
+    "tagline": "Tell the assistant to enable a job, change its schedule, or trigger a run — without opening the dashboard.",
+    "description": "Built-in tool worker that gives the BFrost assistant a set of control functions: list jobs and their schedules, enable or disable any job, change a cron expression, or trigger an immediate run — all from a chat message.\n\nThis is a core infrastructure worker — it ships with every BFrost installation and cannot be removed.",
+    "author": "@bfrost",
+    "repoUrl": "https://github.com/ccascio/bfrost",
+    "category": "Core / Tool",
+    "tags": ["control", "scheduler", "tools", "assistant", "built-in", "core"],
+    "trust": "Core",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.1.0",
+    "license": "MIT",
+    "builtIn": true,
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-05-24T00:00:00Z",
+    "capabilities": {
+        "jobs": [],
+        "tools": ["listJobs", "enableJob", "disableJob", "setJobSchedule", "triggerJob"],
+        "channels": [],
+        "providers": [],
+        "itemProduces": [],
+        "itemConsumes": []
+    },
+    "permissions": [],
+    "downloadCount": 0,
+    "versions": [
+        {
+            "version": "0.1.0",
+            "bfrostEngine": ">=0.1.0",
+            "releaseUrl": "https://github.com/ccascio/bfrost",
+            "changelog": "Ships with BFrost. No standalone install needed.",
+            "publishedAt": "2026-01-01T00:00:00Z",
+            "yanked": false,
+            "bundleSha256": "",
+            "bundleSizeBytes": 0
+        }
+    ]
+}

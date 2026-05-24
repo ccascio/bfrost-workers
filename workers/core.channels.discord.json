@@ -1,0 +1,39 @@
+{
+    "id": "core.channels.discord",
+    "name": "Discord Channel",
+    "tagline": "Have BFrost ping a Discord channel when a job runs, fails, or needs your attention.",
+    "description": "Built-in channel adapter that sends operator notifications to a Discord webhook. BFrost posts a message to the configured webhook URL whenever a scheduled job finishes, an error occurs, or an item needs approval.\n\nThis is a core infrastructure worker — it ships with every BFrost installation and cannot be removed.",
+    "author": "@bfrost",
+    "repoUrl": "https://github.com/ccascio/bfrost",
+    "category": "Core / Channel",
+    "tags": ["discord", "channel", "webhook", "notifications", "built-in", "core"],
+    "trust": "Core",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.1.0",
+    "license": "MIT",
+    "builtIn": true,
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-05-24T00:00:00Z",
+    "capabilities": {
+        "jobs": [],
+        "tools": [],
+        "channels": ["discord"],
+        "providers": [],
+        "itemProduces": [],
+        "itemConsumes": []
+    },
+    "permissions": ["network:https", "operator-notify"],
+    "downloadCount": 0,
+    "versions": [
+        {
+            "version": "0.1.0",
+            "bfrostEngine": ">=0.1.0",
+            "releaseUrl": "https://github.com/ccascio/bfrost",
+            "changelog": "Ships with BFrost. No standalone install needed.",
+            "publishedAt": "2026-01-01T00:00:00Z",
+            "yanked": false,
+            "bundleSha256": "",
+            "bundleSizeBytes": 0
+        }
+    ]
+}

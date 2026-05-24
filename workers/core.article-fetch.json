@@ -1,0 +1,39 @@
+{
+    "id": "core.article-fetch",
+    "name": "Article Reader",
+    "tagline": "Lets the assistant open a web page and read it back in clean text — the same kind of reader-view your browser gives you.",
+    "description": "Built-in tool worker that fetches a URL, strips ads and navigation, and returns the main article content as clean text. Used internally by the news digest and research workers, and available to the assistant for on-demand reading.\n\nThis is a core infrastructure worker — it ships with every BFrost installation and cannot be removed.",
+    "author": "@bfrost",
+    "repoUrl": "https://github.com/ccascio/bfrost",
+    "category": "Core / Tool",
+    "tags": ["article", "reader", "fetch", "tools", "web", "built-in", "core"],
+    "trust": "Core",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.1.0",
+    "license": "MIT",
+    "builtIn": true,
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-05-24T00:00:00Z",
+    "capabilities": {
+        "jobs": [],
+        "tools": ["fetchArticle"],
+        "channels": [],
+        "providers": [],
+        "itemProduces": [],
+        "itemConsumes": []
+    },
+    "permissions": ["network:https"],
+    "downloadCount": 0,
+    "versions": [
+        {
+            "version": "0.1.0",
+            "bfrostEngine": ">=0.1.0",
+            "releaseUrl": "https://github.com/ccascio/bfrost",
+            "changelog": "Ships with BFrost. No standalone install needed.",
+            "publishedAt": "2026-01-01T00:00:00Z",
+            "yanked": false,
+            "bundleSha256": "",
+            "bundleSizeBytes": 0
+        }
+    ]
+}
