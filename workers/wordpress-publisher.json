@@ -44,7 +44,7 @@
             "changelog": "Added configurable publish status (draft, publish, pending) and custom post type support.",
             "publishedAt": "2026-04-20T14:30:00Z",
             "yanked": false,
-            "bundleSha256": "25f13b8cc6e595fbabc47fc0a19c95cc0978c487abd173b335fa3936b95f309b",
+            "bundleSha256": "56b7c5b5725404f5c6011706e27e81b3461d2e0e03edd01dfcfc9ea98b1e6f5c",
             "bundleSizeBytes": 8356,
             "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/wordpress-publisher.tar.gz"
         },
@@ -55,7 +55,7 @@
             "changelog": "Per-run deduplication: the same article is never posted twice.",
             "publishedAt": "2026-03-10T09:00:00Z",
             "yanked": false,
-            "bundleSha256": "25f13b8cc6e595fbabc47fc0a19c95cc0978c487abd173b335fa3936b95f309b",
+            "bundleSha256": "56b7c5b5725404f5c6011706e27e81b3461d2e0e03edd01dfcfc9ea98b1e6f5c",
             "bundleSizeBytes": 8356,
             "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/wordpress-publisher.tar.gz"
         },
@@ -66,7 +66,7 @@
             "changelog": "Initial release. Posts news.article items as WordPress posts via the REST API.",
             "publishedAt": "2026-01-15T10:00:00Z",
             "yanked": false,
-            "bundleSha256": "25f13b8cc6e595fbabc47fc0a19c95cc0978c487abd173b335fa3936b95f309b",
+            "bundleSha256": "56b7c5b5725404f5c6011706e27e81b3461d2e0e03edd01dfcfc9ea98b1e6f5c",
             "bundleSizeBytes": 8356,
             "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/wordpress-publisher.tar.gz"
         }

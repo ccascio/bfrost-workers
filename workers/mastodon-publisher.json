@@ -44,8 +44,8 @@
             "changelog": "Fix: truncation now respects Unicode code points, not byte length.",
             "publishedAt": "2026-05-01T11:20:00Z",
             "yanked": false,
-            "bundleSha256": "dbcf35d34b35d1e3715fc384262fa08aed22138d4a0267c81b979346a611a241",
-            "bundleSizeBytes": 2597,
+            "bundleSha256": "0e42116963fa93458a52a66a65647a801c686bf09f68945bb0e5c009490cd115",
+            "bundleSizeBytes": 2535,
             "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/mastodon-publisher.tar.gz"
         },
         {
@@ -55,8 +55,8 @@
             "changelog": "Added hashtag injection from article tags. Configurable max-hashtags limit.",
             "publishedAt": "2026-04-12T08:45:00Z",
             "yanked": false,
-            "bundleSha256": "dbcf35d34b35d1e3715fc384262fa08aed22138d4a0267c81b979346a611a241",
-            "bundleSizeBytes": 2597,
+            "bundleSha256": "0e42116963fa93458a52a66a65647a801c686bf09f68945bb0e5c009490cd115",
+            "bundleSizeBytes": 2535,
             "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/mastodon-publisher.tar.gz"
         },
         {
@@ -66,8 +66,8 @@
             "changelog": "Custom post templates via settings. URL append on truncation.",
             "publishedAt": "2026-03-22T14:00:00Z",
             "yanked": false,
-            "bundleSha256": "dbcf35d34b35d1e3715fc384262fa08aed22138d4a0267c81b979346a611a241",
-            "bundleSizeBytes": 2597,
+            "bundleSha256": "0e42116963fa93458a52a66a65647a801c686bf09f68945bb0e5c009490cd115",
+            "bundleSizeBytes": 2535,
             "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/mastodon-publisher.tar.gz"
         },
         {
@@ -77,8 +77,8 @@
             "changelog": "Initial public release.",
             "publishedAt": "2026-02-08T16:00:00Z",
             "yanked": false,
-            "bundleSha256": "dbcf35d34b35d1e3715fc384262fa08aed22138d4a0267c81b979346a611a241",
-            "bundleSizeBytes": 2597,
+            "bundleSha256": "0e42116963fa93458a52a66a65647a801c686bf09f68945bb0e5c009490cd115",
+            "bundleSizeBytes": 2535,
             "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/mastodon-publisher.tar.gz"
         }
     ]
