@@ -45,8 +45,8 @@
             "changelog": "Fix: handle feeds with missing pubDate by falling back to current time.",
             "publishedAt": "2026-05-14T19:00:00Z",
             "yanked": false,
-            "bundleSha256": "57832b6f33c69c9c6b7651c595351d4946a85eef11a876fd42307988dac9eb7c",
-            "bundleSizeBytes": 2782,
+            "bundleSha256": "5346213ba03cbc51cc406fafc0857f7cf2000530bd34d240480e44c39b045f64",
+            "bundleSizeBytes": 2772,
             "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/rss-harvester.tar.gz"
         },
         {
@@ -56,8 +56,8 @@
             "changelog": "Added Atom 1.0 support alongside RSS 2.0.",
             "publishedAt": "2026-04-28T10:00:00Z",
             "yanked": false,
-            "bundleSha256": "57832b6f33c69c9c6b7651c595351d4946a85eef11a876fd42307988dac9eb7c",
-            "bundleSizeBytes": 2782,
+            "bundleSha256": "5346213ba03cbc51cc406fafc0857f7cf2000530bd34d240480e44c39b045f64",
+            "bundleSizeBytes": 2772,
             "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/rss-harvester.tar.gz"
         },
         {
@@ -67,8 +67,8 @@
             "changelog": "Initial release. RSS 2.0 polling with deduplication by entry link.",
             "publishedAt": "2026-03-30T07:00:00Z",
             "yanked": false,
-            "bundleSha256": "57832b6f33c69c9c6b7651c595351d4946a85eef11a876fd42307988dac9eb7c",
-            "bundleSizeBytes": 2782,
+            "bundleSha256": "5346213ba03cbc51cc406fafc0857f7cf2000530bd34d240480e44c39b045f64",
+            "bundleSizeBytes": 2772,
             "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/rss-harvester.tar.gz"
         }
     ]
