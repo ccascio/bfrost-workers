@@ -2,7 +2,7 @@
     "id": "rss-harvester",
     "name": "RSS Harvester",
     "tagline": "Polls RSS and Atom feeds on a schedule and publishes news.article items to the Item Bus.",
-    "description": "A producer worker that fetches one or more RSS/Atom feed URLs on a configurable schedule and pushes each new entry as a `news.article` item onto the BFrost Item Bus. Deduplication is keyed on the entry's `<link>` element \u2014 an article is only published once per source URL.\n\nFeed URLs are declared in worker settings as a newline-separated list. Supports both RSS 2.0 and Atom 1.0.",
+    "description": "A producer worker that fetches one or more RSS/Atom feed URLs on a configurable schedule and pushes each new entry as a `news.article` item onto the BFrost Item Bus. Deduplication is keyed on the entry's `<link>` element — an article is only published once per source URL.\n\nFeed URLs are declared in worker settings as a newline-separated list. Supports both RSS 2.0 and Atom 1.0.",
     "author": "@ccascio",
     "repoUrl": "https://github.com/ccascio/bfrost-workers",
     "category": "AI / Research",
@@ -15,11 +15,11 @@
         "harvester"
     ],
     "trust": "Community",
-    "latestVersion": "1.0.2",
+    "latestVersion": "1.1.0",
     "bfrostEngine": ">=0.2.0",
     "license": "MIT",
     "createdAt": "2026-03-30T07:00:00Z",
-    "updatedAt": "2026-05-14T19:00:00Z",
+    "updatedAt": "2026-05-24T19:45:00Z",
     "capabilities": {
         "jobs": [
             "rss-fetch"
@@ -39,15 +39,27 @@
     "downloadCount": 0,
     "versions": [
         {
+            "version": "1.1.0",
+            "bfrostEngine": ">=0.2.0",
+            "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v1.1.0",
+            "changelog": "Ship full source-backed bundle with config surface, dashboard bundle, and current WorkerJobManifest scheduler contract.",
+            "publishedAt": "2026-05-24T19:45:00Z",
+            "yanked": false,
+            "bundleSha256": "159e224dc3f2004ca00a0f0580381e53a1e5f330815888546ca868d2a2d05f94",
+            "bundleSizeBytes": 6400,
+            "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.1.0/rss-harvester.tar.gz"
+        },
+        {
             "version": "1.0.2",
             "bfrostEngine": ">=0.2.0",
             "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v1.0.0",
             "changelog": "Fix: handle feeds with missing pubDate by falling back to current time.",
             "publishedAt": "2026-05-14T19:00:00Z",
-            "yanked": false,
+            "yanked": true,
             "bundleSha256": "04dbeeaa663aad44db6cb790dc146b3ceac8339c0de06639b87f12bbd9b424a2",
             "bundleSizeBytes": 2726,
-            "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/rss-harvester.tar.gz"
+            "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/rss-harvester.tar.gz",
+            "yankReason": "Superseded by source-backed bundle with current BFrost worker contract."
         },
         {
             "version": "1.0.1",
@@ -55,10 +67,11 @@
             "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v1.0.0",
             "changelog": "Added Atom 1.0 support alongside RSS 2.0.",
             "publishedAt": "2026-04-28T10:00:00Z",
-            "yanked": false,
+            "yanked": true,
             "bundleSha256": "04dbeeaa663aad44db6cb790dc146b3ceac8339c0de06639b87f12bbd9b424a2",
             "bundleSizeBytes": 2726,
-            "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/rss-harvester.tar.gz"
+            "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/rss-harvester.tar.gz",
+            "yankReason": "Superseded by source-backed bundle with current BFrost worker contract."
         },
         {
             "version": "1.0.0",
@@ -66,10 +79,11 @@
             "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v1.0.0",
             "changelog": "Initial release. RSS 2.0 polling with deduplication by entry link.",
             "publishedAt": "2026-03-30T07:00:00Z",
-            "yanked": false,
+            "yanked": true,
             "bundleSha256": "04dbeeaa663aad44db6cb790dc146b3ceac8339c0de06639b87f12bbd9b424a2",
             "bundleSizeBytes": 2726,
-            "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/rss-harvester.tar.gz"
+            "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/rss-harvester.tar.gz",
+            "yankReason": "Superseded by source-backed bundle with current BFrost worker contract."
         }
     ]
 }

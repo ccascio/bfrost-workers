@@ -1,0 +1,95 @@
+{
+  "manifestVersion": 1,
+  "bfrostApiVersion": "0.1",
+  "id": "mastodon-publisher",
+  "name": "Mastodon Publisher",
+  "version": "0.5.0",
+  "description": "Posts news.article summaries to a Mastodon instance using the Mastodon API.",
+  "owner": "@ccascio",
+  "kind": "feature",
+  "language": "typescript",
+  "backendSource": "src/index.ts",
+  "backendEntrypoint": "dist/index.js",
+  "dashboardSource": "dashboard.tsx",
+  "dashboardEntrypoint": "dist/dashboard.js",
+  "ownedSettings": [
+    {
+      "key": "mastodon-publisher-config",
+      "label": "Mastodon settings",
+      "description": "Instance URL, access token, post template, visibility, and per-run limit.",
+      "scope": "worker",
+      "storageKey": "worker.mastodon-publisher.config",
+      "dashboardTarget": "config"
+    }
+  ],
+  "dashboard": {
+    "settings": [
+      {
+        "id": "mastodon-publisher-config",
+        "label": "Mastodon connection",
+        "description": "Token and posting preferences for the Mastodon API.",
+        "tab": "config",
+        "path": "/api/workers/mastodon-publisher/settings",
+        "fields": [
+          {
+            "key": "instanceUrl",
+            "label": "Instance URL",
+            "type": "text",
+            "defaultValue": "",
+            "placeholder": "https://mastodon.social",
+            "helpText": "Your Mastodon instance root URL. No trailing slash is required.",
+            "seedPath": "mastodon-publisher.config.instanceUrl"
+          },
+          {
+            "key": "accessToken",
+            "label": "Access token",
+            "type": "secret-reference",
+            "defaultValue": "",
+            "placeholder": "Paste an access token",
+            "helpText": "Create a token in your Mastodon account developer settings.",
+            "seedPath": "mastodon-publisher.config.accessToken"
+          },
+          {
+            "key": "visibility",
+            "label": "Visibility",
+            "type": "select",
+            "defaultValue": "public",
+            "options": [
+              { "value": "public", "label": "Public" },
+              { "value": "unlisted", "label": "Unlisted" },
+              { "value": "private", "label": "Private" }
+            ],
+            "seedPath": "mastodon-publisher.config.visibility"
+          },
+          {
+            "key": "maxItemsPerRun",
+            "label": "Max items per run",
+            "type": "number",
+            "defaultValue": 3,
+            "min": 1,
+            "max": 10,
+            "step": 1,
+            "seedPath": "mastodon-publisher.config.maxItemsPerRun"
+          },
+          {
+            "key": "template",
+            "label": "Post template",
+            "type": "textarea",
+            "defaultValue": "{title}\n\n{summary}\n\n{url}",
+            "rows": 6,
+            "helpText": "Supports {title}, {summary}, {url}, and {hashtags}.",
+            "seedPath": "mastodon-publisher.config.template"
+          }
+        ]
+      }
+    ],
+    "routes": [
+      {
+        "id": "mastodon-publisher-dashboard",
+        "label": "Mastodon",
+        "description": "Mastodon publishing status, recent posts, and manual run controls.",
+        "path": "/api/workers/mastodon-publisher/dashboard"
+      }
+    ]
+  }
+}

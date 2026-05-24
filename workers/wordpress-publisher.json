@@ -2,10 +2,10 @@
     "id": "wordpress-publisher",
     "name": "WordPress Publisher",
     "tagline": "Publishes news.article items from the Item Bus to your WordPress site via the REST API.",
-    "description": "A consumer worker that subscribes to `news.article` items on the BFrost Item Bus and turns each one into a WordPress post. Supports configurable publish status (draft, publish, pending), custom post types, and per-run deduplication so the same article is never posted twice.\n\nThis is a real, working reference worker shipped with the BFrost repository. Copy it from `workers/examples/wordpress-publisher/` into your `workers/local/` directory to get started.",
+    "description": "A consumer worker that subscribes to `news.article` items on the BFrost Item Bus and turns each one into a WordPress post. Supports configurable publish status (draft, publish, pending), custom post types, per-run deduplication, and a runtime dashboard.\n\nThe install bundle includes the worker manifest, TypeScript backend source, dashboard bundle source, and README.",
     "author": "@ccascio",
     "repoUrl": "https://github.com/ccascio/bfrost-workers",
-    "readmeUrl": "https://raw.githubusercontent.com/ccascio/BFrost/main/workers/examples/wordpress-publisher/README.md",
+    "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/wordpress-publisher/README.md",
     "category": "Productivity",
     "tags": [
         "publishing",
@@ -14,11 +14,11 @@
         "consumer"
     ],
     "trust": "Community",
-    "latestVersion": "1.2.0",
+    "latestVersion": "1.3.0",
     "bfrostEngine": ">=0.2.0",
     "license": "MIT",
     "createdAt": "2026-01-15T10:00:00Z",
-    "updatedAt": "2026-04-20T14:30:00Z",
+    "updatedAt": "2026-05-24T19:45:00Z",
     "capabilities": {
         "jobs": [
             "wordpress-publish"
@@ -38,15 +38,27 @@
     "downloadCount": 0,
     "versions": [
         {
+            "version": "1.3.0",
+            "bfrostEngine": ">=0.2.0",
+            "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v1.1.0",
+            "changelog": "Ship full source-backed bundle with matching worker id, dashboard bundle, and current BFrost worker contract.",
+            "publishedAt": "2026-05-24T19:45:00Z",
+            "yanked": false,
+            "bundleSha256": "2075adc027a59a18819654a92d4620c666ee291fb9eb55dc6835a0441f5d6095",
+            "bundleSizeBytes": 10825,
+            "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.1.0/wordpress-publisher.tar.gz"
+        },
+        {
             "version": "1.2.0",
             "bfrostEngine": ">=0.2.0",
             "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v1.0.0",
             "changelog": "Added configurable publish status (draft, publish, pending) and custom post type support.",
             "publishedAt": "2026-04-20T14:30:00Z",
-            "yanked": false,
+            "yanked": true,
             "bundleSha256": "56b7c5b5725404f5c6011706e27e81b3461d2e0e03edd01dfcfc9ea98b1e6f5c",
             "bundleSizeBytes": 8356,
-            "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/wordpress-publisher.tar.gz"
+            "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/wordpress-publisher.tar.gz",
+            "yankReason": "Superseded by source-backed bundle with current BFrost worker contract."
         },
         {
             "version": "1.1.0",
@@ -54,10 +66,11 @@
             "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v1.0.0",
             "changelog": "Per-run deduplication: the same article is never posted twice.",
             "publishedAt": "2026-03-10T09:00:00Z",
-            "yanked": false,
+            "yanked": true,
             "bundleSha256": "56b7c5b5725404f5c6011706e27e81b3461d2e0e03edd01dfcfc9ea98b1e6f5c",
             "bundleSizeBytes": 8356,
-            "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/wordpress-publisher.tar.gz"
+            "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/wordpress-publisher.tar.gz",
+            "yankReason": "Superseded by source-backed bundle with current BFrost worker contract."
         },
         {
             "version": "1.0.0",
@@ -65,10 +78,11 @@
             "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v1.0.0",
             "changelog": "Initial release. Posts news.article items as WordPress posts via the REST API.",
             "publishedAt": "2026-01-15T10:00:00Z",
-            "yanked": false,
+            "yanked": true,
             "bundleSha256": "56b7c5b5725404f5c6011706e27e81b3461d2e0e03edd01dfcfc9ea98b1e6f5c",
             "bundleSizeBytes": 8356,
-            "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/wordpress-publisher.tar.gz"
+            "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/wordpress-publisher.tar.gz",
+            "yankReason": "Superseded by source-backed bundle with current BFrost worker contract."
         }
     ]
 }

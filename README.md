@@ -138,3 +138,16 @@ Backup
 All registry metadata (JSON files, schema, index) is released under
 [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
 Individual worker source code is licensed by its respective author.
+
+## Maintainer packaging
+
+Source-backed release bundles live under `packages/<worker-id>/`. Build installable
+archives with:
+
+```bash
+npm run package:workers
+```
+
+The command writes `dist/<worker-id>.tar.gz` and prints the SHA-256 plus size values
+that must be copied into the matching `workers/<worker-id>.json` version entry before
+publishing a GitHub release.

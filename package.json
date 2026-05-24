@@ -6,6 +6,7 @@
   "scripts": {
     "validate": "node scripts/validate.js",
     "regenerate": "node scripts/regenerate-index.js",
+    "package:workers": "node scripts/package-workers.js",
     "trust-promote": "node scripts/trust-promote.js",
     "check": "npm run validate && echo 'All workers valid.'"
   },

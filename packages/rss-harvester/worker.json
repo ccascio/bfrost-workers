@@ -1,0 +1,56 @@
+{
+  "manifestVersion": 1,
+  "bfrostApiVersion": "0.1",
+  "id": "rss-harvester",
+  "name": "RSS Harvester",
+  "version": "1.1.0",
+  "description": "Polls RSS and Atom feeds on a schedule and publishes news.article items to the Item Bus.",
+  "owner": "@ccascio",
+  "kind": "feature",
+  "language": "typescript",
+  "backendSource": "src/index.ts",
+  "backendEntrypoint": "dist/index.js",
+  "dashboardSource": "dashboard.tsx",
+  "dashboardEntrypoint": "dist/dashboard.js",
+  "ownedSettings": [
+    {
+      "key": "rss-harvester-config",
+      "label": "Feed URLs",
+      "description": "Newline-separated list of RSS or Atom feed URLs to poll.",
+      "scope": "worker",
+      "storageKey": "worker.rss-harvester.config",
+      "dashboardTarget": "config"
+    }
+  ],
+  "dashboard": {
+    "settings": [
+      {
+        "id": "rss-harvester-config",
+        "label": "Feed URLs",
+        "description": "RSS and Atom sources polled by the worker.",
+        "tab": "config",
+        "path": "/api/workers/rss-harvester/settings",
+        "fields": [
+          {
+            "key": "feeds",
+            "label": "Feed URLs",
+            "type": "textarea",
+            "defaultValue": "",
+            "rows": 8,
+            "placeholder": "https://feeds.example.com/rss\nhttps://another.example.com/atom.xml",
+            "helpText": "One URL per line. RSS and Atom formats are both supported.",
+            "seedPath": "rss-harvester.config.feeds"
+          }
+        ]
+      }
+    ],
+    "routes": [
+      {
+        "id": "rss-harvester-dashboard",
+        "label": "RSS",
+        "description": "Feed status, latest fetched items, and manual run controls.",
+        "path": "/api/workers/rss-harvester/dashboard"
+      }
+    ]
+  }
+}

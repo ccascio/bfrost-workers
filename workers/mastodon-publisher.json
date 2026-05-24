@@ -2,7 +2,7 @@
     "id": "mastodon-publisher",
     "name": "Mastodon Publisher",
     "tagline": "Posts news.article summaries to a Mastodon instance using the Mastodon API.",
-    "description": "A consumer worker that reads `news.article` items from the BFrost Item Bus and posts each one as a toot to a configured Mastodon instance. Supports custom post templates, hashtag injection from article tags, and a 500-character truncation guard with a link appended.\n\nAuthenticate via an access token from your Mastodon instance's developer settings. The token is stored in BFrost's worker settings \u2014 never committed to source.",
+    "description": "A consumer worker that reads `news.article` items from the BFrost Item Bus and posts each one as a toot to a configured Mastodon instance. Supports custom post templates, hashtag injection from article tags, and a 500-character truncation guard with a link appended.\n\nAuthenticate via an access token from your Mastodon instance's developer settings. The token is stored in BFrost's worker settings — never committed to source.",
     "author": "@ccascio",
     "repoUrl": "https://github.com/ccascio/bfrost-workers",
     "category": "Communication",
@@ -14,11 +14,11 @@
         "consumer"
     ],
     "trust": "Community",
-    "latestVersion": "0.4.1",
+    "latestVersion": "0.5.0",
     "bfrostEngine": ">=0.3.0",
     "license": "MIT",
     "createdAt": "2026-02-08T16:00:00Z",
-    "updatedAt": "2026-05-01T11:20:00Z",
+    "updatedAt": "2026-05-24T19:45:00Z",
     "capabilities": {
         "jobs": [
             "mastodon-post"
@@ -38,15 +38,27 @@
     "downloadCount": 0,
     "versions": [
         {
+            "version": "0.5.0",
+            "bfrostEngine": ">=0.3.0",
+            "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v1.1.0",
+            "changelog": "Ship full source-backed bundle with config surface, dashboard bundle, and current WorkerJobManifest scheduler contract.",
+            "publishedAt": "2026-05-24T19:45:00Z",
+            "yanked": false,
+            "bundleSha256": "56acf4f3d6ea058f00ddb9998891b7a1e6fb9e5b0886dff68c8c25f669b546fc",
+            "bundleSizeBytes": 7123,
+            "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.1.0/mastodon-publisher.tar.gz"
+        },
+        {
             "version": "0.4.1",
             "bfrostEngine": ">=0.3.0",
             "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v1.0.0",
             "changelog": "Fix: truncation now respects Unicode code points, not byte length.",
             "publishedAt": "2026-05-01T11:20:00Z",
-            "yanked": false,
+            "yanked": true,
             "bundleSha256": "0e42116963fa93458a52a66a65647a801c686bf09f68945bb0e5c009490cd115",
             "bundleSizeBytes": 2535,
-            "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/mastodon-publisher.tar.gz"
+            "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/mastodon-publisher.tar.gz",
+            "yankReason": "Superseded by source-backed bundle with current BFrost worker contract."
         },
         {
             "version": "0.4.0",
@@ -54,10 +66,11 @@
             "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v1.0.0",
             "changelog": "Added hashtag injection from article tags. Configurable max-hashtags limit.",
             "publishedAt": "2026-04-12T08:45:00Z",
-            "yanked": false,
+            "yanked": true,
             "bundleSha256": "0e42116963fa93458a52a66a65647a801c686bf09f68945bb0e5c009490cd115",
             "bundleSizeBytes": 2535,
-            "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/mastodon-publisher.tar.gz"
+            "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/mastodon-publisher.tar.gz",
+            "yankReason": "Superseded by source-backed bundle with current BFrost worker contract."
         },
         {
             "version": "0.3.0",
@@ -65,10 +78,11 @@
             "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v1.0.0",
             "changelog": "Custom post templates via settings. URL append on truncation.",
             "publishedAt": "2026-03-22T14:00:00Z",
-            "yanked": false,
+            "yanked": true,
             "bundleSha256": "0e42116963fa93458a52a66a65647a801c686bf09f68945bb0e5c009490cd115",
             "bundleSizeBytes": 2535,
-            "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/mastodon-publisher.tar.gz"
+            "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/mastodon-publisher.tar.gz",
+            "yankReason": "Superseded by source-backed bundle with current BFrost worker contract."
         },
         {
             "version": "0.2.0",
@@ -76,10 +90,11 @@
             "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v1.0.0",
             "changelog": "Initial public release.",
             "publishedAt": "2026-02-08T16:00:00Z",
-            "yanked": false,
+            "yanked": true,
             "bundleSha256": "0e42116963fa93458a52a66a65647a801c686bf09f68945bb0e5c009490cd115",
             "bundleSizeBytes": 2535,
-            "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/mastodon-publisher.tar.gz"
+            "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/mastodon-publisher.tar.gz",
+            "yankReason": "Superseded by source-backed bundle with current BFrost worker contract."
         }
     ]
 }
