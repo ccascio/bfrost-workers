@@ -105,7 +105,8 @@
         "properties": {
           "version": { "type": "string" },
           "bfrostEngine": { "type": "string" },
-          "releaseUrl": { "type": "string", "format": "uri" },
+          "releaseUrl": { "type": "string", "format": "uri", "description": "Human-readable GitHub release page URL." },
+          "bundleUrl": { "type": "string", "format": "uri", "description": "Direct download URL for the .tar.gz worker bundle. Required for in-app installation." },
           "changelog": { "type": "string" },
           "publishedAt": { "type": "string", "format": "date-time" },
           "yanked": { "type": "boolean" },
