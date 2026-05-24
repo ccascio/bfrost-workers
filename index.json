@@ -46,8 +46,8 @@
         "changelog": "Fix: handle feeds with missing pubDate by falling back to current time.",
         "publishedAt": "2026-05-14T19:00:00Z",
         "yanked": false,
-        "bundleSha256": "57832b6f33c69c9c6b7651c595351d4946a85eef11a876fd42307988dac9eb7c",
-        "bundleSizeBytes": 2782,
+        "bundleSha256": "04dbeeaa663aad44db6cb790dc146b3ceac8339c0de06639b87f12bbd9b424a2",
+        "bundleSizeBytes": 2726,
         "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/rss-harvester.tar.gz"
       },
       {
@@ -57,8 +57,8 @@
         "changelog": "Added Atom 1.0 support alongside RSS 2.0.",
         "publishedAt": "2026-04-28T10:00:00Z",
         "yanked": false,
-        "bundleSha256": "57832b6f33c69c9c6b7651c595351d4946a85eef11a876fd42307988dac9eb7c",
-        "bundleSizeBytes": 2782,
+        "bundleSha256": "04dbeeaa663aad44db6cb790dc146b3ceac8339c0de06639b87f12bbd9b424a2",
+        "bundleSizeBytes": 2726,
         "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/rss-harvester.tar.gz"
       },
       {
@@ -68,8 +68,8 @@
         "changelog": "Initial release. RSS 2.0 polling with deduplication by entry link.",
         "publishedAt": "2026-03-30T07:00:00Z",
         "yanked": false,
-        "bundleSha256": "57832b6f33c69c9c6b7651c595351d4946a85eef11a876fd42307988dac9eb7c",
-        "bundleSizeBytes": 2782,
+        "bundleSha256": "04dbeeaa663aad44db6cb790dc146b3ceac8339c0de06639b87f12bbd9b424a2",
+        "bundleSizeBytes": 2726,
         "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/rss-harvester.tar.gz"
       }
     ]
@@ -120,8 +120,8 @@
         "changelog": "Fix: truncation now respects Unicode code points, not byte length.",
         "publishedAt": "2026-05-01T11:20:00Z",
         "yanked": false,
-        "bundleSha256": "c742b8f621572a6963526811f483d072a7bf21c0386781943a5c010d86c65f00",
-        "bundleSizeBytes": 2606,
+        "bundleSha256": "0e42116963fa93458a52a66a65647a801c686bf09f68945bb0e5c009490cd115",
+        "bundleSizeBytes": 2535,
         "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/mastodon-publisher.tar.gz"
       },
       {
@@ -131,8 +131,8 @@
         "changelog": "Added hashtag injection from article tags. Configurable max-hashtags limit.",
         "publishedAt": "2026-04-12T08:45:00Z",
         "yanked": false,
-        "bundleSha256": "c742b8f621572a6963526811f483d072a7bf21c0386781943a5c010d86c65f00",
-        "bundleSizeBytes": 2606,
+        "bundleSha256": "0e42116963fa93458a52a66a65647a801c686bf09f68945bb0e5c009490cd115",
+        "bundleSizeBytes": 2535,
         "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/mastodon-publisher.tar.gz"
       },
       {
@@ -142,8 +142,8 @@
         "changelog": "Custom post templates via settings. URL append on truncation.",
         "publishedAt": "2026-03-22T14:00:00Z",
         "yanked": false,
-        "bundleSha256": "c742b8f621572a6963526811f483d072a7bf21c0386781943a5c010d86c65f00",
-        "bundleSizeBytes": 2606,
+        "bundleSha256": "0e42116963fa93458a52a66a65647a801c686bf09f68945bb0e5c009490cd115",
+        "bundleSizeBytes": 2535,
         "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/mastodon-publisher.tar.gz"
       },
       {
@@ -153,8 +153,8 @@
         "changelog": "Initial public release.",
         "publishedAt": "2026-02-08T16:00:00Z",
         "yanked": false,
-        "bundleSha256": "c742b8f621572a6963526811f483d072a7bf21c0386781943a5c010d86c65f00",
-        "bundleSizeBytes": 2606,
+        "bundleSha256": "0e42116963fa93458a52a66a65647a801c686bf09f68945bb0e5c009490cd115",
+        "bundleSizeBytes": 2535,
         "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/mastodon-publisher.tar.gz"
       }
     ]
@@ -205,8 +205,8 @@
         "changelog": "Added configurable publish status (draft, publish, pending) and custom post type support.",
         "publishedAt": "2026-04-20T14:30:00Z",
         "yanked": false,
-        "bundleSha256": "460759de80d17cfbfb5708b6af658f60c0797f03c13cdd0bd1df40ad0939c520",
-        "bundleSizeBytes": 8352,
+        "bundleSha256": "56b7c5b5725404f5c6011706e27e81b3461d2e0e03edd01dfcfc9ea98b1e6f5c",
+        "bundleSizeBytes": 8356,
         "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/wordpress-publisher.tar.gz"
       },
       {
@@ -216,8 +216,8 @@
         "changelog": "Per-run deduplication: the same article is never posted twice.",
         "publishedAt": "2026-03-10T09:00:00Z",
         "yanked": false,
-        "bundleSha256": "460759de80d17cfbfb5708b6af658f60c0797f03c13cdd0bd1df40ad0939c520",
-        "bundleSizeBytes": 8352,
+        "bundleSha256": "56b7c5b5725404f5c6011706e27e81b3461d2e0e03edd01dfcfc9ea98b1e6f5c",
+        "bundleSizeBytes": 8356,
         "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/wordpress-publisher.tar.gz"
       },
       {
@@ -227,8 +227,8 @@
         "changelog": "Initial release. Posts news.article items as WordPress posts via the REST API.",
         "publishedAt": "2026-01-15T10:00:00Z",
         "yanked": false,
-        "bundleSha256": "460759de80d17cfbfb5708b6af658f60c0797f03c13cdd0bd1df40ad0939c520",
-        "bundleSizeBytes": 8352,
+        "bundleSha256": "56b7c5b5725404f5c6011706e27e81b3461d2e0e03edd01dfcfc9ea98b1e6f5c",
+        "bundleSizeBytes": 8356,
         "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.0.0/wordpress-publisher.tar.gz"
       }
     ]
