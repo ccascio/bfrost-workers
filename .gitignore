@@ -5,3 +5,4 @@ dist/
 # Exception: commit the canonical schema artifacts so they are served via GitHub raw CDN
 !dist/manifest-enums.json
 !dist/manifest-enums.ts
+!dist/trust-check.sql

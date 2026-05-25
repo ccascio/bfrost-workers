@@ -11,6 +11,11 @@
  *   dist/manifest-enums.ts     — TypeScript type unions derived from the arrays;
  *                                 a human-readable companion for documentation.
  *
+ *   dist/trust-check.sql       — SQL CHECK constraint fragment for use in D1
+ *                                 migrations. Source-include this snippet to keep
+ *                                 the trust column constraint in sync with schema.json
+ *                                 without hardcoding values in migration files.
+ *
  * Run via:  node scripts/generate-enums.js
  * Or:       npm run generate:enums
  *
@@ -107,8 +112,31 @@ export const WORKER_PERMISSIONS: WorkerPermission[] = ${JSON.stringify(permissio
 
 writeFileSync(resolve(root, 'dist/manifest-enums.ts'), tsContent);
 
+// ---------------------------------------------------------------------------
+// Write dist/trust-check.sql (D1 migration helper)
+// ---------------------------------------------------------------------------
+
+const inList = trustLevels.map((v) => `'${v}'`).join(', ');
+const sqlContent =
+`-- trust-check.sql
+-- Generated from schema.json by scripts/generate-enums.js — do not edit manually.
+--
+-- Source-include this snippet in D1 migration files to keep the CHECK constraint
+-- on the workers table in sync with the canonical trust enum in schema.json:
+--
+--   .read dist/trust-check.sql
+--
+-- Or copy the CHECK(...) expression below directly into your CREATE / ALTER TABLE.
+
+-- Trust levels: ${trustLevels.join(', ')}
+CHECK(trust IN (${inList}))
+`;
+
+writeFileSync(resolve(root, 'dist/trust-check.sql'), sqlContent);
+
 console.log('✓ Generated dist/manifest-enums.json');
 console.log('✓ Generated dist/manifest-enums.ts');
+console.log('✓ Generated dist/trust-check.sql');
 console.log(`  TrustLevels (${trustLevels.length}): ${trustLevels.join(', ')}`);
 console.log(`  Categories  (${categories.length}): ${categories.join(', ')}`);
 console.log(`  Permissions (${permissions.length}): ${permissions.join(', ')}`);
