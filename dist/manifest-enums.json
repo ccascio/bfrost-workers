@@ -1,0 +1,33 @@
+{
+  "_comment": "Generated from schema.json by scripts/generate-enums.js — do not edit manually.",
+  "_schema": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/schema.json",
+  "trustLevels": [
+    "Trusted",
+    "Verified",
+    "Community",
+    "Review",
+    "Core"
+  ],
+  "categories": [
+    "AI / Research",
+    "Communication",
+    "Productivity",
+    "AI / Inference",
+    "Developer Tools",
+    "Backup",
+    "Core / Channel",
+    "Core / Provider",
+    "Core / Plugin",
+    "Core / Tool"
+  ],
+  "permissions": [
+    "network:http",
+    "network:https",
+    "storage:worker-kv",
+    "filesystem:scoped-read",
+    "filesystem:scoped-write",
+    "filesystem:workspace-read",
+    "operator-notify",
+    "local-process"
+  ]
+}
