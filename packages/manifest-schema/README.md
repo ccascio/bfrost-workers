@@ -21,7 +21,7 @@ Enum values come from `schema.json` in the BFrost-Workers repository root. To ad
 1. Edit `schema.json` (the `properties.trust.enum`, `properties.category.enum`, or `properties.permissions.items.enum` array).
 2. Run `npm run generate:enums` — this regenerates `dist/manifest-enums.json`, `dist/manifest-enums.ts`, `dist/trust-check.sql`, **and** updates `packages/manifest-schema/src/index.ts`.
 3. Bump the version in `packages/manifest-schema/package.json`.
-4. Commit, push, and publish the package (`npm publish --workspace packages/manifest-schema`).
+4. Commit, push, and publish the package (`npm publish --workspace @bfrost/manifest-schema`).
 
 All downstream repos (`BFrost`, `BFrost-Website`) will pick up the new value when they update their `@bfrost/manifest-schema` dependency.
 

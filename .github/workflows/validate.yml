@@ -5,15 +5,25 @@ on:
     branches: ['**']
     paths:
       - 'workers/**'
+      - 'packages/manifest-schema/**'
       - 'schema.json'
       - 'scripts/validate.js'
+      - 'scripts/generate-enums.js'
+      - 'dist/manifest-enums.json'
+      - 'dist/manifest-enums.ts'
+      - 'dist/trust-check.sql'
       - 'package.json'
       - 'package-lock.json'
   pull_request:
     paths:
       - 'workers/**'
+      - 'packages/manifest-schema/**'
       - 'schema.json'
       - 'scripts/validate.js'
+      - 'scripts/generate-enums.js'
+      - 'dist/manifest-enums.json'
+      - 'dist/manifest-enums.ts'
+      - 'dist/trust-check.sql'
       - 'package.json'
       - 'package-lock.json'
 
@@ -35,5 +45,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Regenerate manifest contract artifacts
+        run: npm run generate:enums
+
+      - name: Ensure generated artifacts are committed
+        run: git diff --exit-code -- dist/manifest-enums.json dist/manifest-enums.ts dist/trust-check.sql packages/manifest-schema/src/index.ts
+
       - name: Validate worker manifests
         run: npm run validate
+
+      - name: Build manifest schema package
+        run: npm run build:manifest-schema
+
+      - name: Verify manifest schema package can be packed
+        run: npm pack --workspace @bfrost/manifest-schema --dry-run

@@ -3,13 +3,17 @@
   "private": true,
   "description": "BFrost community worker registry — validation and tooling.",
   "type": "module",
+  "workspaces": [
+    "packages/manifest-schema"
+  ],
   "scripts": {
     "validate": "node scripts/validate.js",
     "generate:enums": "node scripts/generate-enums.js",
+    "build:manifest-schema": "npm run build --workspace @bfrost/manifest-schema",
     "regenerate": "npm run generate:enums && node scripts/regenerate-index.js",
     "package:workers": "node scripts/package-workers.js",
     "trust-promote": "node scripts/trust-promote.js",
-    "check": "npm run validate && echo 'All workers valid.'"
+    "check": "npm run generate:enums && npm run validate && npm run build:manifest-schema && echo 'All workers valid.'"
   },
   "devDependencies": {
     "ajv": "^8.17.1",
