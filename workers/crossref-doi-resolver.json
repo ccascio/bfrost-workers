@@ -1,0 +1,40 @@
+{
+  "id": "crossref-doi-resolver",
+  "name": "Crossref DOI Resolver",
+  "tagline": "Lets the BFrost assistant resolve DOIs and publication metadata through Crossref.",
+  "description": "An assistant-tool worker that looks up publication metadata from the public Crossref API. It can resolve a DOI or search by title and returns structured title, author, venue, year, DOI, publisher, type, and source URL data.\n\nIt is intentionally small: no OAuth, no credentials, and an optional contact email setting for Crossref API etiquette.",
+  "author": "@ccascio",
+  "repoUrl": "https://github.com/ccascio/bfrost-workers",
+  "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/crossref-doi-resolver/README.md",
+  "category": "AI / Research",
+  "tags": ["crossref", "doi", "citation", "metadata", "assistant-tool", "research"],
+  "trust": "Review",
+  "latestVersion": "0.1.0",
+  "bfrostEngine": ">=0.3.0",
+  "license": "MIT",
+  "createdAt": "2026-05-28T08:00:00Z",
+  "updatedAt": "2026-05-28T08:00:00Z",
+  "capabilities": {
+    "jobs": [],
+    "tools": ["resolveCrossrefWork"],
+    "channels": [],
+    "providers": [],
+    "itemProduces": [],
+    "itemConsumes": []
+  },
+  "permissions": ["network:https", "storage:worker-kv"],
+  "downloadCount": 0,
+  "versions": [
+    {
+      "version": "0.1.0",
+      "bfrostEngine": ">=0.3.0",
+      "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/crossref-doi-resolver-v0.1.0",
+      "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/crossref-doi-resolver-v0.1.0/crossref-doi-resolver.tar.gz",
+      "changelog": "Initial source-backed release with Crossref assistant tool, optional contact-email setting, lookup history dashboard, and low-code README.",
+      "publishedAt": "2026-05-28T08:00:00Z",
+      "yanked": false,
+      "bundleSha256": "251ad12825d62d169c90fa651dde442302e4aa84623b7317fd90d99009857218",
+      "bundleSizeBytes": 5855
+    }
+  ]
+}

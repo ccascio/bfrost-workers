@@ -1,0 +1,40 @@
+{
+  "id": "arxiv-search",
+  "name": "arXiv Search",
+  "tagline": "Watches arXiv for papers you care about and sends matching results into BFrost.",
+  "description": "A producer worker that runs a saved arXiv query and publishes new matching papers as `research.paper` items on the BFrost Item Bus.\n\nIt uses the public arXiv API, needs no credentials, deduplicates already-seen papers, and ships a simple dashboard with run status and recent papers. Pair it with Markdown Notes Publisher for a clean low-code research workflow.",
+  "author": "@ccascio",
+  "repoUrl": "https://github.com/ccascio/bfrost-workers",
+  "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/arxiv-search/README.md",
+  "category": "AI / Research",
+  "tags": ["arxiv", "research", "papers", "producer", "academic", "local-first"],
+  "trust": "Review",
+  "latestVersion": "0.1.0",
+  "bfrostEngine": ">=0.3.0",
+  "license": "MIT",
+  "createdAt": "2026-05-28T08:00:00Z",
+  "updatedAt": "2026-05-28T08:00:00Z",
+  "capabilities": {
+    "jobs": ["arxiv-search-fetch"],
+    "tools": [],
+    "channels": [],
+    "providers": [],
+    "itemProduces": ["research.paper"],
+    "itemConsumes": []
+  },
+  "permissions": ["network:https", "storage:worker-kv"],
+  "downloadCount": 0,
+  "versions": [
+    {
+      "version": "0.1.0",
+      "bfrostEngine": ">=0.3.0",
+      "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/arxiv-search-v0.1.0",
+      "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/arxiv-search-v0.1.0/arxiv-search.tar.gz",
+      "changelog": "Initial source-backed release with arXiv query settings, research.paper publishing, deduplication, dashboard view, and low-code README.",
+      "publishedAt": "2026-05-28T08:00:00Z",
+      "yanked": false,
+      "bundleSha256": "ae123277e429944bbf8a22918404ca27cc0f8feea310093dfc5a22cfcfd85430",
+      "bundleSizeBytes": 6884
+    }
+  ]
+}

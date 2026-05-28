@@ -1,0 +1,55 @@
+{
+  "manifestVersion": 1,
+  "bfrostApiVersion": "0.1",
+  "id": "crossref-doi-resolver",
+  "name": "Crossref DOI Resolver",
+  "version": "0.1.0",
+  "description": "Adds a BFrost assistant tool for resolving DOIs and finding publication metadata through Crossref.",
+  "owner": "@ccascio",
+  "kind": "feature",
+  "language": "typescript",
+  "backendSource": "src/index.ts",
+  "backendEntrypoint": "dist/index.js",
+  "dashboardSource": "dashboard.tsx",
+  "dashboardEntrypoint": "dist/dashboard.js",
+  "ownedSettings": [
+    {
+      "key": "crossref-doi-config",
+      "label": "Crossref polite pool",
+      "description": "Optional contact email used for Crossref API requests.",
+      "scope": "worker",
+      "storageKey": "worker.crossref-doi-resolver.config",
+      "dashboardTarget": "config"
+    }
+  ],
+  "dashboard": {
+    "settings": [
+      {
+        "id": "crossref-doi-config",
+        "label": "Crossref",
+        "description": "Optional API etiquette settings for DOI lookups.",
+        "tab": "config",
+        "path": "/api/workers/crossref-doi-resolver/settings",
+        "fields": [
+          {
+            "key": "contactEmail",
+            "label": "Contact email",
+            "type": "text",
+            "defaultValue": "",
+            "placeholder": "you@example.com",
+            "helpText": "Optional. Crossref recommends a contact email for reliable API access.",
+            "seedPath": "crossref-doi-resolver.config.contactEmail"
+          }
+        ]
+      }
+    ],
+    "routes": [
+      {
+        "id": "crossref-doi-dashboard",
+        "label": "Crossref",
+        "description": "Recent DOI/title lookups and assistant-tool status.",
+        "path": "/api/workers/crossref-doi-resolver/dashboard"
+      }
+    ]
+  }
+}

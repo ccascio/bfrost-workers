@@ -1,0 +1,35 @@
+{
+  "manifestVersion": 1,
+  "bfrostApiVersion": "0.1",
+  "id": "arxiv-search",
+  "name": "arXiv Search",
+  "version": "0.1.0",
+  "description": "Searches arXiv on a schedule and publishes matching papers to the Item Bus.",
+  "owner": "@ccascio",
+  "kind": "feature",
+  "language": "typescript",
+  "backendSource": "src/index.ts",
+  "backendEntrypoint": "dist/index.js",
+  "dashboardSource": "dashboard.tsx",
+  "dashboardEntrypoint": "dist/dashboard.js",
+  "ownedSettings": [
+    {
+      "key": "arxiv-search-job",
+      "label": "arXiv search job",
+      "description": "Schedule and query parameters for arXiv paper intake.",
+      "scope": "job",
+      "storageKey": "admin.settings.jobs.arxiv-search-fetch",
+      "dashboardTarget": "jobs"
+    }
+  ],
+  "dashboard": {
+    "routes": [
+      {
+        "id": "arxiv-search-dashboard",
+        "label": "arXiv",
+        "description": "arXiv search status, recent papers, and manual run controls.",
+        "path": "/api/workers/arxiv-search/dashboard"
+      }
+    ]
+  }
+}

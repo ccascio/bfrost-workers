@@ -1,0 +1,40 @@
+{
+  "id": "markdown-notes-publisher",
+  "name": "Markdown Notes Publisher",
+  "tagline": "Saves BFrost items as local Markdown files for Obsidian, Logseq, Joplin, or any notes folder.",
+  "description": "A consumer worker that turns selected Item Bus entries into local Markdown notes. It can save `news.article`, `research.paper`, or any configured item type into a folder chosen by the operator.\n\nThe worker is built for low-code use: choose a folder, keep the default item types, run a producer, then approve the generated file-write actions. Notes include source links, optional YAML frontmatter, and BFrost item metadata.",
+  "author": "@ccascio",
+  "repoUrl": "https://github.com/ccascio/bfrost-workers",
+  "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/markdown-notes-publisher/README.md",
+  "category": "Productivity",
+  "tags": ["markdown", "notes", "obsidian", "logseq", "joplin", "consumer", "local-first"],
+  "trust": "Review",
+  "latestVersion": "0.1.0",
+  "bfrostEngine": ">=0.3.0",
+  "license": "MIT",
+  "createdAt": "2026-05-28T08:00:00Z",
+  "updatedAt": "2026-05-28T08:00:00Z",
+  "capabilities": {
+    "jobs": ["markdown-notes-write"],
+    "tools": [],
+    "channels": [],
+    "providers": [],
+    "itemProduces": [],
+    "itemConsumes": ["news.article", "research.paper"]
+  },
+  "permissions": ["filesystem:scoped-write", "storage:worker-kv"],
+  "downloadCount": 0,
+  "versions": [
+    {
+      "version": "0.1.0",
+      "bfrostEngine": ">=0.3.0",
+      "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/markdown-notes-publisher-v0.1.0",
+      "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/markdown-notes-publisher-v0.1.0/markdown-notes-publisher.tar.gz",
+      "changelog": "Initial source-backed release with folder settings, note templates, approval-backed file writes, dashboard view, and low-code README.",
+      "publishedAt": "2026-05-28T08:00:00Z",
+      "yanked": false,
+      "bundleSha256": "b750d6d4fe5116050fbe28779a7b60f44cf7620ecf18901d40cc897ec4110c41",
+      "bundleSizeBytes": 6954
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "manifestVersion": 1,
+  "bfrostApiVersion": "0.1",
+  "id": "markdown-notes-publisher",
+  "name": "Markdown Notes Publisher",
+  "version": "0.1.0",
+  "description": "Turns selected Item Bus entries into Markdown notes in a folder you choose.",
+  "owner": "@ccascio",
+  "kind": "feature",
+  "language": "typescript",
+  "backendSource": "src/index.ts",
+  "backendEntrypoint": "dist/index.js",
+  "dashboardSource": "dashboard.tsx",
+  "dashboardEntrypoint": "dist/dashboard.js",
+  "ownedSettings": [
+    {
+      "key": "markdown-notes-job",
+      "label": "Markdown note job",
+      "description": "Schedule and note-writing parameters for Markdown output.",
+      "scope": "job",
+      "storageKey": "admin.settings.jobs.markdown-notes-write",
+      "dashboardTarget": "jobs"
+    }
+  ],
+  "dashboard": {
+    "routes": [
+      {
+        "id": "markdown-notes-dashboard",
+        "label": "Notes",
+        "description": "Markdown note output, recent writes, and approval status.",
+        "path": "/api/workers/markdown-notes-publisher/dashboard"
+      }
+    ]
+  }
+}
