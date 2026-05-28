@@ -63,38 +63,94 @@ can be pushed back on:
 
 ## 3. Current State — Honest Cross-Repo Read
 
-The planning across all three repos is mature; most of the structural platform work
-(ROADMAP WS1–4) and the website backend (Website Phases 0–2) are **done**. What
-remains is concentrated and high-leverage.
+Updated after the Phase 1 close on **2026-05-28**. Phase 1 is declared done: all
+three workstreams (1A contract integrity, 1B permission/action runtime, 1C poller
+observability) have shipped implementations and CI gates. Phase 2 has also shipped
+several operator-facing pieces. What remains for v1.0 is: finishing the App.tsx
+decomposition, the CLI packaging path, the installer, and the docs/launch surface.
 
 **What is solid today**
-- Worker-first contract holds; core has no worker-specific names (ROADMAP WS1).
-- Tools, channels, providers are worker types; Item Bus + per-worker storage exist (WS2–3).
-- Local TS workers compile and run; lifecycle + migrations work (WS4).
-- Website registry, D1-backed API, FTS search, author pages, OAuth, advisories are live (Website Phase 2).
-- In-app Store tab installs from bundles; backups, safe-mode, factory reset ship (LOWCODE D/F).
+- Worker-first contract holds; core routing goes through the worker registry,
+  Item Bus, per-worker storage, local-worker loader, and adapter interfaces.
+- Local TypeScript workers compile and run; dashboard bundles are served through
+  the host and share the host React runtime.
+- BFrost-Workers now contains source-backed community workers plus core catalog
+  entries and installable packages for `core.news`, `core.publisher.x`, and
+  `core.research`.
+- Website registry, D1-backed API, FTS search, author pages, OAuth, advisories,
+  admin sync endpoints, and public sync-status UI are live.
+- In-app Store installs from bundles; backups, safe mode, factory reset, the
+  first-run wizard, undo/discard flows, schedule preview, and Discord channel
+  setup are shipped.
 
-**The critical path (what blocks v1.0)**
-- **No permission/action runtime** (ROADMAP WS5, not started). Blocks meaningful
-  trust tiers, install consent, and any worker doing real-world writes. *Keystone.*
-- **No shared manifest/enum contract.** Host, website, registry, and D1 each
-  re-declare `TrustLevel` / `WorkerCategory` / `WorkerPermission`. *This is not
-  theoretical:* on 2026-05-25 the store page crashed (React #130) and the registry
-  poller silently dropped every core worker because the host emitted `trust: "Core"`
-  / `category: "Core / Plugin"` values the website's types and the D1 `CHECK`
-  constraint had never heard of. *Keystone.*
-- **The poller swallows errors.** `pollRegistry` upserts in a loop and logs nothing
-  per-id; a constraint violation looks identical to "nothing changed." This is why
-  the 2026-05-25 fix took a night of guessing instead of reading one log line.
-- **App.tsx is ~2.5k lines** with residual core-resident worker UI (LOWCODE C).
-- **No frontend smoke tests; no per-worker metrics; no docs site** (WS6–7).
-- **No `bfrost pack` / `bfrost worker install` CLI** — blocks Website Phase 3.
+**Phase 1 — DONE ✓ (2026-05-28)**
+- **1A manifest contract:** `@bfrost/manifest-schema` package created in
+  `packages/manifest-schema/`; `generate-enums.js` now writes the package source
+  alongside the dist artifacts; `check:manifest` CI gate is live in both BFrost
+  and BFrost-Website (BFrost-Website's first CI workflow). The 2026-05-25 class
+  of enum drift is permanently gated: a new trust level or permission that isn't
+  handled in `App.tsx`/`styles.css` or declared in `src/types.ts` fails CI before
+  reaching production. Next hardening step (Phase 2+): wire BFrost and BFrost-Website
+  to import from the package via npm dependency rather than local copies.
+- **1B permission/action runtime:** BFrost has `ActionRequest`, `ActionApproval`,
+  `ActionResult`, the `action_requests` store, an Actions dashboard tab with
+  approve/reject/history, permission scopes on `WorkerManifest.permissions`,
+  `assertPermission`, file/shell action primitives, audit events, and passing
+  action-runtime tests. Install-time permission consent dialog shipped in BFrost
+  Store (intercepts Install → shows plain-language permission list → Approve &
+  Install). `VITE_TRUST_TIERS_UNLOCKED=true` flipped in BFrost-Website (live once
+  Cloudflare Pages env var updated). Deferred: network-domain scopes,
+  credential-scope allowlists, and the Playwright/session primitive.
+- **1C poller observability:** Website poller failures are no longer silent. The
+  API exposes sync status, per-id results, and admin sync state; the Store page
+  renders registry/sync health so a bad ingest is visible instead of mysterious.
+
+**Phase 2 progress already landed**
+- Per-worker metrics are live in the Health tab via
+  `GET /api/dashboard/job-metrics`, with success rate, latency chips, sparklines,
+  and last-failure excerpts.
+- Guarded SQLite restore/import landed on 2026-05-28: backups are opened
+  read-only, checked with `PRAGMA integrity_check`, audited, and copied aside
+  before restore.
+- Accessibility work has started landing, including dialog semantics and keyboard
+  affordances around the Store/worker flows.
+- Low-code operator UX is materially better: first-run setup, optional worker
+  selection, schedule previews, undo/discard, Store install/update/sideload, and
+  Discord notifications are all present.
+
+**What still blocks v1.0**
+- Finish deferred action scopes: network domains, credential access, and
+  browser/session automation.
+- Publish `@bfrost/manifest-schema` to npm and wire BFrost + BFrost-Website to
+  depend on it (currently the package exists and `generate-enums.js` writes it;
+  the npm dep wiring is a hardening step, not a blocker for Phase 1 close).
+- Add the frontend smoke test that proves schema-rendered job forms still render
+  and submit after UI changes.
+- Continue reducing `App.tsx` and any residual core-resident worker UI under the
+  worker-first boundary.
+- Ship the packaging path: `bfrost pack`, `bfrost worker install`, install/update
+  metadata, and the registry publishing loop needed for Website Phase 3.
+- Finish the docs site, tutorials/videos, deep-link install flow, and installer
+  polish that make the store usable by non-developers.
+- Update Cloudflare Pages env var `VITE_TRUST_TIERS_UNLOCKED=true` and redeploy
+  BFrost-Website to make trust-tier badges live in production.
+
+**Current practical critical path**
+1. Finish deferred action scopes (network domains, credentials, Playwright) and
+   the frontend smoke test — Phase 2 cleanup.
+2. Publish `@bfrost/manifest-schema` and wire the npm dep into BFrost + BFrost-Website.
+3. Add CLI packaging/install commands and publish the current worker bundles with
+   reproducible metadata.
+4. Continue `App.tsx` extraction — last core-resident worker UI into worker bundles.
+5. Finish docs, deep links, and installer flow once the contract and packaging
+   surfaces stop moving.
 
 ---
 
-## 4. Phase 1 — Foundation & Contract Integrity *(keystone, ~40%)*
+## 4. Phase 1 — Foundation & Contract Integrity ✓ DONE 2026-05-28 *(keystone, ~40%)*
 
 Nothing in Phases 2–4 is durable until this lands. Three workstreams, roughly parallel.
+All three workstreams are shipped. See §3 (Current State) for the full status.
 
 ### 1A — Single Manifest Contract (`@bfrost/manifest-schema`)
 
