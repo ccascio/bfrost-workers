@@ -1,0 +1,35 @@
+{
+  "manifestVersion": 1,
+  "bfrostApiVersion": "0.1",
+  "id": "core.finance-analyst",
+  "name": "Finance Analyst",
+  "version": "0.1.0",
+  "description": "Reads finance.news items and attaches a structured, informational read of likely market impact. Not trading advice.",
+  "owner": "@ccascio",
+  "kind": "feature",
+  "language": "typescript",
+  "backendSource": "src/index.ts",
+  "backendEntrypoint": "dist/index.js",
+  "dashboardSource": "dashboard.tsx",
+  "dashboardEntrypoint": "dist/dashboard.js",
+  "ownedSettings": [
+    {
+      "key": "finance-analysis-job",
+      "label": "Finance analysis schedule",
+      "description": "Cron, model, analysis prompt, and parameters for the finance analyst job.",
+      "scope": "job",
+      "storageKey": "admin.settings.jobs.finance-analysis",
+      "dashboardTarget": "jobs"
+    }
+  ],
+  "dashboard": {
+    "routes": [
+      {
+        "id": "finance-analyst-dashboard",
+        "label": "Finance Analyst",
+        "description": "Review analysed finance.news items, pending work, and recent analysis runs.",
+        "path": "/api/workers/core.finance-analyst/dashboard"
+      }
+    ]
+  }
+}

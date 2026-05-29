@@ -1,0 +1,40 @@
+{
+  "id": "core.finance-news",
+  "name": "Finance News Watch",
+  "tagline": "Scans a watchlist for finance news, filters relevance with AI, and queues finance.news items.",
+  "description": "A producer worker that searches Google Web Search for company, ticker, and market-theme updates, optionally filters the results with an editable AI relevance prompt, and publishes useful articles as `finance.news` items on the BFrost Item Bus.\n\nIt is designed for low-code use: configure Google Web Search in BFrost, choose a watchlist and categories in Jobs, then review the scan output in the worker dashboard. Informational only, never trading advice.",
+  "author": "@ccascio",
+  "repoUrl": "https://github.com/ccascio/bfrost-workers",
+  "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/core.finance-news/README.md",
+  "category": "AI / Research",
+  "tags": ["finance", "news", "watchlist", "producer", "google-search", "local-first"],
+  "trust": "Review",
+  "latestVersion": "0.1.0",
+  "bfrostEngine": ">=0.3.0",
+  "license": "MIT",
+  "createdAt": "2026-05-29T15:00:00Z",
+  "updatedAt": "2026-05-29T15:00:00Z",
+  "capabilities": {
+    "jobs": ["finance-news-scan"],
+    "tools": [],
+    "channels": [],
+    "providers": [],
+    "itemProduces": ["finance.news"],
+    "itemConsumes": []
+  },
+  "permissions": ["network:http", "network:https", "storage:worker-kv"],
+  "downloadCount": 0,
+  "versions": [
+    {
+      "version": "0.1.0",
+      "bfrostEngine": ">=0.3.0",
+      "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/core.finance-news-v0.1.0",
+      "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/core.finance-news-v0.1.0/core.finance-news.tar.gz",
+      "changelog": "Initial source-backed release with watchlist search, AI relevance filtering, finance.news publishing, channel notifications, dashboard output review, and low-code guidance.",
+      "publishedAt": "2026-05-29T15:00:00Z",
+      "yanked": false,
+      "bundleSha256": "1661b7cafc65c049cc78252bf3747e0081956e4c6baebf61896b57bc28477ec7",
+      "bundleSizeBytes": 10267
+    }
+  ]
+}

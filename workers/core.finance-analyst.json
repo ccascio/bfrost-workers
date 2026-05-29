@@ -1,0 +1,40 @@
+{
+  "id": "core.finance-analyst",
+  "name": "Finance Analyst",
+  "tagline": "Reads finance.news items and adds a structured, informational market-impact read.",
+  "description": "A consumer worker that reads `finance.news` items from the BFrost Item Bus and attaches a structured analysis to each one: likely direction, magnitude, horizon, confidence, priced-in risk, and mechanism.\n\nIt is designed to run after Finance News Watch. Configure the schedule, model, investor lens, and prompt in Jobs, then inspect the latest reads and pending items in the worker dashboard. Informational only, never buy/sell/hold advice.",
+  "author": "@ccascio",
+  "repoUrl": "https://github.com/ccascio/bfrost-workers",
+  "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/core.finance-analyst/README.md",
+  "category": "AI / Research",
+  "tags": ["finance", "analysis", "consumer", "item-bus", "local-first"],
+  "trust": "Review",
+  "latestVersion": "0.1.0",
+  "bfrostEngine": ">=0.3.0",
+  "license": "MIT",
+  "createdAt": "2026-05-29T15:00:00Z",
+  "updatedAt": "2026-05-29T15:00:00Z",
+  "capabilities": {
+    "jobs": ["finance-analysis"],
+    "tools": [],
+    "channels": [],
+    "providers": [],
+    "itemProduces": [],
+    "itemConsumes": ["finance.news"]
+  },
+  "permissions": ["storage:worker-kv"],
+  "downloadCount": 0,
+  "versions": [
+    {
+      "version": "0.1.0",
+      "bfrostEngine": ">=0.3.0",
+      "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/core.finance-analyst-v0.1.0",
+      "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/core.finance-analyst-v0.1.0/core.finance-analyst.tar.gz",
+      "changelog": "Initial source-backed release with finance.news consumption, structured informational reads, optional notifications, dashboard output review, and low-code guidance.",
+      "publishedAt": "2026-05-29T15:00:00Z",
+      "yanked": false,
+      "bundleSha256": "78d09632ec556fc028d63a85a7d86bf44aad785d253d2712359ed99b74295e26",
+      "bundleSizeBytes": 8284
+    }
+  ]
+}

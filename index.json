@@ -1,5 +1,184 @@
 [
   {
+    "id": "core.finance-analyst",
+    "name": "Finance Analyst",
+    "tagline": "Reads finance.news items and adds a structured, informational market-impact read.",
+    "description": "A consumer worker that reads `finance.news` items from the BFrost Item Bus and attaches a structured analysis to each one: likely direction, magnitude, horizon, confidence, priced-in risk, and mechanism.\n\nIt is designed to run after Finance News Watch. Configure the schedule, model, investor lens, and prompt in Jobs, then inspect the latest reads and pending items in the worker dashboard. Informational only, never buy/sell/hold advice.",
+    "author": "@ccascio",
+    "repoUrl": "https://github.com/ccascio/bfrost-workers",
+    "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/core.finance-analyst/README.md",
+    "category": "AI / Research",
+    "tags": [
+      "finance",
+      "analysis",
+      "consumer",
+      "item-bus",
+      "local-first"
+    ],
+    "trust": "Review",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.3.0",
+    "license": "MIT",
+    "createdAt": "2026-05-29T15:00:00Z",
+    "updatedAt": "2026-05-29T15:00:00Z",
+    "capabilities": {
+      "jobs": [
+        "finance-analysis"
+      ],
+      "tools": [],
+      "channels": [],
+      "providers": [],
+      "itemProduces": [],
+      "itemConsumes": [
+        "finance.news"
+      ]
+    },
+    "permissions": [
+      "storage:worker-kv"
+    ],
+    "downloadCount": 0,
+    "versions": [
+      {
+        "version": "0.1.0",
+        "bfrostEngine": ">=0.3.0",
+        "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/core.finance-analyst-v0.1.0",
+        "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/core.finance-analyst-v0.1.0/core.finance-analyst.tar.gz",
+        "changelog": "Initial source-backed release with finance.news consumption, structured informational reads, optional notifications, dashboard output review, and low-code guidance.",
+        "publishedAt": "2026-05-29T15:00:00Z",
+        "yanked": false,
+        "bundleSha256": "78d09632ec556fc028d63a85a7d86bf44aad785d253d2712359ed99b74295e26",
+        "bundleSizeBytes": 8284
+      }
+    ]
+  },
+  {
+    "id": "core.finance-news",
+    "name": "Finance News Watch",
+    "tagline": "Scans a watchlist for finance news, filters relevance with AI, and queues finance.news items.",
+    "description": "A producer worker that searches Google Web Search for company, ticker, and market-theme updates, optionally filters the results with an editable AI relevance prompt, and publishes useful articles as `finance.news` items on the BFrost Item Bus.\n\nIt is designed for low-code use: configure Google Web Search in BFrost, choose a watchlist and categories in Jobs, then review the scan output in the worker dashboard. Informational only, never trading advice.",
+    "author": "@ccascio",
+    "repoUrl": "https://github.com/ccascio/bfrost-workers",
+    "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/core.finance-news/README.md",
+    "category": "AI / Research",
+    "tags": [
+      "finance",
+      "news",
+      "watchlist",
+      "producer",
+      "google-search",
+      "local-first"
+    ],
+    "trust": "Review",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.3.0",
+    "license": "MIT",
+    "createdAt": "2026-05-29T15:00:00Z",
+    "updatedAt": "2026-05-29T15:00:00Z",
+    "capabilities": {
+      "jobs": [
+        "finance-news-scan"
+      ],
+      "tools": [],
+      "channels": [],
+      "providers": [],
+      "itemProduces": [
+        "finance.news"
+      ],
+      "itemConsumes": []
+    },
+    "permissions": [
+      "network:http",
+      "network:https",
+      "storage:worker-kv"
+    ],
+    "downloadCount": 0,
+    "versions": [
+      {
+        "version": "0.1.0",
+        "bfrostEngine": ">=0.3.0",
+        "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/core.finance-news-v0.1.0",
+        "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/core.finance-news-v0.1.0/core.finance-news.tar.gz",
+        "changelog": "Initial source-backed release with watchlist search, AI relevance filtering, finance.news publishing, channel notifications, dashboard output review, and low-code guidance.",
+        "publishedAt": "2026-05-29T15:00:00Z",
+        "yanked": false,
+        "bundleSha256": "1661b7cafc65c049cc78252bf3747e0081956e4c6baebf61896b57bc28477ec7",
+        "bundleSizeBytes": 10267
+      }
+    ]
+  },
+  {
+    "id": "markdown-notes-publisher",
+    "name": "Markdown Notes Publisher",
+    "tagline": "Saves, browses, uploads, previews, and semantically searches BFrost Markdown notes.",
+    "description": "A consumer worker that turns selected Item Bus entries into local Markdown notes. It can save `news.article`, `research.paper`, `web.page`, `webhook.event`, or any configured item type into a folder chosen by the operator.\n\nThe worker is built for low-code use: choose a folder, select suggested item types, run a producer, then approve generated file-write actions. The dashboard can browse the notes folder, preview files as formatted Markdown or raw text, upload manual notes, index existing files, and search notes semantically with BFrost's selected embedding model.",
+    "author": "@ccascio",
+    "repoUrl": "https://github.com/ccascio/bfrost-workers",
+    "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/markdown-notes-publisher/README.md",
+    "category": "Productivity",
+    "tags": [
+      "markdown",
+      "notes",
+      "obsidian",
+      "logseq",
+      "joplin",
+      "consumer",
+      "local-first"
+    ],
+    "trust": "Review",
+    "latestVersion": "0.2.0",
+    "bfrostEngine": ">=0.3.0",
+    "license": "MIT",
+    "createdAt": "2026-05-28T08:00:00Z",
+    "updatedAt": "2026-05-29T14:00:00Z",
+    "capabilities": {
+      "jobs": [
+        "markdown-notes-write"
+      ],
+      "tools": [],
+      "channels": [],
+      "providers": [],
+      "itemProduces": [],
+      "itemConsumes": [
+        "news.article",
+        "research.paper",
+        "web.page",
+        "webhook.event"
+      ]
+    },
+    "permissions": [
+      "filesystem:scoped-read",
+      "filesystem:scoped-write",
+      "network:http",
+      "network:https",
+      "storage:worker-kv"
+    ],
+    "downloadCount": 0,
+    "versions": [
+      {
+        "version": "0.2.0",
+        "bfrostEngine": ">=0.3.0",
+        "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/markdown-notes-publisher-v0.2.0",
+        "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/markdown-notes-publisher-v0.2.0/markdown-notes-publisher.tar.gz",
+        "changelog": "Adds selectable Item Bus type suggestions, a notes-folder dashboard with formatted/raw previews and manual uploads, and semantic indexing/search using BFrost's selected embedding model.",
+        "publishedAt": "2026-05-29T14:00:00Z",
+        "yanked": false,
+        "bundleSha256": "851eb94a454a6aff3f1a8421942db845f872ae224c4973313ef811b625a405bf",
+        "bundleSizeBytes": 13501
+      },
+      {
+        "version": "0.1.0",
+        "bfrostEngine": ">=0.3.0",
+        "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/markdown-notes-publisher-v0.1.0",
+        "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/markdown-notes-publisher-v0.1.0/markdown-notes-publisher.tar.gz",
+        "changelog": "Initial source-backed release with folder settings, note templates, approval-backed file writes, dashboard view, and low-code README.",
+        "publishedAt": "2026-05-28T08:00:00Z",
+        "yanked": false,
+        "bundleSha256": "b750d6d4fe5116050fbe28779a7b60f44cf7620ecf18901d40cc897ec4110c41",
+        "bundleSizeBytes": 6954
+      }
+    ]
+  },
+  {
     "id": "ntfy-notifier",
     "name": "ntfy Notifier",
     "tagline": "Pushes BFrost items to your phone or desktop through ntfy.",
@@ -266,62 +445,6 @@
         "yanked": false,
         "bundleSha256": "251ad12825d62d169c90fa651dde442302e4aa84623b7317fd90d99009857218",
         "bundleSizeBytes": 5855
-      }
-    ]
-  },
-  {
-    "id": "markdown-notes-publisher",
-    "name": "Markdown Notes Publisher",
-    "tagline": "Saves BFrost items as local Markdown files for Obsidian, Logseq, Joplin, or any notes folder.",
-    "description": "A consumer worker that turns selected Item Bus entries into local Markdown notes. It can save `news.article`, `research.paper`, or any configured item type into a folder chosen by the operator.\n\nThe worker is built for low-code use: choose a folder, keep the default item types, run a producer, then approve the generated file-write actions. Notes include source links, optional YAML frontmatter, and BFrost item metadata.",
-    "author": "@ccascio",
-    "repoUrl": "https://github.com/ccascio/bfrost-workers",
-    "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/markdown-notes-publisher/README.md",
-    "category": "Productivity",
-    "tags": [
-      "markdown",
-      "notes",
-      "obsidian",
-      "logseq",
-      "joplin",
-      "consumer",
-      "local-first"
-    ],
-    "trust": "Review",
-    "latestVersion": "0.1.0",
-    "bfrostEngine": ">=0.3.0",
-    "license": "MIT",
-    "createdAt": "2026-05-28T08:00:00Z",
-    "updatedAt": "2026-05-28T08:00:00Z",
-    "capabilities": {
-      "jobs": [
-        "markdown-notes-write"
-      ],
-      "tools": [],
-      "channels": [],
-      "providers": [],
-      "itemProduces": [],
-      "itemConsumes": [
-        "news.article",
-        "research.paper"
-      ]
-    },
-    "permissions": [
-      "filesystem:scoped-write",
-      "storage:worker-kv"
-    ],
-    "downloadCount": 0,
-    "versions": [
-      {
-        "version": "0.1.0",
-        "bfrostEngine": ">=0.3.0",
-        "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/markdown-notes-publisher-v0.1.0",
-        "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/markdown-notes-publisher-v0.1.0/markdown-notes-publisher.tar.gz",
-        "changelog": "Initial source-backed release with folder settings, note templates, approval-backed file writes, dashboard view, and low-code README.",
-        "publishedAt": "2026-05-28T08:00:00Z",
-        "yanked": false,
-        "bundleSha256": "b750d6d4fe5116050fbe28779a7b60f44cf7620ecf18901d40cc897ec4110c41",
-        "bundleSizeBytes": 6954
       }
     ]
   },

@@ -1,0 +1,35 @@
+{
+  "manifestVersion": 1,
+  "bfrostApiVersion": "0.1",
+  "id": "core.finance-news",
+  "name": "Finance News",
+  "version": "0.1.0",
+  "description": "Scans the web for developments on a watchlist of tickers/companies and queues finance.news items. Informational only, not trading advice.",
+  "owner": "@ccascio",
+  "kind": "feature",
+  "language": "typescript",
+  "backendSource": "src/index.ts",
+  "backendEntrypoint": "dist/index.js",
+  "dashboardSource": "dashboard.tsx",
+  "dashboardEntrypoint": "dist/dashboard.js",
+  "ownedSettings": [
+    {
+      "key": "finance-news-job",
+      "label": "Finance news schedule",
+      "description": "Cron, model, relevance prompt, and scan parameters for the finance news job.",
+      "scope": "job",
+      "storageKey": "admin.settings.jobs.finance-news-scan",
+      "dashboardTarget": "jobs"
+    }
+  ],
+  "dashboard": {
+    "routes": [
+      {
+        "id": "finance-news-dashboard",
+        "label": "Finance News Watch",
+        "description": "Review the latest finance scan status, queued articles, and run guidance.",
+        "path": "/api/workers/core.finance-news/dashboard"
+      }
+    ]
+  }
+}

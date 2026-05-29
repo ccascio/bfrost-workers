@@ -3,8 +3,8 @@
   "bfrostApiVersion": "0.1",
   "id": "markdown-notes-publisher",
   "name": "Markdown Notes Publisher",
-  "version": "0.1.0",
-  "description": "Turns selected Item Bus entries into Markdown notes in a folder you choose.",
+  "version": "0.2.0",
+  "description": "Turns selected Item Bus entries into Markdown notes, with folder browsing, uploads, previews, and semantic search.",
   "owner": "@ccascio",
   "kind": "feature",
   "language": "typescript",
@@ -26,8 +26,8 @@
     "routes": [
       {
         "id": "markdown-notes-dashboard",
-        "label": "Notes",
-        "description": "Markdown note output, recent writes, and approval status.",
+        "label": "Mardown Notes",
+        "description": "Markdown note output, folder browsing, previews, uploads, semantic search, and approval status.",
         "path": "/api/workers/markdown-notes-publisher/dashboard"
       }
     ]
