@@ -1,0 +1,40 @@
+{
+  "id": "webhook-inbox",
+  "name": "Webhook Inbox",
+  "tagline": "Gives low-code tools a simple local URL for sending events into BFrost.",
+  "description": "A producer worker that accepts JSON webhook posts and publishes each one as a `webhook.event` item on the BFrost Item Bus.\n\nIt is designed for low-code automations: configure an optional token, copy the local endpoint into another tool, and let BFrost route incoming events to notifiers, notes, or future publishers.",
+  "author": "@ccascio",
+  "repoUrl": "https://github.com/ccascio/bfrost-workers",
+  "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/webhook-inbox/README.md",
+  "category": "Developer Tools",
+  "tags": ["webhook", "automation", "inbox", "producer", "low-code", "local-first"],
+  "trust": "Review",
+  "latestVersion": "0.1.0",
+  "bfrostEngine": ">=0.3.0",
+  "license": "MIT",
+  "createdAt": "2026-05-29T08:00:00Z",
+  "updatedAt": "2026-05-29T08:00:00Z",
+  "capabilities": {
+    "jobs": [],
+    "tools": [],
+    "channels": [],
+    "providers": [],
+    "itemProduces": ["webhook.event"],
+    "itemConsumes": []
+  },
+  "permissions": ["storage:worker-kv"],
+  "downloadCount": 0,
+  "versions": [
+    {
+      "version": "0.1.0",
+      "bfrostEngine": ">=0.3.0",
+      "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/webhook-inbox-v0.1.0",
+      "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/webhook-inbox-v0.1.0/webhook-inbox.tar.gz",
+      "changelog": "Initial source-backed release with JSON webhook ingest, optional token config, webhook.event publishing, dashboard view, and low-code README.",
+      "publishedAt": "2026-05-29T08:00:00Z",
+      "yanked": false,
+      "bundleSha256": "22962e32bf1c0cbf05171d895796197f9597048051829809903bc1b18f41e2c9",
+      "bundleSizeBytes": 5811
+    }
+  ]
+}

@@ -1,5 +1,169 @@
 [
   {
+    "id": "ntfy-notifier",
+    "name": "ntfy Notifier",
+    "tagline": "Pushes BFrost items to your phone or desktop through ntfy.",
+    "description": "A consumer worker that sends selected Item Bus entries to an ntfy topic. It can notify on news, papers, web pages, webhook events, or any configured item type.\n\nIt needs no OAuth: create a hard-to-guess ntfy topic, subscribe in the ntfy app, configure the topic in BFrost Jobs, and run the worker.",
+    "author": "@ccascio",
+    "repoUrl": "https://github.com/ccascio/bfrost-workers",
+    "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/ntfy-notifier/README.md",
+    "category": "Communication",
+    "tags": [
+      "ntfy",
+      "notifications",
+      "push",
+      "consumer",
+      "mobile",
+      "local-first"
+    ],
+    "trust": "Review",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.3.0",
+    "license": "MIT",
+    "createdAt": "2026-05-29T08:00:00Z",
+    "updatedAt": "2026-05-29T08:00:00Z",
+    "capabilities": {
+      "jobs": [
+        "ntfy-send"
+      ],
+      "tools": [],
+      "channels": [],
+      "providers": [],
+      "itemProduces": [],
+      "itemConsumes": [
+        "news.article",
+        "research.paper",
+        "web.page",
+        "webhook.event"
+      ]
+    },
+    "permissions": [
+      "network:http",
+      "network:https",
+      "storage:worker-kv"
+    ],
+    "downloadCount": 0,
+    "versions": [
+      {
+        "version": "0.1.0",
+        "bfrostEngine": ">=0.3.0",
+        "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/ntfy-notifier-v0.1.0",
+        "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/ntfy-notifier-v0.1.0/ntfy-notifier.tar.gz",
+        "changelog": "Initial source-backed release with ntfy topic delivery, item type filters, dashboard view, metadata tracking, and low-code README.",
+        "publishedAt": "2026-05-29T08:00:00Z",
+        "yanked": false,
+        "bundleSha256": "4aa9b9f85172d3559c240e2ab8a4501b0cc2d69c99996392bd191d74df5e5a70",
+        "bundleSizeBytes": 6368
+      }
+    ]
+  },
+  {
+    "id": "web-page-harvester",
+    "name": "Web Page Harvester",
+    "tagline": "Watches simple web pages for changes and turns them into BFrost items.",
+    "description": "A producer worker that fetches configured web pages on a schedule and publishes changed pages as `web.page` items on the BFrost Item Bus.\n\nIt is intentionally lightweight: no browser automation, no credentials, and no JavaScript execution. Use it for changelogs, documentation pages, status pages, product updates, and public pages where a text excerpt is enough.",
+    "author": "@ccascio",
+    "repoUrl": "https://github.com/ccascio/bfrost-workers",
+    "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/web-page-harvester/README.md",
+    "category": "AI / Research",
+    "tags": [
+      "web",
+      "harvester",
+      "watcher",
+      "producer",
+      "changelog",
+      "local-first"
+    ],
+    "trust": "Review",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.3.0",
+    "license": "MIT",
+    "createdAt": "2026-05-29T08:00:00Z",
+    "updatedAt": "2026-05-29T08:00:00Z",
+    "capabilities": {
+      "jobs": [
+        "web-page-fetch"
+      ],
+      "tools": [],
+      "channels": [],
+      "providers": [],
+      "itemProduces": [
+        "web.page"
+      ],
+      "itemConsumes": []
+    },
+    "permissions": [
+      "network:http",
+      "network:https",
+      "storage:worker-kv"
+    ],
+    "downloadCount": 0,
+    "versions": [
+      {
+        "version": "0.1.0",
+        "bfrostEngine": ">=0.3.0",
+        "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/web-page-harvester-v0.1.0",
+        "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/web-page-harvester-v0.1.0/web-page-harvester.tar.gz",
+        "changelog": "Initial source-backed release with scheduled page fetching, web.page publishing, change detection, dashboard view, and low-code README.",
+        "publishedAt": "2026-05-29T08:00:00Z",
+        "yanked": false,
+        "bundleSha256": "11f099d94ee500ed25d1cfa41f36911d600df2ad0b11ac8ef250b222222a133a",
+        "bundleSizeBytes": 6668
+      }
+    ]
+  },
+  {
+    "id": "webhook-inbox",
+    "name": "Webhook Inbox",
+    "tagline": "Gives low-code tools a simple local URL for sending events into BFrost.",
+    "description": "A producer worker that accepts JSON webhook posts and publishes each one as a `webhook.event` item on the BFrost Item Bus.\n\nIt is designed for low-code automations: configure an optional token, copy the local endpoint into another tool, and let BFrost route incoming events to notifiers, notes, or future publishers.",
+    "author": "@ccascio",
+    "repoUrl": "https://github.com/ccascio/bfrost-workers",
+    "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/webhook-inbox/README.md",
+    "category": "Developer Tools",
+    "tags": [
+      "webhook",
+      "automation",
+      "inbox",
+      "producer",
+      "low-code",
+      "local-first"
+    ],
+    "trust": "Review",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.3.0",
+    "license": "MIT",
+    "createdAt": "2026-05-29T08:00:00Z",
+    "updatedAt": "2026-05-29T08:00:00Z",
+    "capabilities": {
+      "jobs": [],
+      "tools": [],
+      "channels": [],
+      "providers": [],
+      "itemProduces": [
+        "webhook.event"
+      ],
+      "itemConsumes": []
+    },
+    "permissions": [
+      "storage:worker-kv"
+    ],
+    "downloadCount": 0,
+    "versions": [
+      {
+        "version": "0.1.0",
+        "bfrostEngine": ">=0.3.0",
+        "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/webhook-inbox-v0.1.0",
+        "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/webhook-inbox-v0.1.0/webhook-inbox.tar.gz",
+        "changelog": "Initial source-backed release with JSON webhook ingest, optional token config, webhook.event publishing, dashboard view, and low-code README.",
+        "publishedAt": "2026-05-29T08:00:00Z",
+        "yanked": false,
+        "bundleSha256": "22962e32bf1c0cbf05171d895796197f9597048051829809903bc1b18f41e2c9",
+        "bundleSizeBytes": 5811
+      }
+    ]
+  },
+  {
     "id": "arxiv-search",
     "name": "arXiv Search",
     "tagline": "Watches arXiv for papers you care about and sends matching results into BFrost.",

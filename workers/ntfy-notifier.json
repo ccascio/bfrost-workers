@@ -1,0 +1,40 @@
+{
+  "id": "ntfy-notifier",
+  "name": "ntfy Notifier",
+  "tagline": "Pushes BFrost items to your phone or desktop through ntfy.",
+  "description": "A consumer worker that sends selected Item Bus entries to an ntfy topic. It can notify on news, papers, web pages, webhook events, or any configured item type.\n\nIt needs no OAuth: create a hard-to-guess ntfy topic, subscribe in the ntfy app, configure the topic in BFrost Jobs, and run the worker.",
+  "author": "@ccascio",
+  "repoUrl": "https://github.com/ccascio/bfrost-workers",
+  "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/ntfy-notifier/README.md",
+  "category": "Communication",
+  "tags": ["ntfy", "notifications", "push", "consumer", "mobile", "local-first"],
+  "trust": "Review",
+  "latestVersion": "0.1.0",
+  "bfrostEngine": ">=0.3.0",
+  "license": "MIT",
+  "createdAt": "2026-05-29T08:00:00Z",
+  "updatedAt": "2026-05-29T08:00:00Z",
+  "capabilities": {
+    "jobs": ["ntfy-send"],
+    "tools": [],
+    "channels": [],
+    "providers": [],
+    "itemProduces": [],
+    "itemConsumes": ["news.article", "research.paper", "web.page", "webhook.event"]
+  },
+  "permissions": ["network:http", "network:https", "storage:worker-kv"],
+  "downloadCount": 0,
+  "versions": [
+    {
+      "version": "0.1.0",
+      "bfrostEngine": ">=0.3.0",
+      "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/ntfy-notifier-v0.1.0",
+      "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/ntfy-notifier-v0.1.0/ntfy-notifier.tar.gz",
+      "changelog": "Initial source-backed release with ntfy topic delivery, item type filters, dashboard view, metadata tracking, and low-code README.",
+      "publishedAt": "2026-05-29T08:00:00Z",
+      "yanked": false,
+      "bundleSha256": "4aa9b9f85172d3559c240e2ab8a4501b0cc2d69c99996392bd191d74df5e5a70",
+      "bundleSizeBytes": 6368
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "manifestVersion": 1,
+  "bfrostApiVersion": "0.1",
+  "id": "web-page-harvester",
+  "name": "Web Page Harvester",
+  "version": "0.1.0",
+  "description": "Fetches configured web pages on a schedule and publishes changed pages to the Item Bus.",
+  "owner": "@ccascio",
+  "kind": "feature",
+  "language": "typescript",
+  "backendSource": "src/index.ts",
+  "backendEntrypoint": "dist/index.js",
+  "dashboardSource": "dashboard.tsx",
+  "dashboardEntrypoint": "dist/dashboard.js",
+  "ownedSettings": [
+    {
+      "key": "web-page-harvester-job",
+      "label": "Web page harvest job",
+      "description": "Schedule and page list for web page intake.",
+      "scope": "job",
+      "storageKey": "admin.settings.jobs.web-page-fetch",
+      "dashboardTarget": "jobs"
+    }
+  ],
+  "dashboard": {
+    "routes": [
+      {
+        "id": "web-page-harvester-dashboard",
+        "label": "Web Pages",
+        "description": "Page fetch status, recent web.page items, and manual run controls.",
+        "path": "/api/workers/web-page-harvester/dashboard"
+      }
+    ]
+  }
+}

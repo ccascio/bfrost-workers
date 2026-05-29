@@ -1,0 +1,35 @@
+{
+  "manifestVersion": 1,
+  "bfrostApiVersion": "0.1",
+  "id": "ntfy-notifier",
+  "name": "ntfy Notifier",
+  "version": "0.1.0",
+  "description": "Sends selected Item Bus entries to an ntfy topic.",
+  "owner": "@ccascio",
+  "kind": "feature",
+  "language": "typescript",
+  "backendSource": "src/index.ts",
+  "backendEntrypoint": "dist/index.js",
+  "dashboardSource": "dashboard.tsx",
+  "dashboardEntrypoint": "dist/dashboard.js",
+  "ownedSettings": [
+    {
+      "key": "ntfy-notifier-job",
+      "label": "ntfy notification job",
+      "description": "Schedule, topic, and item filters for ntfy notifications.",
+      "scope": "job",
+      "storageKey": "admin.settings.jobs.ntfy-send",
+      "dashboardTarget": "jobs"
+    }
+  ],
+  "dashboard": {
+    "routes": [
+      {
+        "id": "ntfy-notifier-dashboard",
+        "label": "ntfy",
+        "description": "Notification status, recent sends, and manual run controls.",
+        "path": "/api/workers/ntfy-notifier/dashboard"
+      }
+    ]
+  }
+}

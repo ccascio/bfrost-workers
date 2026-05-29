@@ -1,0 +1,63 @@
+{
+  "manifestVersion": 1,
+  "bfrostApiVersion": "0.1",
+  "id": "webhook-inbox",
+  "name": "Webhook Inbox",
+  "version": "0.1.0",
+  "description": "Accepts JSON webhook posts and publishes them to the Item Bus as webhook.event items.",
+  "owner": "@ccascio",
+  "kind": "feature",
+  "language": "typescript",
+  "backendSource": "src/index.ts",
+  "backendEntrypoint": "dist/index.js",
+  "dashboardSource": "dashboard.tsx",
+  "dashboardEntrypoint": "dist/dashboard.js",
+  "ownedSettings": [
+    {
+      "key": "webhook-inbox-config",
+      "label": "Webhook inbox",
+      "description": "Endpoint token and default labeling for inbound JSON webhook events.",
+      "scope": "worker",
+      "storageKey": "worker.webhook-inbox.config",
+      "dashboardTarget": "config"
+    }
+  ],
+  "dashboard": {
+    "settings": [
+      {
+        "id": "webhook-inbox-config",
+        "label": "Webhook Inbox",
+        "description": "Token and labels used for inbound webhook events.",
+        "tab": "config",
+        "path": "/api/workers/webhook-inbox/settings",
+        "fields": [
+          {
+            "key": "token",
+            "label": "Webhook token",
+            "type": "text",
+            "defaultValue": "",
+            "placeholder": "paste-a-random-token",
+            "helpText": "Optional but recommended. Send it as ?token=... or x-bfrost-webhook-token.",
+            "seedPath": "webhook-inbox.config.token"
+          },
+          {
+            "key": "sourceLabel",
+            "label": "Source label",
+            "type": "text",
+            "defaultValue": "Webhook",
+            "helpText": "Shown on dashboard items when the webhook payload has no source field.",
+            "seedPath": "webhook-inbox.config.sourceLabel"
+          }
+        ]
+      }
+    ],
+    "routes": [
+      {
+        "id": "webhook-inbox-dashboard",
+        "label": "Webhooks",
+        "description": "Inbound webhook endpoint, recent events, and setup examples.",
+        "path": "/api/workers/webhook-inbox/dashboard"
+      }
+    ]
+  }
+}
