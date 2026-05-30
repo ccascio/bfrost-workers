@@ -18,7 +18,7 @@ import { openWorkerKv, getChatModel, findModel, publishItem, recordEventSafe, no
 const WORKER_ID = 'core.finance-news';
 const JOB_ID = 'finance-news-scan';
 const ITEM_TYPE = 'finance.news';
-const LLM_EXCERPT_CHARS = 1_000;
+const LLM_EXCERPT_CHARS = 2_000;
 const ARTICLE_FETCH_CHARS = 4_000;
 const kv = openWorkerKv(WORKER_ID);
 
@@ -119,18 +119,171 @@ async function fetchArticleText(rawUrl: string): Promise<string> {
         clearTimeout(timeout);
         const raw = Buffer.concat(chunks);
         const html = raw.toString('utf8', 0, Math.min(raw.length, 150_000));
-        const stripped = html
-          .replace(/<script[\s\S]*?<\/script>/gi, '')
-          .replace(/<style[\s\S]*?<\/style>/gi, '')
-          .replace(/<[^>]+>/g, ' ')
-          .replace(/\s{2,}/g, ' ')
-          .trim();
-        resolve(stripped.slice(0, ARTICLE_FETCH_CHARS));
+        resolve(extractReadableArticleText(html).slice(0, ARTICLE_FETCH_CHARS));
       });
       res.on('error', () => { clearTimeout(timeout); resolve(''); });
     });
     req.on('error', () => { clearTimeout(timeout); resolve(''); });
   });
+}
+
+function extractReadableArticleText(html: string): string {
+  const candidates = [
+    ...extractJsonLdArticleBodies(html),
+    ...matchAllTagText(html, 'article'),
+    ...matchAllReadableContainers(html),
+    ...matchAllTagText(html, 'main'),
+    matchTagText(html, 'body'),
+    html,
+  ].filter(Boolean);
+  let best = '';
+  let bestScore = Number.NEGATIVE_INFINITY;
+  for (const candidate of candidates) {
+    const cleaned = stripBoilerplateLines(cleanText(candidate));
+    const score = scoreReadableText(cleaned);
+    if (score > bestScore) {
+      best = cleaned;
+      bestScore = score;
+    }
+  }
+  return best;
+}
+
+function matchTagText(html: string, tagName: string): string {
+  const match = html.match(new RegExp(`<${tagName}[^>]*>([\\s\\S]*?)</${tagName}>`, 'i'));
+  return match?.[1] ? decodeHtml(match[1]) : '';
+}
+
+function matchAllTagText(html: string, tagName: string): string[] {
+  return [...html.matchAll(new RegExp(`<${tagName}[^>]*>([\\s\\S]*?)</${tagName}>`, 'gi'))]
+    .map((match) => (match[1] ? decodeHtml(match[1]) : ''))
+    .filter(Boolean);
+}
+
+function matchAllReadableContainers(html: string): string[] {
+  const readableAttr =
+    '(?:article[-_ ]?body|article[-_ ]?content|story[-_ ]?body|story[-_ ]?content|entry[-_ ]?content|post[-_ ]?content|main[-_ ]?content|body[-_ ]?content|content[-_ ]?body)';
+  const blocks: string[] = [];
+  const pattern = new RegExp(
+    `<(div|section)[^>]*(?:class|id)\\s*=\\s*["'][^"']*${readableAttr}[^"']*["'][^>]*>([\\s\\S]*?)</\\1>`,
+    'gi',
+  );
+  for (const match of html.matchAll(pattern)) {
+    if (match[2]) blocks.push(decodeHtml(match[2]));
+  }
+  return blocks;
+}
+
+function extractJsonLdArticleBodies(html: string): string[] {
+  const bodies: string[] = [];
+  const scripts = html.matchAll(/<script[^>]*type\s*=\s*["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi);
+  for (const script of scripts) {
+    const raw = decodeHtml(script[1] ?? '')
+      .replace(/^\s*<!--/, '')
+      .replace(/-->\s*$/, '')
+      .trim();
+    if (!raw) continue;
+    try {
+      collectArticleBodies(JSON.parse(raw), bodies);
+    } catch {
+      // Ignore malformed publisher JSON-LD and fall back to HTML blocks.
+    }
+  }
+  return bodies;
+}
+
+function collectArticleBodies(value: unknown, out: string[]): void {
+  if (!value) return;
+  if (Array.isArray(value)) {
+    for (const entry of value) collectArticleBodies(entry, out);
+    return;
+  }
+  if (typeof value !== 'object') return;
+  const record = value as Record<string, unknown>;
+  if (Array.isArray(record['@graph'])) collectArticleBodies(record['@graph'], out);
+  const type = record['@type'];
+  const types = Array.isArray(type) ? type : [type];
+  const isArticle = types.some((entry) => typeof entry === 'string' && /article|newsarticle|blogposting|report/i.test(entry));
+  if (isArticle && typeof record.articleBody === 'string' && record.articleBody.trim()) out.push(record.articleBody);
+  if (isArticle && typeof record.description === 'string' && record.description.trim()) out.push(record.description);
+}
+
+function cleanText(html: string): string {
+  const withoutNoise = html
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<noscript[\s\S]*?<\/noscript>/gi, ' ')
+    .replace(/<svg[\s\S]*?<\/svg>/gi, ' ')
+    .replace(/<footer[\s\S]*?<\/footer>/gi, ' ')
+    .replace(/<header[\s\S]*?<\/header>/gi, ' ')
+    .replace(/<nav[\s\S]*?<\/nav>/gi, ' ')
+    .replace(/<aside[\s\S]*?<\/aside>/gi, ' ');
+  const withBreaks = withoutNoise
+    .replace(/<\/p>/gi, '\n')
+    .replace(/<br\s*\/?>/gi, '\n')
+    .replace(/<\/div>/gi, '\n')
+    .replace(/<\/li>/gi, '\n')
+    .replace(/<\/h[1-6]>/gi, '\n');
+  return decodeHtml(withBreaks.replace(/<[^>]+>/g, ' '))
+    .replace(/\r/g, ' ')
+    .replace(/\t/g, ' ')
+    .replace(/[ ]{2,}/g, ' ')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+}
+
+function stripBoilerplateLines(text: string): string {
+  const seen = new Set<string>();
+  const kept: string[] = [];
+  for (const line of text.split(/\n+/).map((entry) => entry.replace(/\s+/g, ' ').trim()).filter(Boolean)) {
+    const lower = line.toLowerCase();
+    const words = line.split(/\s+/).length;
+    if (isBoilerplateLine(lower, words)) continue;
+    const key = lower.replace(/\W+/g, ' ').trim();
+    if (key && seen.has(key)) continue;
+    if (key) seen.add(key);
+    kept.push(line);
+  }
+  return kept.join('\n\n').trim();
+}
+
+function isBoilerplateLine(lower: string, words: number): boolean {
+  if (words <= 2 && /^(home|menu|search|login|subscribe|advertisement|share|comments?)$/.test(lower)) return true;
+  if (/\b(skip to content|sign in|log in|create account|subscribe now|accept cookies|cookie policy|privacy policy|terms of use|all rights reserved|advertisement|sponsored content|share this article|follow us|newsletter|related articles)\b/.test(lower)) return true;
+  if (words <= 8 && /\b(markets|business|technology|politics|world|opinion|video|audio|latest|more|close)\b/.test(lower)) return true;
+  return false;
+}
+
+function scoreReadableText(text: string): number {
+  if (!text) return Number.NEGATIVE_INFINITY;
+  const words = text.split(/\s+/).filter(Boolean);
+  const lower = text.toLowerCase();
+  const sentenceCount = (text.match(/[.!?](?:\s|$)/g) ?? []).length;
+  const paragraphCount = text
+    .split(/\n{2,}/)
+    .filter((paragraph) => paragraph.split(/\s+/).filter(Boolean).length >= 20).length;
+  const boilerplateHits = (lower.match(/\b(subscribe|advertisement|cookie|privacy policy|sign in|newsletter|share this|all rights reserved)\b/g) ?? []).length;
+  const uniqueRatio = new Set(words.map((word) => word.toLowerCase())).size / Math.max(words.length, 1);
+  return words.length + sentenceCount * 15 + paragraphCount * 45 + uniqueRatio * 100 - boilerplateHits * 80;
+}
+
+function decodeHtml(text: string): string {
+  return text
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&amp;/gi, '&')
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;/gi, "'")
+    .replace(/&apos;/gi, "'")
+    .replace(/&lt;/gi, '<')
+    .replace(/&gt;/gi, '>')
+    .replace(/&#(\d+);/g, (_, digits: string) => {
+      const code = Number.parseInt(digits, 10);
+      return Number.isFinite(code) ? String.fromCodePoint(code) : '';
+    })
+    .replace(/&#x([0-9a-f]+);/gi, (_, digits: string) => {
+      const code = Number.parseInt(digits, 16);
+      return Number.isFinite(code) ? String.fromCodePoint(code) : '';
+    });
 }
 
 function buildQueries(watchlist: string[], categories: string[]): { name: string; query: string }[] {
@@ -220,7 +373,7 @@ async function runFinanceNewsScan(modelId: string, params = DEFAULT_PARAMS): Pro
   for (const { result, name } of discovered) {
     let fullText = result.snippet ?? '';
     const fetched = await fetchArticleText(result.link);
-    if (fetched) fullText = fetched;
+    if (fetched) fullText = [result.title, result.snippet ?? '', fetched].filter(Boolean).join('\n\n').slice(0, ARTICLE_FETCH_CHARS);
     const tagText = `${result.title} ${result.snippet ?? ''} ${fullText}`;
     candidates.push({
       result,

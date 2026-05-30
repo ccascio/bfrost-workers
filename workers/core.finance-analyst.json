@@ -33,8 +33,8 @@
       "changelog": "Initial source-backed release with finance.news consumption, structured informational reads, optional notifications, dashboard output review, and low-code guidance.",
       "publishedAt": "2026-05-29T15:00:00Z",
       "yanked": false,
-      "bundleSha256": "78d09632ec556fc028d63a85a7d86bf44aad785d253d2712359ed99b74295e26",
-      "bundleSizeBytes": 8284
+      "bundleSha256": "ec9e487680c0158b90eadeddf3841f1f5b390ac83ec8b53a893f1dd24231766a",
+      "bundleSizeBytes": 8288
     }
   ]
 }

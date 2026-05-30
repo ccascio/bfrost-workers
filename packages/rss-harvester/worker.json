@@ -3,8 +3,10 @@
   "bfrostApiVersion": "0.1",
   "id": "rss-harvester",
   "name": "RSS Harvester",
-  "version": "1.1.0",
-  "description": "Polls RSS and Atom feeds on a schedule and publishes news.article items to the Item Bus.",
+  "displayName": "RSS & Feed Digest",
+  "version": "2.0.0",
+  "description": "Polls RSS and Atom feeds, applies LLM relevance filtering against your stated interests, and publishes enriched news.article items to the Item Bus.",
+  "tagline": "Polls your RSS feeds and uses AI to surface only what you actually care about — configure your interests and let the model filter the noise.",
   "owner": "@ccascio",
   "kind": "feature",
   "language": "typescript",
@@ -15,8 +17,8 @@
   "ownedSettings": [
     {
       "key": "rss-harvester-config",
-      "label": "Feed URLs",
-      "description": "Newline-separated list of RSS or Atom feed URLs to poll.",
+      "label": "Feeds & Interests",
+      "description": "RSS/Atom sources and LLM relevance filter topics.",
       "scope": "worker",
       "storageKey": "worker.rss-harvester.config",
       "dashboardTarget": "config"
@@ -26,8 +28,8 @@
     "settings": [
       {
         "id": "rss-harvester-config",
-        "label": "Feed URLs",
-        "description": "RSS and Atom sources polled by the worker.",
+        "label": "Feeds & Interests",
+        "description": "RSS/Atom sources and relevance filter topics.",
         "tab": "config",
         "path": "/api/workers/rss-harvester/settings",
         "fields": [
@@ -38,8 +40,31 @@
             "defaultValue": "",
             "rows": 8,
             "placeholder": "https://feeds.example.com/rss\nhttps://another.example.com/atom.xml",
-            "helpText": "One URL per line. RSS and Atom formats are both supported.",
+            "helpText": "One URL per line. RSS 2.0 and Atom 1.0 are both supported.",
             "seedPath": "rss-harvester.config.feeds"
+          },
+          {
+            "key": "interests",
+            "label": "Interests (one per line)",
+            "type": "textarea",
+            "defaultValue": "",
+            "rows": 5,
+            "placeholder": "AI and machine learning\nstartup funding and venture capital\nclimate policy",
+            "helpText": "Describe topics you care about. When set, the AI model scores each article for relevance and drops low-scoring items. Leave blank to harvest everything."
+          },
+          {
+            "key": "relevanceThreshold",
+            "label": "Relevance threshold (1–5)",
+            "type": "number",
+            "defaultValue": 3,
+            "helpText": "Articles scoring below this threshold are dropped. 1 = keep almost everything, 5 = keep only highly relevant articles."
+          },
+          {
+            "key": "maxItemsPerRun",
+            "label": "Max items per run",
+            "type": "number",
+            "defaultValue": 30,
+            "helpText": "Maximum number of new articles to process in a single run. Extra articles are deferred to the next run."
           }
         ]
       }
@@ -48,7 +73,7 @@
       {
         "id": "rss-harvester-dashboard",
         "label": "RSS",
-        "description": "Feed status, latest fetched items, and manual run controls.",
+        "description": "Feed status, LLM filter stats, latest items, and manual run controls.",
         "path": "/api/workers/rss-harvester/dashboard"
       }
     ]

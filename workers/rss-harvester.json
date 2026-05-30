@@ -1,8 +1,8 @@
 {
     "id": "rss-harvester",
     "name": "RSS Harvester",
-    "tagline": "Polls RSS and Atom feeds on a schedule and publishes news.article items to the Item Bus.",
-    "description": "A producer worker that fetches one or more RSS/Atom feed URLs on a configurable schedule and pushes each new entry as a `news.article` item onto the BFrost Item Bus. Deduplication is keyed on the entry's `<link>` element — an article is only published once per source URL.\n\nFeed URLs are declared in worker settings as a newline-separated list. Supports both RSS 2.0 and Atom 1.0.",
+    "tagline": "Polls RSS feeds on a schedule — AI relevance filtering surfaces only what matches your stated interests.",
+    "description": "An LLM-enhanced producer worker that fetches one or more RSS/Atom feed URLs on a configurable schedule and pushes enriched `news.article` items onto the BFrost Item Bus.\n\nWhen you configure Interests, the worker asks the AI model to score each new article for relevance (1–5) and drops articles below your threshold. Items that pass get a clean 1–2 sentence AI-written summary and topic tags. Without interests configured (or when no model provider is set up), the worker falls back to publishing everything — same behaviour as v1.x.",
     "author": "@ccascio",
     "repoUrl": "https://github.com/ccascio/bfrost-workers",
     "category": "AI / Research",
@@ -12,14 +12,16 @@
         "feeds",
         "news",
         "producer",
-        "harvester"
+        "llm",
+        "relevance-filter",
+        "digest"
     ],
     "trust": "Community",
     "latestVersion": "1.1.0",
     "bfrostEngine": ">=0.2.0",
     "license": "MIT",
     "createdAt": "2026-03-30T07:00:00Z",
-    "updatedAt": "2026-05-24T19:45:00Z",
+    "updatedAt": "2026-05-30T00:00:00Z",
     "capabilities": {
         "jobs": [
             "rss-fetch"

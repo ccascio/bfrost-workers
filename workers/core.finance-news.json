@@ -33,8 +33,8 @@
       "changelog": "Initial source-backed release with watchlist search, AI relevance filtering, finance.news publishing, channel notifications, dashboard output review, and low-code guidance.",
       "publishedAt": "2026-05-29T15:00:00Z",
       "yanked": false,
-      "bundleSha256": "1661b7cafc65c049cc78252bf3747e0081956e4c6baebf61896b57bc28477ec7",
-      "bundleSizeBytes": 10267
+      "bundleSha256": "5a5ef428b4d87a2f62544aeb4b69bf7b5afa187c82094c6be575f443e5afc5fb",
+      "bundleSizeBytes": 12103
     }
   ]
 }

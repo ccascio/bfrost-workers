@@ -26,7 +26,7 @@ import {
 const WORKER_ID = 'core.finance-analyst';
 const JOB_ID = 'finance-analysis';
 const SUBSCRIBES_TO = 'finance.news';
-const LLM_EXCERPT_CHARS = 1_000;
+const LLM_EXCERPT_CHARS = 2_500;
 
 const INVESTOR_LENSES = [
   { value: 'none', label: 'No lens (balanced)' },
