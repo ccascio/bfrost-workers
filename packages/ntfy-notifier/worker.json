@@ -5,6 +5,18 @@
   "name": "ntfy Notifier",
   "version": "0.1.0",
   "description": "Sends selected Item Bus entries to an ntfy topic.",
+  "chatPrompts": [
+    {
+      "label": "ntfy status",
+      "description": "Check recent notification sends.",
+      "prompt": "What has the ntfy notifier sent recently?"
+    },
+    {
+      "label": "Send notifications",
+      "description": "Run the ntfy worker now.",
+      "prompt": "Run the ntfy notifier now for approved queue items."
+    }
+  ],
   "owner": "@ccascio",
   "kind": "feature",
   "language": "typescript",

@@ -5,6 +5,18 @@
   "name": "Webhook Inbox",
   "version": "0.1.0",
   "description": "Accepts JSON webhook posts and publishes them to the Item Bus as webhook.event items.",
+  "chatPrompts": [
+    {
+      "label": "Webhook events",
+      "description": "Inspect inbound webhook activity.",
+      "prompt": "Show me the latest webhook events and summarize their payloads."
+    },
+    {
+      "label": "Webhook setup",
+      "description": "Get the endpoint and posting instructions.",
+      "prompt": "How do I send a test event to the webhook inbox?"
+    }
+  ],
   "owner": "@ccascio",
   "kind": "feature",
   "language": "typescript",

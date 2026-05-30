@@ -5,6 +5,18 @@
   "name": "Web Page Harvester",
   "version": "0.1.0",
   "description": "Fetches configured web pages on a schedule and publishes changed pages to the Item Bus.",
+  "chatPrompts": [
+    {
+      "label": "Page changes",
+      "description": "Review recent web.page items.",
+      "prompt": "What changed in the pages harvested recently?"
+    },
+    {
+      "label": "Run pages",
+      "description": "Start the web page harvester.",
+      "prompt": "Run the web page harvester now and summarize changed pages."
+    }
+  ],
   "owner": "@ccascio",
   "kind": "feature",
   "language": "typescript",

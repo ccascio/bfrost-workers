@@ -5,6 +5,18 @@
   "name": "Markdown Notes Publisher",
   "version": "0.2.0",
   "description": "Turns selected Item Bus entries into Markdown notes, with folder browsing, uploads, previews, and semantic search.",
+  "chatPrompts": [
+    {
+      "label": "Note candidates",
+      "description": "Find queue items ready to become notes.",
+      "prompt": "Which approved queue items are ready for Markdown note publishing?"
+    },
+    {
+      "label": "Write notes",
+      "description": "Run the Markdown note publisher.",
+      "prompt": "Run the Markdown notes publisher now and summarize what notes were created."
+    }
+  ],
   "owner": "@ccascio",
   "kind": "feature",
   "language": "typescript",

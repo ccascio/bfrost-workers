@@ -5,6 +5,18 @@
   "name": "arXiv Search",
   "version": "0.1.0",
   "description": "Searches arXiv on a schedule and publishes matching papers to the Item Bus.",
+  "chatPrompts": [
+    {
+      "label": "arXiv status",
+      "description": "Review recent paper intake.",
+      "prompt": "What arXiv papers were found recently, and which ones are most relevant?"
+    },
+    {
+      "label": "Run arXiv",
+      "description": "Start the arXiv search worker now.",
+      "prompt": "Run the arXiv search now and summarize any new papers."
+    }
+  ],
   "owner": "@ccascio",
   "kind": "feature",
   "language": "typescript",

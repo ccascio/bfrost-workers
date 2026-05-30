@@ -5,6 +5,18 @@
   "name": "Crossref DOI Resolver",
   "version": "0.1.0",
   "description": "Adds a BFrost assistant tool for resolving DOIs and finding publication metadata through Crossref.",
+  "chatPrompts": [
+    {
+      "label": "Resolve DOI",
+      "description": "Look up publication metadata.",
+      "prompt": "Resolve this DOI and summarize the publication metadata: 10.1038/s41586-020-2649-2"
+    },
+    {
+      "label": "Find paper",
+      "description": "Search Crossref by title.",
+      "prompt": "Find Crossref metadata for a paper titled Attention Is All You Need."
+    }
+  ],
   "owner": "@ccascio",
   "kind": "feature",
   "language": "typescript",
