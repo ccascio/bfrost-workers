@@ -105,12 +105,14 @@ function WorkerDashboard(ctx: any) {
         <summary>About PR Review Digest</summary>
         <div className="detail-body">
           <p><strong>What it does</strong></p><p>Summarizes open pull requests, review status, blockers, and what needs attention.</p>
+          <p><strong>Why the token field uses a name</strong></p><p>GitHub tokens are secrets. The Config field stores the environment variable name, for example <code>GITHUB_TOKEN</code>, so the actual token value stays in your local BFrost <code>.env</code> file and is read only when the job runs.</p>
           <p><strong>Where to configure</strong></p>
-          <ul><li><strong>Config tab</strong> - source endpoints, bearer token environment variables, and operator context.</li><li><strong>Jobs tab</strong> - schedule, model, prompt, lookback window, item limit, and priority threshold.</li></ul>
+          <ul><li><strong>Config tab</strong> - source endpoints, bearer token environment variable names, and operator context.</li><li><strong>Jobs tab</strong> - schedule, model, prompt, lookback window, item limit, and priority threshold.</li></ul>
           <p><strong>Inputs / outputs</strong></p><p>Reads GitHub pull request API or compatible code-review export endpoints. Produces <code>dev.pr-review-digest</code> items when publishing is enabled.</p>
-          <p><strong>Example setup</strong></p><pre style={{ fontSize: '0.8rem', background: 'var(--surface-2, #f5f5f5)', padding: '0.5rem', borderRadius: '4px', whiteSpace: 'pre-wrap' }}>https://api.github.com/repos/OWNER/REPO/pulls?state=open
+          <p><strong>Example .env</strong></p><pre style={{ fontSize: '0.8rem', background: 'var(--surface-2, #f5f5f5)', padding: '0.5rem', borderRadius: '4px', whiteSpace: 'pre-wrap' }}>GITHUB_TOKEN=github_pat_...</pre>
+          <p><strong>Example endpoints</strong></p><pre style={{ fontSize: '0.8rem', background: 'var(--surface-2, #f5f5f5)', padding: '0.5rem', borderRadius: '4px', whiteSpace: 'pre-wrap' }}>https://api.github.com/repos/OWNER/REPO/pulls?state=open
 https://api.github.com/repos/OWNER/REPO/pulls/123/reviews</pre>
-          <p><strong>FAQ</strong></p><p><em>The report is too generic.</em> Configure an AI provider and add precise Context notes. Without a provider, the worker stores a fallback digest from fetched source text.</p>
+          <p><strong>FAQ</strong></p><p><em>What goes in Bearer token env var names?</em> Put <code>GITHUB_TOKEN</code>, not <code>GITHUB_TOKEN=github_pat_...</code>. After editing <code>.env</code>, restart BFrost so the token is available to the worker.</p><p><em>The report is too generic.</em> Configure an AI provider and add precise Context notes. Without a provider, the worker stores a fallback digest from fetched source text.</p>
         </div>
       </details>
     </>

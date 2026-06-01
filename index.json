@@ -268,7 +268,7 @@
     "id": "pr-review-digest",
     "name": "PR Review Digest",
     "tagline": "Summarizes open PRs, review state, blockers, and the next reviews to do.",
-    "description": "Summarizes open pull requests, review status, blockers, and what needs attention.\n\nThis source-backed package includes the backend worker, dashboard bundle, Config surface, scheduled job manifest, and README. It connects to GitHub pull request API or compatible code-review export endpoints through operator-configured HTTPS source endpoints and bearer-token environment variables.",
+    "description": "Summarizes open pull requests, review status, blockers, and what needs attention. It connects to GitHub pull request APIs or compatible code-review export endpoints through operator-configured HTTPS source endpoints. Credentials are referenced by local environment variable name, for example GITHUB_TOKEN, so secret values stay in BFrost .env instead of worker settings or store packages.",
     "author": "@ccascio",
     "repoUrl": "https://github.com/ccascio/bfrost-workers",
     "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/pr-review-digest/README.md",
@@ -309,11 +309,11 @@
         "bfrostEngine": ">=0.3.0",
         "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v0.1.0",
         "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v0.1.0/pr-review-digest.tar.gz",
-        "changelog": "Initial source-backed worker package.",
+        "changelog": "Initial source-backed worker package with clearer token setup guidance and validation for environment variable names.",
         "publishedAt": "2026-06-01T00:00:00Z",
         "yanked": false,
-        "bundleSha256": "105aaa9d4c98b2a76844a1972e29b09b63b27a2ce2fe37e89a5bc6a5430b38f3",
-        "bundleSizeBytes": 9971
+        "bundleSha256": "5a770aff207f83f5133a5fe1a0e9a7fbe7fd94bc55ff8b3a73dc8b98c876b08b",
+        "bundleSizeBytes": 10479
       }
     ]
   },

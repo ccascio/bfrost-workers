@@ -62,6 +62,15 @@ function tokenEnvNames(settings: AutomationSettings): string[] {
   return settings.bearerTokenEnv.split(',').map((line) => line.trim()).filter(Boolean);
 }
 
+function validateTokenEnvNames(settings: AutomationSettings): void {
+  const invalid = tokenEnvNames(settings).find((name) => name.includes('='));
+  if (invalid) {
+    throw new BadRequestError(
+      'Bearer token env vars must contain environment variable names only, for example GITHUB_TOKEN. Put GITHUB_TOKEN=your-token in the local .env file, not in this Config field.',
+    );
+  }
+}
+
 function envValue(name: string): string {
   const value = process.env[name];
   return value && value.trim() ? value.trim() : '';
@@ -259,15 +268,15 @@ const manifest: WorkerManifest = {
     { label: 'Setup help', description: 'Ask how to connect sources.', prompt: "Help me configure PR Review Digest source endpoints and credentials." },
   ],
   ownedSettings: [
-    { key: WORKER_ID + '-config', label: "PR Review Digest sources", description: "Pull request endpoints", scope: 'worker', storageKey: 'worker.' + WORKER_ID + '.settings', dashboardTarget: 'config' },
+    { key: WORKER_ID + '-config', label: "PR Review Digest sources", description: "Pull request endpoints and environment variable names for API credentials.", scope: 'worker', storageKey: 'worker.' + WORKER_ID + '.settings', dashboardTarget: 'config' },
     { key: WORKER_ID + '-job', label: "PR review digest schedule", description: 'Cron, model, prompt, and run parameters.', scope: 'job', storageKey: 'admin.settings.jobs.' + JOB_ID, dashboardTarget: 'jobs' },
   ],
   dashboard: {
     settings: [{
-      id: WORKER_ID + '-config', label: "PR Review Digest sources", description: "Pull request endpoints", tab: 'config', path: '/api/workers/' + WORKER_ID + '/settings',
+      id: WORKER_ID + '-config', label: "PR Review Digest sources", description: "Pull request endpoints and the local environment variable name that holds your GitHub token.", tab: 'config', path: '/api/workers/' + WORKER_ID + '/settings',
       fields: [
         { key: 'sourceEndpoints', label: "Pull request endpoints", type: 'textarea', defaultValue: '', rows: 8, placeholder: "https://api.github.com/repos/OWNER/REPO/pulls?state=open\nhttps://api.github.com/repos/OWNER/REPO/pulls/123/reviews", helpText: 'One HTTP(S) endpoint per line. Endpoints can be native APIs, internal exports, webhooks, or JSON/text snapshots.', seedPath: WORKER_ID + '.settings.sourceEndpoints' },
-        { key: 'bearerTokenEnv', label: 'Bearer token env vars', type: 'text', defaultValue: "GITHUB_TOKEN", placeholder: "GITHUB_TOKEN", helpText: 'Comma-separated environment variable names. The first variable with a value is used as a Bearer token.', seedPath: WORKER_ID + '.settings.bearerTokenEnv' },
+        { key: 'bearerTokenEnv', label: 'Bearer token env var names', type: 'text', defaultValue: "GITHUB_TOKEN", placeholder: "GITHUB_TOKEN", helpText: 'Enter variable names only, such as GITHUB_TOKEN. Put the actual GITHUB_TOKEN=... secret in the local .env file; the first configured variable with a value is sent as Authorization: Bearer ...', seedPath: WORKER_ID + '.settings.bearerTokenEnv' },
         { key: 'contextNotes', label: 'Context notes', type: 'textarea', defaultValue: '', rows: 6, placeholder: "Focus on PRs waiting on me, stale PRs, failing CI, requested changes, and risky large diffs.", helpText: 'Optional instructions, priorities, account names, or pasted context to include in every run.', seedPath: WORKER_ID + '.settings.contextNotes' },
         { key: 'publishItems', label: 'Publish report to Item Bus', type: 'boolean', defaultValue: true, helpText: "When enabled, each run publishes the report as a dev.pr-review-digest item." },
       ],
@@ -278,7 +287,7 @@ const manifest: WorkerManifest = {
 
 const routes: AdminApiRoute[] = [
   { method: 'GET', path: '/api/workers/' + WORKER_ID + '/settings', workerIds: [WORKER_ID], handle: async () => ({ status: 200, body: await loadSettings() }) },
-  { method: 'POST', path: '/api/workers/' + WORKER_ID + '/settings', workerIds: [WORKER_ID], handle: async (ctx) => { const body = await ctx.readJsonBody(ctx.req, SettingsSchema); for (const endpoint of sourceEndpoints(body)) { try { new URL(endpoint); } catch { throw new BadRequestError('Invalid source endpoint URL: ' + endpoint); } } return { status: 200, body: await saveSettings(body) }; } },
+  { method: 'POST', path: '/api/workers/' + WORKER_ID + '/settings', workerIds: [WORKER_ID], handle: async (ctx) => { const body = await ctx.readJsonBody(ctx.req, SettingsSchema); validateTokenEnvNames(body); for (const endpoint of sourceEndpoints(body)) { try { new URL(endpoint); } catch { throw new BadRequestError('Invalid source endpoint URL: ' + endpoint); } } return { status: 200, body: await saveSettings(body) }; } },
 ];
 
 const module: BackendWorkerModule = {

@@ -18,7 +18,7 @@
     {
       "key": "pr-review-digest-config",
       "label": "PR Review Digest sources",
-      "description": "Pull request endpoints",
+      "description": "Pull request endpoints and environment variable names for API credentials.",
       "scope": "worker",
       "storageKey": "worker.pr-review-digest.settings",
       "dashboardTarget": "config"
@@ -37,7 +37,7 @@
       {
         "id": "pr-review-digest-config",
         "label": "PR Review Digest sources",
-        "description": "Pull request endpoints",
+        "description": "Pull request endpoints and the local environment variable name that holds your GitHub token.",
         "tab": "config",
         "path": "/api/workers/pr-review-digest/settings",
         "fields": [
@@ -53,11 +53,11 @@
           },
           {
             "key": "bearerTokenEnv",
-            "label": "Bearer token env vars",
+            "label": "Bearer token env var names",
             "type": "text",
             "defaultValue": "GITHUB_TOKEN",
             "placeholder": "GITHUB_TOKEN",
-            "helpText": "Comma-separated environment variable names. The first variable with a value is used as a Bearer token.",
+            "helpText": "Enter variable names only, such as GITHUB_TOKEN. Put the actual GITHUB_TOKEN=... secret in the local .env file; the first configured variable with a value is sent as Authorization: Bearer ...",
             "seedPath": "pr-review-digest.settings.bearerTokenEnv"
           },
           {

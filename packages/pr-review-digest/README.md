@@ -8,6 +8,8 @@ Summarizes open pull requests, review status, blockers, and what needs attention
 
 The worker reads configured HTTPS source endpoints, optional operator context notes, and an optional Bearer token from environment variables. Each scheduled run asks the selected BFrost model to produce a concise operational report. If no model provider is configured, it still records a fallback digest from fetched source text.
 
+The token setting intentionally asks for an environment variable name, not the token itself. Keep the actual GitHub token in the local BFrost `.env` file, then reference its name from Config.
+
 ## Inputs and outputs
 
 - Integrations: GitHub pull request API or compatible code-review export endpoints
@@ -21,9 +23,21 @@ The worker reads configured HTTPS source endpoints, optional operator context no
 In the BFrost Config tab, open **PR Review Digest sources** and set:
 
 - **Source endpoints**: one API/export URL per line.
-- **Bearer token env vars**: comma-separated environment variable names. The first one with a value is sent as `Authorization: Bearer ...`.
+- **Bearer token env var names**: comma-separated environment variable names. For GitHub, this is usually `GITHUB_TOKEN`. Do not paste `GITHUB_TOKEN=...` here.
 - **Context notes**: priorities, style preferences, account names, or pasted context.
 - **Publish report to Item Bus**: whether each run should publish a queue item.
+
+Example `.env`:
+
+```text
+GITHUB_TOKEN=github_pat_...
+```
+
+In Config, the matching value should be only:
+
+```text
+GITHUB_TOKEN
+```
 
 Example endpoints:
 
@@ -49,4 +63,4 @@ In the Jobs tab, tune lookback hours, max items, priority threshold, schedule, m
 
 ## Notes
 
-This worker does not store secrets in `worker.json`. Put API tokens in local environment variables and reference their variable names in Config.
+This worker does not store secrets in `worker.json`, worker settings, or the store package. Put API tokens in local environment variables, reference their variable names in Config, and restart BFrost after editing `.env`.
