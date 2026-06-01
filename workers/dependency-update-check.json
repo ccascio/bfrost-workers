@@ -1,0 +1,53 @@
+{
+    "id": "dependency-update-check",
+    "name": "Dependency Update Check",
+    "tagline": "Reviews dependency update feeds for security patches, outdated packages, and risky upgrades.",
+    "description": "Scans configured dependency/security endpoints for outdated packages, patches, and breaking-change risks.\n\nThis source-backed package includes the backend worker, dashboard bundle, Config surface, scheduled job manifest, and README. It connects to GitHub Dependabot, OSV, npm registry, or compatible dependency export endpoints through operator-configured HTTPS source endpoints and bearer-token environment variables.",
+    "author": "@ccascio",
+    "repoUrl": "https://github.com/ccascio/bfrost-workers",
+    "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/dependency-update-check/README.md",
+    "category": "Developer Tools",
+    "tags": [
+        "dependencies",
+        "security",
+        "dependabot",
+        "npm",
+        "updates"
+    ],
+    "trust": "Review",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.3.0",
+    "license": "MIT",
+    "createdAt": "2026-06-01T00:00:00Z",
+    "updatedAt": "2026-06-01T00:00:00Z",
+    "capabilities": {
+        "jobs": [
+            "dependency-update-check"
+        ],
+        "tools": [],
+        "channels": [],
+        "providers": [],
+        "itemProduces": [
+            "dev.dependency-report"
+        ],
+        "itemConsumes": []
+    },
+    "permissions": [
+        "network:https",
+        "storage:worker-kv"
+    ],
+    "downloadCount": 0,
+    "versions": [
+        {
+            "version": "0.1.0",
+            "bfrostEngine": ">=0.3.0",
+            "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v0.1.0",
+            "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v0.1.0/dependency-update-check.tar.gz",
+            "changelog": "Initial source-backed worker package.",
+            "publishedAt": "2026-06-01T00:00:00Z",
+            "yanked": false,
+            "bundleSha256": "0c1ff99a89c923833e1ed30dd1d00f10363709548d11f3387a7c005e8e7a4b0b",
+            "bundleSizeBytes": 10054
+        }
+    ]
+}

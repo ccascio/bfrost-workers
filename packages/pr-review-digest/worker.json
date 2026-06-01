@@ -1,0 +1,93 @@
+{
+  "manifestVersion": 1,
+  "bfrostApiVersion": "0.1",
+  "id": "pr-review-digest",
+  "name": "PR Review Digest",
+  "displayName": "PR Review Digest",
+  "version": "0.1.0",
+  "description": "Summarizes open pull requests, review status, blockers, and what needs attention.",
+  "tagline": "Summarizes open PRs, review state, blockers, and the next reviews to do.",
+  "owner": "@ccascio",
+  "kind": "feature",
+  "language": "typescript",
+  "backendSource": "src/index.ts",
+  "backendEntrypoint": "dist/index.js",
+  "dashboardSource": "dashboard.tsx",
+  "dashboardEntrypoint": "dist/dashboard.js",
+  "ownedSettings": [
+    {
+      "key": "pr-review-digest-config",
+      "label": "PR Review Digest sources",
+      "description": "Pull request endpoints",
+      "scope": "worker",
+      "storageKey": "worker.pr-review-digest.settings",
+      "dashboardTarget": "config"
+    },
+    {
+      "key": "pr-review-digest-job",
+      "label": "PR review digest schedule",
+      "description": "Cron, model, prompt, and run parameters.",
+      "scope": "job",
+      "storageKey": "admin.settings.jobs.pr-review-digest",
+      "dashboardTarget": "jobs"
+    }
+  ],
+  "dashboard": {
+    "settings": [
+      {
+        "id": "pr-review-digest-config",
+        "label": "PR Review Digest sources",
+        "description": "Pull request endpoints",
+        "tab": "config",
+        "path": "/api/workers/pr-review-digest/settings",
+        "fields": [
+          {
+            "key": "sourceEndpoints",
+            "label": "Pull request endpoints",
+            "type": "textarea",
+            "defaultValue": "",
+            "rows": 8,
+            "placeholder": "https://api.github.com/repos/OWNER/REPO/pulls?state=open\nhttps://api.github.com/repos/OWNER/REPO/pulls/123/reviews",
+            "helpText": "One HTTP(S) endpoint per line. Endpoints can be native APIs, internal exports, webhooks, or JSON/text snapshots.",
+            "seedPath": "pr-review-digest.settings.sourceEndpoints"
+          },
+          {
+            "key": "bearerTokenEnv",
+            "label": "Bearer token env vars",
+            "type": "text",
+            "defaultValue": "GITHUB_TOKEN",
+            "placeholder": "GITHUB_TOKEN",
+            "helpText": "Comma-separated environment variable names. The first variable with a value is used as a Bearer token.",
+            "seedPath": "pr-review-digest.settings.bearerTokenEnv"
+          },
+          {
+            "key": "contextNotes",
+            "label": "Context notes",
+            "type": "textarea",
+            "defaultValue": "",
+            "rows": 6,
+            "placeholder": "Focus on PRs waiting on me, stale PRs, failing CI, requested changes, and risky large diffs.",
+            "helpText": "Optional instructions, priorities, account names, or pasted context to include in every run.",
+            "seedPath": "pr-review-digest.settings.contextNotes"
+          },
+          {
+            "key": "publishItems",
+            "label": "Publish report to Item Bus",
+            "type": "boolean",
+            "defaultValue": true,
+            "helpText": "When enabled, each run publishes the report as a dev.pr-review-digest item."
+          }
+        ]
+      }
+    ],
+    "routes": [
+      {
+        "id": "pr-review-digest-dashboard",
+        "label": "PRs",
+        "description": "Summarizes open pull requests, review status, blockers, and what needs attention.",
+        "tab": "worker",
+        "path": "/api/workers/pr-review-digest/dashboard"
+      }
+    ]
+  }
+}

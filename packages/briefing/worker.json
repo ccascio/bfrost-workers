@@ -1,0 +1,93 @@
+{
+  "manifestVersion": 1,
+  "bfrostApiVersion": "0.1",
+  "id": "briefing",
+  "name": "Briefing",
+  "displayName": "Daily Briefing",
+  "version": "0.1.0",
+  "description": "Builds a concise summary of calendar, email, and message context from configured source endpoints.",
+  "tagline": "Turns your calendar, email, and message context into a focused daily briefing.",
+  "owner": "@ccascio",
+  "kind": "feature",
+  "language": "typescript",
+  "backendSource": "src/index.ts",
+  "backendEntrypoint": "dist/index.js",
+  "dashboardSource": "dashboard.tsx",
+  "dashboardEntrypoint": "dist/dashboard.js",
+  "ownedSettings": [
+    {
+      "key": "briefing-config",
+      "label": "Daily Briefing sources",
+      "description": "Calendar, email, and message endpoints",
+      "scope": "worker",
+      "storageKey": "worker.briefing.settings",
+      "dashboardTarget": "config"
+    },
+    {
+      "key": "briefing-job",
+      "label": "Daily briefing schedule",
+      "description": "Cron, model, prompt, and run parameters.",
+      "scope": "job",
+      "storageKey": "admin.settings.jobs.daily-briefing",
+      "dashboardTarget": "jobs"
+    }
+  ],
+  "dashboard": {
+    "settings": [
+      {
+        "id": "briefing-config",
+        "label": "Daily Briefing sources",
+        "description": "Calendar, email, and message endpoints",
+        "tab": "config",
+        "path": "/api/workers/briefing/settings",
+        "fields": [
+          {
+            "key": "sourceEndpoints",
+            "label": "Calendar, email, and message endpoints",
+            "type": "textarea",
+            "defaultValue": "",
+            "rows": 8,
+            "placeholder": "https://www.googleapis.com/calendar/v3/calendars/primary/events\nhttps://gmail.googleapis.com/gmail/v1/users/me/messages\nhttps://slack.com/api/conversations.history?channel=C012345",
+            "helpText": "One HTTP(S) endpoint per line. Endpoints can be native APIs, internal exports, webhooks, or JSON/text snapshots.",
+            "seedPath": "briefing.settings.sourceEndpoints"
+          },
+          {
+            "key": "bearerTokenEnv",
+            "label": "Bearer token env vars",
+            "type": "text",
+            "defaultValue": "GOOGLE_ACCESS_TOKEN,SLACK_BOT_TOKEN",
+            "placeholder": "GOOGLE_ACCESS_TOKEN,SLACK_BOT_TOKEN",
+            "helpText": "Comma-separated environment variable names. The first variable with a value is used as a Bearer token.",
+            "seedPath": "briefing.settings.bearerTokenEnv"
+          },
+          {
+            "key": "contextNotes",
+            "label": "Context notes",
+            "type": "textarea",
+            "defaultValue": "",
+            "rows": 6,
+            "placeholder": "My working hours are 09:00-18:00 Europe/Rome. Highlight meetings needing preparation and unanswered urgent messages.",
+            "helpText": "Optional instructions, priorities, account names, or pasted context to include in every run.",
+            "seedPath": "briefing.settings.contextNotes"
+          },
+          {
+            "key": "publishItems",
+            "label": "Publish report to Item Bus",
+            "type": "boolean",
+            "defaultValue": true,
+            "helpText": "When enabled, each run publishes the report as a briefing.digest item."
+          }
+        ]
+      }
+    ],
+    "routes": [
+      {
+        "id": "briefing-dashboard",
+        "label": "Briefing",
+        "description": "Builds a concise summary of calendar, email, and message context from configured source endpoints.",
+        "tab": "worker",
+        "path": "/api/workers/briefing/dashboard"
+      }
+    ]
+  }
+}

@@ -1,0 +1,53 @@
+{
+    "id": "email-triage",
+    "name": "Email Triage",
+    "tagline": "Sorts inbox items by urgency and drafts replies for messages that need a fast response.",
+    "description": "Categorizes and prioritizes inbox context, with draft responses for urgent items.\n\nThis source-backed package includes the backend worker, dashboard bundle, Config surface, scheduled job manifest, and README. It connects to Gmail or compatible inbox export/API endpoints through operator-configured HTTPS source endpoints and bearer-token environment variables.",
+    "author": "@ccascio",
+    "repoUrl": "https://github.com/ccascio/bfrost-workers",
+    "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/email-triage/README.md",
+    "category": "Productivity",
+    "tags": [
+        "email",
+        "gmail",
+        "triage",
+        "drafts",
+        "inbox"
+    ],
+    "trust": "Review",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.3.0",
+    "license": "MIT",
+    "createdAt": "2026-06-01T00:00:00Z",
+    "updatedAt": "2026-06-01T00:00:00Z",
+    "capabilities": {
+        "jobs": [
+            "email-triage"
+        ],
+        "tools": [],
+        "channels": [],
+        "providers": [],
+        "itemProduces": [
+            "email.triage"
+        ],
+        "itemConsumes": []
+    },
+    "permissions": [
+        "network:https",
+        "storage:worker-kv"
+    ],
+    "downloadCount": 0,
+    "versions": [
+        {
+            "version": "0.1.0",
+            "bfrostEngine": ">=0.3.0",
+            "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v0.1.0",
+            "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v0.1.0/email-triage.tar.gz",
+            "changelog": "Initial source-backed worker package.",
+            "publishedAt": "2026-06-01T00:00:00Z",
+            "yanked": false,
+            "bundleSha256": "b50f171d8ed0f7181493c9b3c81148e5912a15727ee2cd0cb61a670efaad87f1",
+            "bundleSizeBytes": 9981
+        }
+    ]
+}

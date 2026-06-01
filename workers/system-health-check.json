@@ -1,0 +1,65 @@
+{
+  "id": "system-health-check",
+  "name": "System Health Check",
+  "tagline": "Turns PagerDuty, Datadog, Sentry, and custom health signals into an operations status report.",
+  "description": "Checks connected monitoring services for active incidents, new errors or warnings, performance anomalies, and items resolved since the previous run. It has built-in checks for PagerDuty incidents, Datadog monitor alert/warn/no-data states and recovered alert events, and Sentry unresolved or recently resolved issues. Credentials are configured through local environment variable names so secret values stay in the BFrost .env file. Additional HTTP(S) endpoints can be used for status pages, internal exports, JSON/text snapshots, or other monitoring tools. If no issues are found, it reports All systems nominal.",
+  "author": "@ccascio",
+  "repoUrl": "https://github.com/ccascio/bfrost-workers",
+  "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/system-health-check/README.md",
+  "category": "Developer Tools",
+  "tags": [
+    "health",
+    "pagerduty",
+    "datadog",
+    "sentry",
+    "ops"
+  ],
+  "trust": "Review",
+  "latestVersion": "0.2.0",
+  "bfrostEngine": ">=0.3.0",
+  "license": "MIT",
+  "createdAt": "2026-06-01T00:00:00Z",
+  "updatedAt": "2026-06-01T00:00:00Z",
+  "capabilities": {
+    "jobs": [
+      "system-health-check"
+    ],
+    "tools": [],
+    "channels": [],
+    "providers": [],
+    "itemProduces": [
+      "ops.health-report"
+    ],
+    "itemConsumes": []
+  },
+  "permissions": [
+    "network:https",
+    "storage:worker-kv"
+  ],
+  "downloadCount": 0,
+  "versions": [
+    {
+      "version": "0.2.0",
+      "bfrostEngine": ">=0.3.0",
+      "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v0.2.0",
+      "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v0.2.0/system-health-check.tar.gz",
+      "changelog": "Add service-aware health checks for PagerDuty, Datadog, and Sentry, All systems nominal reporting, direct links on findings, and clearer setup guidance for environment-variable credentials.",
+      "publishedAt": "2026-06-01T00:00:00Z",
+      "yanked": false,
+      "bundleSha256": "de5ab0bc59d7f39c421fb7da1e4881ba4d711334ee7fee9d6fa0d12df7fa97b4",
+      "bundleSizeBytes": 16310
+    },
+    {
+      "version": "0.1.0",
+      "bfrostEngine": ">=0.3.0",
+      "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v0.1.0",
+      "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v0.1.0/system-health-check.tar.gz",
+      "changelog": "Initial source-backed worker package.",
+      "publishedAt": "2026-06-01T00:00:00Z",
+      "yanked": true,
+      "bundleSha256": "dcc99b59914594c002863eac06e1629532de55640477f78f4ff85bd173f9be9d",
+      "bundleSizeBytes": 10562,
+      "yankReason": "Superseded by service-aware monitoring connectors."
+    }
+  ]
+}

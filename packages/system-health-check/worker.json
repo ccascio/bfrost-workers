@@ -1,0 +1,150 @@
+{
+  "manifestVersion": 1,
+  "bfrostApiVersion": "0.1",
+  "id": "system-health-check",
+  "name": "System Health Check",
+  "displayName": "System Health Check",
+  "version": "0.2.0",
+  "description": "Checks connected monitoring services for active incidents, errors, warnings, performance anomalies, and resolved items.",
+  "tagline": "Turns PagerDuty, Datadog, Sentry, and custom health signals into an operations status report.",
+  "owner": "@ccascio",
+  "kind": "feature",
+  "language": "typescript",
+  "backendSource": "src/index.ts",
+  "backendEntrypoint": "dist/index.js",
+  "dashboardSource": "dashboard.tsx",
+  "dashboardEntrypoint": "dist/dashboard.js",
+  "ownedSettings": [
+    {
+      "key": "system-health-check-config",
+      "label": "System Health Check sources",
+      "description": "Monitoring service credentials, optional source endpoints, and operator context.",
+      "scope": "worker",
+      "storageKey": "worker.system-health-check.settings",
+      "dashboardTarget": "config"
+    },
+    {
+      "key": "system-health-check-job",
+      "label": "System health check schedule",
+      "description": "Cron, model, prompt, and run parameters.",
+      "scope": "job",
+      "storageKey": "admin.settings.jobs.system-health-check",
+      "dashboardTarget": "jobs"
+    }
+  ],
+  "dashboard": {
+    "settings": [
+      {
+        "id": "system-health-check-config",
+        "label": "System Health Check sources",
+        "description": "Connect monitoring services by entering environment variable names; the secret values stay in local .env.",
+        "tab": "config",
+        "path": "/api/workers/system-health-check/settings",
+        "fields": [
+          {
+            "key": "pagerDutyTokenEnv",
+            "label": "PagerDuty token env var",
+            "type": "text",
+            "defaultValue": "PAGERDUTY_API_TOKEN",
+            "placeholder": "PAGERDUTY_API_TOKEN",
+            "helpText": "Optional. Put the actual PagerDuty REST API token in your local .env as this variable name; BFrost stores only the variable name here. Used to read active, acknowledged, and resolved incidents."
+          },
+          {
+            "key": "datadogApiKeyEnv",
+            "label": "Datadog API key env var",
+            "type": "text",
+            "defaultValue": "DATADOG_API_KEY",
+            "placeholder": "DATADOG_API_KEY",
+            "helpText": "Optional. Put your Datadog API key in .env as this variable name. Datadog requires both an API key and an application key for read API calls."
+          },
+          {
+            "key": "datadogAppKeyEnv",
+            "label": "Datadog app key env var",
+            "type": "text",
+            "defaultValue": "DATADOG_APP_KEY",
+            "placeholder": "DATADOG_APP_KEY",
+            "helpText": "Optional. Put your Datadog application key in .env as this variable name. Scope it to the minimum read permissions needed for monitors/events."
+          },
+          {
+            "key": "datadogSite",
+            "label": "Datadog API site",
+            "type": "text",
+            "defaultValue": "https://api.datadoghq.com",
+            "placeholder": "https://api.datadoghq.eu",
+            "helpText": "Use your Datadog site, such as https://api.datadoghq.com or https://api.datadoghq.eu."
+          },
+          {
+            "key": "sentryTokenEnv",
+            "label": "Sentry token env var",
+            "type": "text",
+            "defaultValue": "SENTRY_AUTH_TOKEN",
+            "placeholder": "SENTRY_AUTH_TOKEN",
+            "helpText": "Optional. Put a Sentry auth token in .env as this variable name. The token needs read access for project/issues/events data."
+          },
+          {
+            "key": "sentryOrg",
+            "label": "Sentry organization slug",
+            "type": "text",
+            "defaultValue": "",
+            "placeholder": "my-org",
+            "helpText": "Your Sentry organization slug. If blank, the worker reads SENTRY_ORG from the local environment."
+          },
+          {
+            "key": "sentryProjects",
+            "label": "Sentry projects",
+            "type": "textarea",
+            "defaultValue": "",
+            "rows": 3,
+            "placeholder": "api\nweb-dashboard",
+            "helpText": "One Sentry project slug per line. If blank, the worker reads SENTRY_PROJECT from the local environment."
+          },
+          {
+            "key": "sourceEndpoints",
+            "label": "Additional health endpoints",
+            "type": "textarea",
+            "defaultValue": "",
+            "rows": 6,
+            "placeholder": "https://status.example.com/api/status\nhttps://internal.example.com/health-report.json",
+            "helpText": "Optional. Add status pages, internal exports, JSON snapshots, or other HTTP(S) sources not covered by built-in connectors.",
+            "seedPath": "system-health-check.settings.sourceEndpoints"
+          },
+          {
+            "key": "bearerTokenEnv",
+            "label": "Additional endpoint bearer token env vars",
+            "type": "text",
+            "defaultValue": "PAGERDUTY_API_TOKEN,DATADOG_API_KEY,SENTRY_AUTH_TOKEN",
+            "placeholder": "CUSTOM_HEALTH_TOKEN",
+            "helpText": "Optional. Comma-separated .env variable names. Used only for Additional health endpoints that accept Authorization: Bearer tokens.",
+            "seedPath": "system-health-check.settings.bearerTokenEnv"
+          },
+          {
+            "key": "contextNotes",
+            "label": "Context notes",
+            "type": "textarea",
+            "defaultValue": "",
+            "rows": 6,
+            "placeholder": "Watch production, API latency, payment flows, and worker queues. Call out anything that needs same-day action.",
+            "helpText": "Optional instructions, service priorities, or pasted incident summaries to include in every run.",
+            "seedPath": "system-health-check.settings.contextNotes"
+          },
+          {
+            "key": "publishItems",
+            "label": "Publish report to Item Bus",
+            "type": "boolean",
+            "defaultValue": true,
+            "helpText": "When enabled, each non-setup run publishes an ops.health-report item, including All systems nominal reports."
+          }
+        ]
+      }
+    ],
+    "routes": [
+      {
+        "id": "system-health-check-dashboard",
+        "label": "Health",
+        "description": "Health reports across connected monitoring services.",
+        "tab": "worker",
+        "path": "/api/workers/system-health-check/dashboard"
+      }
+    ]
+  }
+}

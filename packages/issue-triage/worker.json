@@ -1,0 +1,93 @@
+{
+  "manifestVersion": 1,
+  "bfrostApiVersion": "0.1",
+  "id": "issue-triage",
+  "name": "Issue Triage",
+  "displayName": "Issue Triage",
+  "version": "0.1.0",
+  "description": "Reviews incoming issues, bugs, and feature requests and recommends labels, priority, and ownership.",
+  "tagline": "Reviews incoming issues and suggests priority, category, owner, and next action.",
+  "owner": "@ccascio",
+  "kind": "feature",
+  "language": "typescript",
+  "backendSource": "src/index.ts",
+  "backendEntrypoint": "dist/index.js",
+  "dashboardSource": "dashboard.tsx",
+  "dashboardEntrypoint": "dist/dashboard.js",
+  "ownedSettings": [
+    {
+      "key": "issue-triage-config",
+      "label": "Issue Triage sources",
+      "description": "Issue tracker endpoints",
+      "scope": "worker",
+      "storageKey": "worker.issue-triage.settings",
+      "dashboardTarget": "config"
+    },
+    {
+      "key": "issue-triage-job",
+      "label": "Issue triage schedule",
+      "description": "Cron, model, prompt, and run parameters.",
+      "scope": "job",
+      "storageKey": "admin.settings.jobs.issue-triage",
+      "dashboardTarget": "jobs"
+    }
+  ],
+  "dashboard": {
+    "settings": [
+      {
+        "id": "issue-triage-config",
+        "label": "Issue Triage sources",
+        "description": "Issue tracker endpoints",
+        "tab": "config",
+        "path": "/api/workers/issue-triage/settings",
+        "fields": [
+          {
+            "key": "sourceEndpoints",
+            "label": "Issue tracker endpoints",
+            "type": "textarea",
+            "defaultValue": "",
+            "rows": 8,
+            "placeholder": "https://api.linear.app/graphql\nhttps://api.github.com/repos/OWNER/REPO/issues?state=open&since=YYYY-MM-DDTHH:MM:SSZ",
+            "helpText": "One HTTP(S) endpoint per line. Endpoints can be native APIs, internal exports, webhooks, or JSON/text snapshots.",
+            "seedPath": "issue-triage.settings.sourceEndpoints"
+          },
+          {
+            "key": "bearerTokenEnv",
+            "label": "Bearer token env vars",
+            "type": "text",
+            "defaultValue": "LINEAR_API_KEY,GITHUB_TOKEN",
+            "placeholder": "LINEAR_API_KEY,GITHUB_TOKEN",
+            "helpText": "Comma-separated environment variable names. The first variable with a value is used as a Bearer token.",
+            "seedPath": "issue-triage.settings.bearerTokenEnv"
+          },
+          {
+            "key": "contextNotes",
+            "label": "Context notes",
+            "type": "textarea",
+            "defaultValue": "",
+            "rows": 6,
+            "placeholder": "Product areas: onboarding, billing, worker runtime, dashboard. Escalate regressions and customer-impacting bugs.",
+            "helpText": "Optional instructions, priorities, account names, or pasted context to include in every run.",
+            "seedPath": "issue-triage.settings.contextNotes"
+          },
+          {
+            "key": "publishItems",
+            "label": "Publish report to Item Bus",
+            "type": "boolean",
+            "defaultValue": true,
+            "helpText": "When enabled, each run publishes the report as a issue.triage item."
+          }
+        ]
+      }
+    ],
+    "routes": [
+      {
+        "id": "issue-triage-dashboard",
+        "label": "Issues",
+        "description": "Reviews incoming issues, bugs, and feature requests and recommends labels, priority, and ownership.",
+        "tab": "worker",
+        "path": "/api/workers/issue-triage/dashboard"
+      }
+    ]
+  }
+}

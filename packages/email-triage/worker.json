@@ -1,0 +1,93 @@
+{
+  "manifestVersion": 1,
+  "bfrostApiVersion": "0.1",
+  "id": "email-triage",
+  "name": "Email Triage",
+  "displayName": "Email Triage",
+  "version": "0.1.0",
+  "description": "Categorizes and prioritizes inbox context, with draft responses for urgent items.",
+  "tagline": "Sorts inbox items by urgency and drafts replies for messages that need a fast response.",
+  "owner": "@ccascio",
+  "kind": "feature",
+  "language": "typescript",
+  "backendSource": "src/index.ts",
+  "backendEntrypoint": "dist/index.js",
+  "dashboardSource": "dashboard.tsx",
+  "dashboardEntrypoint": "dist/dashboard.js",
+  "ownedSettings": [
+    {
+      "key": "email-triage-config",
+      "label": "Email Triage sources",
+      "description": "Inbox endpoints",
+      "scope": "worker",
+      "storageKey": "worker.email-triage.settings",
+      "dashboardTarget": "config"
+    },
+    {
+      "key": "email-triage-job",
+      "label": "Email triage schedule",
+      "description": "Cron, model, prompt, and run parameters.",
+      "scope": "job",
+      "storageKey": "admin.settings.jobs.email-triage",
+      "dashboardTarget": "jobs"
+    }
+  ],
+  "dashboard": {
+    "settings": [
+      {
+        "id": "email-triage-config",
+        "label": "Email Triage sources",
+        "description": "Inbox endpoints",
+        "tab": "config",
+        "path": "/api/workers/email-triage/settings",
+        "fields": [
+          {
+            "key": "sourceEndpoints",
+            "label": "Inbox endpoints",
+            "type": "textarea",
+            "defaultValue": "",
+            "rows": 8,
+            "placeholder": "https://gmail.googleapis.com/gmail/v1/users/me/messages?q=newer_than:2d\nhttps://api.example.com/inbox/export.json",
+            "helpText": "One HTTP(S) endpoint per line. Endpoints can be native APIs, internal exports, webhooks, or JSON/text snapshots.",
+            "seedPath": "email-triage.settings.sourceEndpoints"
+          },
+          {
+            "key": "bearerTokenEnv",
+            "label": "Bearer token env vars",
+            "type": "text",
+            "defaultValue": "GMAIL_ACCESS_TOKEN",
+            "placeholder": "GMAIL_ACCESS_TOKEN",
+            "helpText": "Comma-separated environment variable names. The first variable with a value is used as a Bearer token.",
+            "seedPath": "email-triage.settings.bearerTokenEnv"
+          },
+          {
+            "key": "contextNotes",
+            "label": "Context notes",
+            "type": "textarea",
+            "defaultValue": "",
+            "rows": 6,
+            "placeholder": "Prioritize customer issues, finance/legal requests, and anything blocking today. Draft replies in my concise style.",
+            "helpText": "Optional instructions, priorities, account names, or pasted context to include in every run.",
+            "seedPath": "email-triage.settings.contextNotes"
+          },
+          {
+            "key": "publishItems",
+            "label": "Publish report to Item Bus",
+            "type": "boolean",
+            "defaultValue": true,
+            "helpText": "When enabled, each run publishes the report as a email.triage item."
+          }
+        ]
+      }
+    ],
+    "routes": [
+      {
+        "id": "email-triage-dashboard",
+        "label": "Email",
+        "description": "Categorizes and prioritizes inbox context, with draft responses for urgent items.",
+        "tab": "worker",
+        "path": "/api/workers/email-triage/dashboard"
+      }
+    ]
+  }
+}

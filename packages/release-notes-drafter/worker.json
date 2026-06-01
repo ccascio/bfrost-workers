@@ -1,0 +1,93 @@
+{
+  "manifestVersion": 1,
+  "bfrostApiVersion": "0.1",
+  "id": "release-notes-drafter",
+  "name": "Release Notes Drafter",
+  "displayName": "Release Notes Drafter",
+  "version": "0.1.0",
+  "description": "Drafts user-facing release notes from merged PR or changelog source data.",
+  "tagline": "Turns merged PRs and changelog entries into clear user-facing release notes.",
+  "owner": "@ccascio",
+  "kind": "feature",
+  "language": "typescript",
+  "backendSource": "src/index.ts",
+  "backendEntrypoint": "dist/index.js",
+  "dashboardSource": "dashboard.tsx",
+  "dashboardEntrypoint": "dist/dashboard.js",
+  "ownedSettings": [
+    {
+      "key": "release-notes-drafter-config",
+      "label": "Release Notes Drafter sources",
+      "description": "Merged PR and changelog endpoints",
+      "scope": "worker",
+      "storageKey": "worker.release-notes-drafter.settings",
+      "dashboardTarget": "config"
+    },
+    {
+      "key": "release-notes-drafter-job",
+      "label": "Release notes draft schedule",
+      "description": "Cron, model, prompt, and run parameters.",
+      "scope": "job",
+      "storageKey": "admin.settings.jobs.release-notes-draft",
+      "dashboardTarget": "jobs"
+    }
+  ],
+  "dashboard": {
+    "settings": [
+      {
+        "id": "release-notes-drafter-config",
+        "label": "Release Notes Drafter sources",
+        "description": "Merged PR and changelog endpoints",
+        "tab": "config",
+        "path": "/api/workers/release-notes-drafter/settings",
+        "fields": [
+          {
+            "key": "sourceEndpoints",
+            "label": "Merged PR and changelog endpoints",
+            "type": "textarea",
+            "defaultValue": "",
+            "rows": 8,
+            "placeholder": "https://api.github.com/repos/OWNER/REPO/pulls?state=closed&sort=updated&direction=desc\nhttps://api.github.com/repos/OWNER/REPO/releases/latest",
+            "helpText": "One HTTP(S) endpoint per line. Endpoints can be native APIs, internal exports, webhooks, or JSON/text snapshots.",
+            "seedPath": "release-notes-drafter.settings.sourceEndpoints"
+          },
+          {
+            "key": "bearerTokenEnv",
+            "label": "Bearer token env vars",
+            "type": "text",
+            "defaultValue": "GITHUB_TOKEN",
+            "placeholder": "GITHUB_TOKEN",
+            "helpText": "Comma-separated environment variable names. The first variable with a value is used as a Bearer token.",
+            "seedPath": "release-notes-drafter.settings.bearerTokenEnv"
+          },
+          {
+            "key": "contextNotes",
+            "label": "Context notes",
+            "type": "textarea",
+            "defaultValue": "",
+            "rows": 6,
+            "placeholder": "Audience: product users, not engineers. Group by Added, Improved, Fixed, and Internal only when relevant.",
+            "helpText": "Optional instructions, priorities, account names, or pasted context to include in every run.",
+            "seedPath": "release-notes-drafter.settings.contextNotes"
+          },
+          {
+            "key": "publishItems",
+            "label": "Publish report to Item Bus",
+            "type": "boolean",
+            "defaultValue": true,
+            "helpText": "When enabled, each run publishes the report as a release.notes-draft item."
+          }
+        ]
+      }
+    ],
+    "routes": [
+      {
+        "id": "release-notes-drafter-dashboard",
+        "label": "Releases",
+        "description": "Drafts user-facing release notes from merged PR or changelog source data.",
+        "tab": "worker",
+        "path": "/api/workers/release-notes-drafter/dashboard"
+      }
+    ]
+  }
+}

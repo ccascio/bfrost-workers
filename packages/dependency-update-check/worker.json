@@ -1,0 +1,93 @@
+{
+  "manifestVersion": 1,
+  "bfrostApiVersion": "0.1",
+  "id": "dependency-update-check",
+  "name": "Dependency Update Check",
+  "displayName": "Dependency Update Check",
+  "version": "0.1.0",
+  "description": "Scans configured dependency/security endpoints for outdated packages, patches, and breaking-change risks.",
+  "tagline": "Reviews dependency update feeds for security patches, outdated packages, and risky upgrades.",
+  "owner": "@ccascio",
+  "kind": "feature",
+  "language": "typescript",
+  "backendSource": "src/index.ts",
+  "backendEntrypoint": "dist/index.js",
+  "dashboardSource": "dashboard.tsx",
+  "dashboardEntrypoint": "dist/dashboard.js",
+  "ownedSettings": [
+    {
+      "key": "dependency-update-check-config",
+      "label": "Dependency Update Check sources",
+      "description": "Dependency and advisory endpoints",
+      "scope": "worker",
+      "storageKey": "worker.dependency-update-check.settings",
+      "dashboardTarget": "config"
+    },
+    {
+      "key": "dependency-update-check-job",
+      "label": "Dependency update check schedule",
+      "description": "Cron, model, prompt, and run parameters.",
+      "scope": "job",
+      "storageKey": "admin.settings.jobs.dependency-update-check",
+      "dashboardTarget": "jobs"
+    }
+  ],
+  "dashboard": {
+    "settings": [
+      {
+        "id": "dependency-update-check-config",
+        "label": "Dependency Update Check sources",
+        "description": "Dependency and advisory endpoints",
+        "tab": "config",
+        "path": "/api/workers/dependency-update-check/settings",
+        "fields": [
+          {
+            "key": "sourceEndpoints",
+            "label": "Dependency and advisory endpoints",
+            "type": "textarea",
+            "defaultValue": "",
+            "rows": 8,
+            "placeholder": "https://api.github.com/repos/OWNER/REPO/dependabot/alerts\nhttps://api.osv.dev/v1/querybatch\nhttps://registry.npmjs.org/PACKAGE",
+            "helpText": "One HTTP(S) endpoint per line. Endpoints can be native APIs, internal exports, webhooks, or JSON/text snapshots.",
+            "seedPath": "dependency-update-check.settings.sourceEndpoints"
+          },
+          {
+            "key": "bearerTokenEnv",
+            "label": "Bearer token env vars",
+            "type": "text",
+            "defaultValue": "GITHUB_TOKEN,OSV_API_KEY",
+            "placeholder": "GITHUB_TOKEN,OSV_API_KEY",
+            "helpText": "Comma-separated environment variable names. The first variable with a value is used as a Bearer token.",
+            "seedPath": "dependency-update-check.settings.bearerTokenEnv"
+          },
+          {
+            "key": "contextNotes",
+            "label": "Context notes",
+            "type": "textarea",
+            "defaultValue": "",
+            "rows": 6,
+            "placeholder": "Prioritize security updates, runtime dependencies, and packages used in production deploy paths. Flag likely breaking changes.",
+            "helpText": "Optional instructions, priorities, account names, or pasted context to include in every run.",
+            "seedPath": "dependency-update-check.settings.contextNotes"
+          },
+          {
+            "key": "publishItems",
+            "label": "Publish report to Item Bus",
+            "type": "boolean",
+            "defaultValue": true,
+            "helpText": "When enabled, each run publishes the report as a dev.dependency-report item."
+          }
+        ]
+      }
+    ],
+    "routes": [
+      {
+        "id": "dependency-update-check-dashboard",
+        "label": "Deps",
+        "description": "Scans configured dependency/security endpoints for outdated packages, patches, and breaking-change risks.",
+        "tab": "worker",
+        "path": "/api/workers/dependency-update-check/dashboard"
+      }
+    ]
+  }
+}

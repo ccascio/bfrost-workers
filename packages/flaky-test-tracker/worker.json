@@ -1,0 +1,93 @@
+{
+  "manifestVersion": 1,
+  "bfrostApiVersion": "0.1",
+  "id": "flaky-test-tracker",
+  "name": "Flaky Test Tracker",
+  "displayName": "Flaky Test Tracker",
+  "version": "0.1.0",
+  "description": "Tracks intermittent test failures across recent CI runs and highlights likely flaky tests.",
+  "tagline": "Finds tests that pass and fail intermittently across recent CI runs.",
+  "owner": "@ccascio",
+  "kind": "feature",
+  "language": "typescript",
+  "backendSource": "src/index.ts",
+  "backendEntrypoint": "dist/index.js",
+  "dashboardSource": "dashboard.tsx",
+  "dashboardEntrypoint": "dist/dashboard.js",
+  "ownedSettings": [
+    {
+      "key": "flaky-test-tracker-config",
+      "label": "Flaky Test Tracker sources",
+      "description": "CI run and test-report endpoints",
+      "scope": "worker",
+      "storageKey": "worker.flaky-test-tracker.settings",
+      "dashboardTarget": "config"
+    },
+    {
+      "key": "flaky-test-tracker-job",
+      "label": "Flaky test tracker schedule",
+      "description": "Cron, model, prompt, and run parameters.",
+      "scope": "job",
+      "storageKey": "admin.settings.jobs.flaky-test-tracker",
+      "dashboardTarget": "jobs"
+    }
+  ],
+  "dashboard": {
+    "settings": [
+      {
+        "id": "flaky-test-tracker-config",
+        "label": "Flaky Test Tracker sources",
+        "description": "CI run and test-report endpoints",
+        "tab": "config",
+        "path": "/api/workers/flaky-test-tracker/settings",
+        "fields": [
+          {
+            "key": "sourceEndpoints",
+            "label": "CI run and test-report endpoints",
+            "type": "textarea",
+            "defaultValue": "",
+            "rows": 8,
+            "placeholder": "https://api.github.com/repos/OWNER/REPO/actions/runs?per_page=20\nhttps://api.github.com/repos/OWNER/REPO/actions/runs/RUN_ID/jobs",
+            "helpText": "One HTTP(S) endpoint per line. Endpoints can be native APIs, internal exports, webhooks, or JSON/text snapshots.",
+            "seedPath": "flaky-test-tracker.settings.sourceEndpoints"
+          },
+          {
+            "key": "bearerTokenEnv",
+            "label": "Bearer token env vars",
+            "type": "text",
+            "defaultValue": "GITHUB_TOKEN",
+            "placeholder": "GITHUB_TOKEN",
+            "helpText": "Comma-separated environment variable names. The first variable with a value is used as a Bearer token.",
+            "seedPath": "flaky-test-tracker.settings.bearerTokenEnv"
+          },
+          {
+            "key": "contextNotes",
+            "label": "Context notes",
+            "type": "textarea",
+            "defaultValue": "",
+            "rows": 6,
+            "placeholder": "Flag tests or suites that fail intermittently, especially if later reruns pass. Include workflow, branch, and failure pattern.",
+            "helpText": "Optional instructions, priorities, account names, or pasted context to include in every run.",
+            "seedPath": "flaky-test-tracker.settings.contextNotes"
+          },
+          {
+            "key": "publishItems",
+            "label": "Publish report to Item Bus",
+            "type": "boolean",
+            "defaultValue": true,
+            "helpText": "When enabled, each run publishes the report as a dev.flaky-test-report item."
+          }
+        ]
+      }
+    ],
+    "routes": [
+      {
+        "id": "flaky-test-tracker-dashboard",
+        "label": "Flaky Tests",
+        "description": "Tracks intermittent test failures across recent CI runs and highlights likely flaky tests.",
+        "tab": "worker",
+        "path": "/api/workers/flaky-test-tracker/dashboard"
+      }
+    ]
+  }
+}

@@ -1,5 +1,441 @@
 [
   {
+    "id": "briefing",
+    "name": "Briefing",
+    "tagline": "Turns your calendar, email, and message context into a focused daily briefing.",
+    "description": "Builds a concise summary of calendar, email, and message context from configured source endpoints.\n\nThis source-backed package includes the backend worker, dashboard bundle, Config surface, scheduled job manifest, and README. It connects to Google Calendar, Gmail, Slack, or compatible export/API endpoints through operator-configured HTTPS source endpoints and bearer-token environment variables.",
+    "author": "@ccascio",
+    "repoUrl": "https://github.com/ccascio/bfrost-workers",
+    "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/briefing/README.md",
+    "category": "Productivity",
+    "tags": [
+      "briefing",
+      "calendar",
+      "gmail",
+      "slack",
+      "digest"
+    ],
+    "trust": "Review",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.3.0",
+    "license": "MIT",
+    "createdAt": "2026-06-01T00:00:00Z",
+    "updatedAt": "2026-06-01T00:00:00Z",
+    "capabilities": {
+      "jobs": [
+        "daily-briefing"
+      ],
+      "tools": [],
+      "channels": [],
+      "providers": [],
+      "itemProduces": [
+        "briefing.digest"
+      ],
+      "itemConsumes": []
+    },
+    "permissions": [
+      "network:https",
+      "storage:worker-kv"
+    ],
+    "downloadCount": 0,
+    "versions": [
+      {
+        "version": "0.1.0",
+        "bfrostEngine": ">=0.3.0",
+        "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v0.1.0",
+        "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v0.1.0/briefing.tar.gz",
+        "changelog": "Initial source-backed worker package.",
+        "publishedAt": "2026-06-01T00:00:00Z",
+        "yanked": false,
+        "bundleSha256": "c7ada96820fab8c0922faa2857cda3ac535ffa7d4291b1f12df25b8399bc2ea6",
+        "bundleSizeBytes": 10068
+      }
+    ]
+  },
+  {
+    "id": "dependency-update-check",
+    "name": "Dependency Update Check",
+    "tagline": "Reviews dependency update feeds for security patches, outdated packages, and risky upgrades.",
+    "description": "Scans configured dependency/security endpoints for outdated packages, patches, and breaking-change risks.\n\nThis source-backed package includes the backend worker, dashboard bundle, Config surface, scheduled job manifest, and README. It connects to GitHub Dependabot, OSV, npm registry, or compatible dependency export endpoints through operator-configured HTTPS source endpoints and bearer-token environment variables.",
+    "author": "@ccascio",
+    "repoUrl": "https://github.com/ccascio/bfrost-workers",
+    "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/dependency-update-check/README.md",
+    "category": "Developer Tools",
+    "tags": [
+      "dependencies",
+      "security",
+      "dependabot",
+      "npm",
+      "updates"
+    ],
+    "trust": "Review",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.3.0",
+    "license": "MIT",
+    "createdAt": "2026-06-01T00:00:00Z",
+    "updatedAt": "2026-06-01T00:00:00Z",
+    "capabilities": {
+      "jobs": [
+        "dependency-update-check"
+      ],
+      "tools": [],
+      "channels": [],
+      "providers": [],
+      "itemProduces": [
+        "dev.dependency-report"
+      ],
+      "itemConsumes": []
+    },
+    "permissions": [
+      "network:https",
+      "storage:worker-kv"
+    ],
+    "downloadCount": 0,
+    "versions": [
+      {
+        "version": "0.1.0",
+        "bfrostEngine": ">=0.3.0",
+        "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v0.1.0",
+        "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v0.1.0/dependency-update-check.tar.gz",
+        "changelog": "Initial source-backed worker package.",
+        "publishedAt": "2026-06-01T00:00:00Z",
+        "yanked": false,
+        "bundleSha256": "0c1ff99a89c923833e1ed30dd1d00f10363709548d11f3387a7c005e8e7a4b0b",
+        "bundleSizeBytes": 10054
+      }
+    ]
+  },
+  {
+    "id": "email-triage",
+    "name": "Email Triage",
+    "tagline": "Sorts inbox items by urgency and drafts replies for messages that need a fast response.",
+    "description": "Categorizes and prioritizes inbox context, with draft responses for urgent items.\n\nThis source-backed package includes the backend worker, dashboard bundle, Config surface, scheduled job manifest, and README. It connects to Gmail or compatible inbox export/API endpoints through operator-configured HTTPS source endpoints and bearer-token environment variables.",
+    "author": "@ccascio",
+    "repoUrl": "https://github.com/ccascio/bfrost-workers",
+    "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/email-triage/README.md",
+    "category": "Productivity",
+    "tags": [
+      "email",
+      "gmail",
+      "triage",
+      "drafts",
+      "inbox"
+    ],
+    "trust": "Review",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.3.0",
+    "license": "MIT",
+    "createdAt": "2026-06-01T00:00:00Z",
+    "updatedAt": "2026-06-01T00:00:00Z",
+    "capabilities": {
+      "jobs": [
+        "email-triage"
+      ],
+      "tools": [],
+      "channels": [],
+      "providers": [],
+      "itemProduces": [
+        "email.triage"
+      ],
+      "itemConsumes": []
+    },
+    "permissions": [
+      "network:https",
+      "storage:worker-kv"
+    ],
+    "downloadCount": 0,
+    "versions": [
+      {
+        "version": "0.1.0",
+        "bfrostEngine": ">=0.3.0",
+        "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v0.1.0",
+        "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v0.1.0/email-triage.tar.gz",
+        "changelog": "Initial source-backed worker package.",
+        "publishedAt": "2026-06-01T00:00:00Z",
+        "yanked": false,
+        "bundleSha256": "b50f171d8ed0f7181493c9b3c81148e5912a15727ee2cd0cb61a670efaad87f1",
+        "bundleSizeBytes": 9981
+      }
+    ]
+  },
+  {
+    "id": "flaky-test-tracker",
+    "name": "Flaky Test Tracker",
+    "tagline": "Finds tests that pass and fail intermittently across recent CI runs.",
+    "description": "Tracks intermittent test failures across recent CI runs and highlights likely flaky tests.\n\nThis source-backed package includes the backend worker, dashboard bundle, Config surface, scheduled job manifest, and README. It connects to GitHub Actions, CI exports, JUnit summaries, or compatible test-report endpoints through operator-configured HTTPS source endpoints and bearer-token environment variables.",
+    "author": "@ccascio",
+    "repoUrl": "https://github.com/ccascio/bfrost-workers",
+    "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/flaky-test-tracker/README.md",
+    "category": "Developer Tools",
+    "tags": [
+      "ci",
+      "tests",
+      "flaky-tests",
+      "github-actions",
+      "quality"
+    ],
+    "trust": "Review",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.3.0",
+    "license": "MIT",
+    "createdAt": "2026-06-01T00:00:00Z",
+    "updatedAt": "2026-06-01T00:00:00Z",
+    "capabilities": {
+      "jobs": [
+        "flaky-test-tracker"
+      ],
+      "tools": [],
+      "channels": [],
+      "providers": [],
+      "itemProduces": [
+        "dev.flaky-test-report"
+      ],
+      "itemConsumes": []
+    },
+    "permissions": [
+      "network:https",
+      "storage:worker-kv"
+    ],
+    "downloadCount": 0,
+    "versions": [
+      {
+        "version": "0.1.0",
+        "bfrostEngine": ">=0.3.0",
+        "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v0.1.0",
+        "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v0.1.0/flaky-test-tracker.tar.gz",
+        "changelog": "Initial source-backed worker package.",
+        "publishedAt": "2026-06-01T00:00:00Z",
+        "yanked": false,
+        "bundleSha256": "9ba06c1274d78be642167834b954c0cee5e84cfc4af15f50b28b6250cb64b010",
+        "bundleSizeBytes": 10045
+      }
+    ]
+  },
+  {
+    "id": "issue-triage",
+    "name": "Issue Triage",
+    "tagline": "Reviews incoming issues and suggests priority, category, owner, and next action.",
+    "description": "Reviews incoming issues, bugs, and feature requests and recommends labels, priority, and ownership.\n\nThis source-backed package includes the backend worker, dashboard bundle, Config surface, scheduled job manifest, and README. It connects to Linear, GitHub Issues, or compatible issue export/API endpoints through operator-configured HTTPS source endpoints and bearer-token environment variables.",
+    "author": "@ccascio",
+    "repoUrl": "https://github.com/ccascio/bfrost-workers",
+    "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/issue-triage/README.md",
+    "category": "Developer Tools",
+    "tags": [
+      "issues",
+      "linear",
+      "triage",
+      "bugs",
+      "feature-requests"
+    ],
+    "trust": "Review",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.3.0",
+    "license": "MIT",
+    "createdAt": "2026-06-01T00:00:00Z",
+    "updatedAt": "2026-06-01T00:00:00Z",
+    "capabilities": {
+      "jobs": [
+        "issue-triage"
+      ],
+      "tools": [],
+      "channels": [],
+      "providers": [],
+      "itemProduces": [
+        "issue.triage"
+      ],
+      "itemConsumes": []
+    },
+    "permissions": [
+      "network:https",
+      "storage:worker-kv"
+    ],
+    "downloadCount": 0,
+    "versions": [
+      {
+        "version": "0.1.0",
+        "bfrostEngine": ">=0.3.0",
+        "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v0.1.0",
+        "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v0.1.0/issue-triage.tar.gz",
+        "changelog": "Initial source-backed worker package.",
+        "publishedAt": "2026-06-01T00:00:00Z",
+        "yanked": false,
+        "bundleSha256": "c0e0e1b468a14b77ffc3047a675ccc2a9d14528e5c24e0e5989a2f7ad0feeb58",
+        "bundleSizeBytes": 10033
+      }
+    ]
+  },
+  {
+    "id": "pr-review-digest",
+    "name": "PR Review Digest",
+    "tagline": "Summarizes open PRs, review state, blockers, and the next reviews to do.",
+    "description": "Summarizes open pull requests, review status, blockers, and what needs attention.\n\nThis source-backed package includes the backend worker, dashboard bundle, Config surface, scheduled job manifest, and README. It connects to GitHub pull request API or compatible code-review export endpoints through operator-configured HTTPS source endpoints and bearer-token environment variables.",
+    "author": "@ccascio",
+    "repoUrl": "https://github.com/ccascio/bfrost-workers",
+    "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/pr-review-digest/README.md",
+    "category": "Developer Tools",
+    "tags": [
+      "github",
+      "pull-requests",
+      "review",
+      "digest",
+      "ci"
+    ],
+    "trust": "Review",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.3.0",
+    "license": "MIT",
+    "createdAt": "2026-06-01T00:00:00Z",
+    "updatedAt": "2026-06-01T00:00:00Z",
+    "capabilities": {
+      "jobs": [
+        "pr-review-digest"
+      ],
+      "tools": [],
+      "channels": [],
+      "providers": [],
+      "itemProduces": [
+        "dev.pr-review-digest"
+      ],
+      "itemConsumes": []
+    },
+    "permissions": [
+      "network:https",
+      "storage:worker-kv"
+    ],
+    "downloadCount": 0,
+    "versions": [
+      {
+        "version": "0.1.0",
+        "bfrostEngine": ">=0.3.0",
+        "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v0.1.0",
+        "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v0.1.0/pr-review-digest.tar.gz",
+        "changelog": "Initial source-backed worker package.",
+        "publishedAt": "2026-06-01T00:00:00Z",
+        "yanked": false,
+        "bundleSha256": "105aaa9d4c98b2a76844a1972e29b09b63b27a2ce2fe37e89a5bc6a5430b38f3",
+        "bundleSizeBytes": 9971
+      }
+    ]
+  },
+  {
+    "id": "release-notes-drafter",
+    "name": "Release Notes Drafter",
+    "tagline": "Turns merged PRs and changelog entries into clear user-facing release notes.",
+    "description": "Drafts user-facing release notes from merged PR or changelog source data.\n\nThis source-backed package includes the backend worker, dashboard bundle, Config surface, scheduled job manifest, and README. It connects to GitHub merged PRs, changelog exports, or release feed endpoints through operator-configured HTTPS source endpoints and bearer-token environment variables.",
+    "author": "@ccascio",
+    "repoUrl": "https://github.com/ccascio/bfrost-workers",
+    "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/release-notes-drafter/README.md",
+    "category": "Productivity",
+    "tags": [
+      "release-notes",
+      "github",
+      "pull-requests",
+      "changelog",
+      "drafting"
+    ],
+    "trust": "Review",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.3.0",
+    "license": "MIT",
+    "createdAt": "2026-06-01T00:00:00Z",
+    "updatedAt": "2026-06-01T00:00:00Z",
+    "capabilities": {
+      "jobs": [
+        "release-notes-draft"
+      ],
+      "tools": [],
+      "channels": [],
+      "providers": [],
+      "itemProduces": [
+        "release.notes-draft"
+      ],
+      "itemConsumes": []
+    },
+    "permissions": [
+      "network:https",
+      "storage:worker-kv"
+    ],
+    "downloadCount": 0,
+    "versions": [
+      {
+        "version": "0.1.0",
+        "bfrostEngine": ">=0.3.0",
+        "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v0.1.0",
+        "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v0.1.0/release-notes-drafter.tar.gz",
+        "changelog": "Initial source-backed worker package.",
+        "publishedAt": "2026-06-01T00:00:00Z",
+        "yanked": false,
+        "bundleSha256": "eef320176ce77d6e2dddd1f21346fad7670847909c65bcbc220d3187e27976c8",
+        "bundleSizeBytes": 10030
+      }
+    ]
+  },
+  {
+    "id": "system-health-check",
+    "name": "System Health Check",
+    "tagline": "Turns PagerDuty, Datadog, Sentry, and custom health signals into an operations status report.",
+    "description": "Checks connected monitoring services for active incidents, new errors or warnings, performance anomalies, and items resolved since the previous run. It has built-in checks for PagerDuty incidents, Datadog monitor alert/warn/no-data states and recovered alert events, and Sentry unresolved or recently resolved issues. Credentials are configured through local environment variable names so secret values stay in the BFrost .env file. Additional HTTP(S) endpoints can be used for status pages, internal exports, JSON/text snapshots, or other monitoring tools. If no issues are found, it reports All systems nominal.",
+    "author": "@ccascio",
+    "repoUrl": "https://github.com/ccascio/bfrost-workers",
+    "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/system-health-check/README.md",
+    "category": "Developer Tools",
+    "tags": [
+      "health",
+      "pagerduty",
+      "datadog",
+      "sentry",
+      "ops"
+    ],
+    "trust": "Review",
+    "latestVersion": "0.2.0",
+    "bfrostEngine": ">=0.3.0",
+    "license": "MIT",
+    "createdAt": "2026-06-01T00:00:00Z",
+    "updatedAt": "2026-06-01T00:00:00Z",
+    "capabilities": {
+      "jobs": [
+        "system-health-check"
+      ],
+      "tools": [],
+      "channels": [],
+      "providers": [],
+      "itemProduces": [
+        "ops.health-report"
+      ],
+      "itemConsumes": []
+    },
+    "permissions": [
+      "network:https",
+      "storage:worker-kv"
+    ],
+    "downloadCount": 0,
+    "versions": [
+      {
+        "version": "0.2.0",
+        "bfrostEngine": ">=0.3.0",
+        "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v0.2.0",
+        "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v0.2.0/system-health-check.tar.gz",
+        "changelog": "Add service-aware health checks for PagerDuty, Datadog, and Sentry, All systems nominal reporting, direct links on findings, and clearer setup guidance for environment-variable credentials.",
+        "publishedAt": "2026-06-01T00:00:00Z",
+        "yanked": false,
+        "bundleSha256": "de5ab0bc59d7f39c421fb7da1e4881ba4d711334ee7fee9d6fa0d12df7fa97b4",
+        "bundleSizeBytes": 16310
+      },
+      {
+        "version": "0.1.0",
+        "bfrostEngine": ">=0.3.0",
+        "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v0.1.0",
+        "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v0.1.0/system-health-check.tar.gz",
+        "changelog": "Initial source-backed worker package.",
+        "publishedAt": "2026-06-01T00:00:00Z",
+        "yanked": true,
+        "bundleSha256": "dcc99b59914594c002863eac06e1629532de55640477f78f4ff85bd173f9be9d",
+        "bundleSizeBytes": 10562,
+        "yankReason": "Superseded by service-aware monitoring connectors."
+      }
+    ]
+  },
+  {
     "id": "rss-harvester",
     "name": "RSS Harvester",
     "tagline": "Polls RSS feeds on a schedule — AI relevance filtering surfaces only what matches your stated interests.",

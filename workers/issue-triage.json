@@ -1,0 +1,53 @@
+{
+    "id": "issue-triage",
+    "name": "Issue Triage",
+    "tagline": "Reviews incoming issues and suggests priority, category, owner, and next action.",
+    "description": "Reviews incoming issues, bugs, and feature requests and recommends labels, priority, and ownership.\n\nThis source-backed package includes the backend worker, dashboard bundle, Config surface, scheduled job manifest, and README. It connects to Linear, GitHub Issues, or compatible issue export/API endpoints through operator-configured HTTPS source endpoints and bearer-token environment variables.",
+    "author": "@ccascio",
+    "repoUrl": "https://github.com/ccascio/bfrost-workers",
+    "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/issue-triage/README.md",
+    "category": "Developer Tools",
+    "tags": [
+        "issues",
+        "linear",
+        "triage",
+        "bugs",
+        "feature-requests"
+    ],
+    "trust": "Review",
+    "latestVersion": "0.1.0",
+    "bfrostEngine": ">=0.3.0",
+    "license": "MIT",
+    "createdAt": "2026-06-01T00:00:00Z",
+    "updatedAt": "2026-06-01T00:00:00Z",
+    "capabilities": {
+        "jobs": [
+            "issue-triage"
+        ],
+        "tools": [],
+        "channels": [],
+        "providers": [],
+        "itemProduces": [
+            "issue.triage"
+        ],
+        "itemConsumes": []
+    },
+    "permissions": [
+        "network:https",
+        "storage:worker-kv"
+    ],
+    "downloadCount": 0,
+    "versions": [
+        {
+            "version": "0.1.0",
+            "bfrostEngine": ">=0.3.0",
+            "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v0.1.0",
+            "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v0.1.0/issue-triage.tar.gz",
+            "changelog": "Initial source-backed worker package.",
+            "publishedAt": "2026-06-01T00:00:00Z",
+            "yanked": false,
+            "bundleSha256": "c0e0e1b468a14b77ffc3047a675ccc2a9d14528e5c24e0e5989a2f7ad0feeb58",
+            "bundleSizeBytes": 10033
+        }
+    ]
+}
