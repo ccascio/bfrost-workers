@@ -651,7 +651,7 @@
       "consumer",
       "local-first"
     ],
-    "trust": "Review",
+    "trust": "Community",
     "latestVersion": "0.2.0",
     "bfrostEngine": ">=0.3.0",
     "license": "MIT",
@@ -886,7 +886,7 @@
       "academic",
       "local-first"
     ],
-    "trust": "Review",
+    "trust": "Community",
     "latestVersion": "0.1.0",
     "bfrostEngine": ">=0.3.0",
     "license": "MIT",
@@ -940,7 +940,7 @@
       "assistant-tool",
       "research"
     ],
-    "trust": "Review",
+    "trust": "Community",
     "latestVersion": "0.1.0",
     "bfrostEngine": ">=0.3.0",
     "license": "MIT",

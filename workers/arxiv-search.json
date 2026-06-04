@@ -7,22 +7,36 @@
   "repoUrl": "https://github.com/ccascio/bfrost-workers",
   "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/arxiv-search/README.md",
   "category": "AI / Research",
-  "tags": ["arxiv", "research", "papers", "producer", "academic", "local-first"],
-  "trust": "Review",
+  "tags": [
+    "arxiv",
+    "research",
+    "papers",
+    "producer",
+    "academic",
+    "local-first"
+  ],
+  "trust": "Community",
   "latestVersion": "0.1.0",
   "bfrostEngine": ">=0.3.0",
   "license": "MIT",
   "createdAt": "2026-05-28T08:00:00Z",
   "updatedAt": "2026-05-28T08:00:00Z",
   "capabilities": {
-    "jobs": ["arxiv-search-fetch"],
+    "jobs": [
+      "arxiv-search-fetch"
+    ],
     "tools": [],
     "channels": [],
     "providers": [],
-    "itemProduces": ["research.paper"],
+    "itemProduces": [
+      "research.paper"
+    ],
     "itemConsumes": []
   },
-  "permissions": ["network:https", "storage:worker-kv"],
+  "permissions": [
+    "network:https",
+    "storage:worker-kv"
+  ],
   "downloadCount": 0,
   "versions": [
     {

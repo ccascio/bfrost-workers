@@ -7,8 +7,15 @@
   "repoUrl": "https://github.com/ccascio/bfrost-workers",
   "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/crossref-doi-resolver/README.md",
   "category": "AI / Research",
-  "tags": ["crossref", "doi", "citation", "metadata", "assistant-tool", "research"],
-  "trust": "Review",
+  "tags": [
+    "crossref",
+    "doi",
+    "citation",
+    "metadata",
+    "assistant-tool",
+    "research"
+  ],
+  "trust": "Community",
   "latestVersion": "0.1.0",
   "bfrostEngine": ">=0.3.0",
   "license": "MIT",
@@ -16,13 +23,18 @@
   "updatedAt": "2026-05-28T08:00:00Z",
   "capabilities": {
     "jobs": [],
-    "tools": ["resolveCrossrefWork"],
+    "tools": [
+      "resolveCrossrefWork"
+    ],
     "channels": [],
     "providers": [],
     "itemProduces": [],
     "itemConsumes": []
   },
-  "permissions": ["network:https", "storage:worker-kv"],
+  "permissions": [
+    "network:https",
+    "storage:worker-kv"
+  ],
   "downloadCount": 0,
   "versions": [
     {

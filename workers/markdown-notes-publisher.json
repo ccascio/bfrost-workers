@@ -7,22 +7,43 @@
   "repoUrl": "https://github.com/ccascio/bfrost-workers",
   "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/markdown-notes-publisher/README.md",
   "category": "Productivity",
-  "tags": ["markdown", "notes", "obsidian", "logseq", "joplin", "consumer", "local-first"],
-  "trust": "Review",
+  "tags": [
+    "markdown",
+    "notes",
+    "obsidian",
+    "logseq",
+    "joplin",
+    "consumer",
+    "local-first"
+  ],
+  "trust": "Community",
   "latestVersion": "0.2.0",
   "bfrostEngine": ">=0.3.0",
   "license": "MIT",
   "createdAt": "2026-05-28T08:00:00Z",
   "updatedAt": "2026-05-29T14:00:00Z",
   "capabilities": {
-    "jobs": ["markdown-notes-write"],
+    "jobs": [
+      "markdown-notes-write"
+    ],
     "tools": [],
     "channels": [],
     "providers": [],
     "itemProduces": [],
-    "itemConsumes": ["news.article", "research.paper", "web.page", "webhook.event"]
+    "itemConsumes": [
+      "news.article",
+      "research.paper",
+      "web.page",
+      "webhook.event"
+    ]
   },
-  "permissions": ["filesystem:scoped-read", "filesystem:scoped-write", "network:http", "network:https", "storage:worker-kv"],
+  "permissions": [
+    "filesystem:scoped-read",
+    "filesystem:scoped-write",
+    "network:http",
+    "network:https",
+    "storage:worker-kv"
+  ],
   "downloadCount": 0,
   "versions": [
     {
