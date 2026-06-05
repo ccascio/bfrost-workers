@@ -722,7 +722,7 @@
       "mobile",
       "local-first"
     ],
-    "trust": "Review",
+    "trust": "Community",
     "latestVersion": "0.1.0",
     "bfrostEngine": ">=0.3.0",
     "license": "MIT",
@@ -780,7 +780,7 @@
       "changelog",
       "local-first"
     ],
-    "trust": "Review",
+    "trust": "Community",
     "latestVersion": "0.1.0",
     "bfrostEngine": ">=0.3.0",
     "license": "MIT",
@@ -835,7 +835,7 @@
       "low-code",
       "local-first"
     ],
-    "trust": "Review",
+    "trust": "Community",
     "latestVersion": "0.1.0",
     "bfrostEngine": ">=0.3.0",
     "license": "MIT",

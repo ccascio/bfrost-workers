@@ -7,8 +7,15 @@
   "repoUrl": "https://github.com/ccascio/bfrost-workers",
   "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/webhook-inbox/README.md",
   "category": "Developer Tools",
-  "tags": ["webhook", "automation", "inbox", "producer", "low-code", "local-first"],
-  "trust": "Review",
+  "tags": [
+    "webhook",
+    "automation",
+    "inbox",
+    "producer",
+    "low-code",
+    "local-first"
+  ],
+  "trust": "Community",
   "latestVersion": "0.1.0",
   "bfrostEngine": ">=0.3.0",
   "license": "MIT",
@@ -19,10 +26,14 @@
     "tools": [],
     "channels": [],
     "providers": [],
-    "itemProduces": ["webhook.event"],
+    "itemProduces": [
+      "webhook.event"
+    ],
     "itemConsumes": []
   },
-  "permissions": ["storage:worker-kv"],
+  "permissions": [
+    "storage:worker-kv"
+  ],
   "downloadCount": 0,
   "versions": [
     {
