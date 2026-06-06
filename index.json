@@ -542,7 +542,7 @@
       "item-bus",
       "local-first"
     ],
-    "trust": "Review",
+    "trust": "Community",
     "latestVersion": "0.1.0",
     "bfrostEngine": ">=0.3.0",
     "license": "MIT",
@@ -595,7 +595,7 @@
       "google-search",
       "local-first"
     ],
-    "trust": "Review",
+    "trust": "Community",
     "latestVersion": "0.1.0",
     "bfrostEngine": ">=0.3.0",
     "license": "MIT",

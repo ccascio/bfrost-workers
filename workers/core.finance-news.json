@@ -7,22 +7,37 @@
   "repoUrl": "https://github.com/ccascio/bfrost-workers",
   "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/core.finance-news/README.md",
   "category": "AI / Research",
-  "tags": ["finance", "news", "watchlist", "producer", "google-search", "local-first"],
-  "trust": "Review",
+  "tags": [
+    "finance",
+    "news",
+    "watchlist",
+    "producer",
+    "google-search",
+    "local-first"
+  ],
+  "trust": "Community",
   "latestVersion": "0.1.0",
   "bfrostEngine": ">=0.3.0",
   "license": "MIT",
   "createdAt": "2026-05-29T15:00:00Z",
   "updatedAt": "2026-05-29T15:00:00Z",
   "capabilities": {
-    "jobs": ["finance-news-scan"],
+    "jobs": [
+      "finance-news-scan"
+    ],
     "tools": [],
     "channels": [],
     "providers": [],
-    "itemProduces": ["finance.news"],
+    "itemProduces": [
+      "finance.news"
+    ],
     "itemConsumes": []
   },
-  "permissions": ["network:http", "network:https", "storage:worker-kv"],
+  "permissions": [
+    "network:http",
+    "network:https",
+    "storage:worker-kv"
+  ],
   "downloadCount": 0,
   "versions": [
     {

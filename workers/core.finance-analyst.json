@@ -7,22 +7,34 @@
   "repoUrl": "https://github.com/ccascio/bfrost-workers",
   "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/core.finance-analyst/README.md",
   "category": "AI / Research",
-  "tags": ["finance", "analysis", "consumer", "item-bus", "local-first"],
-  "trust": "Review",
+  "tags": [
+    "finance",
+    "analysis",
+    "consumer",
+    "item-bus",
+    "local-first"
+  ],
+  "trust": "Community",
   "latestVersion": "0.1.0",
   "bfrostEngine": ">=0.3.0",
   "license": "MIT",
   "createdAt": "2026-05-29T15:00:00Z",
   "updatedAt": "2026-05-29T15:00:00Z",
   "capabilities": {
-    "jobs": ["finance-analysis"],
+    "jobs": [
+      "finance-analysis"
+    ],
     "tools": [],
     "channels": [],
     "providers": [],
     "itemProduces": [],
-    "itemConsumes": ["finance.news"]
+    "itemConsumes": [
+      "finance.news"
+    ]
   },
-  "permissions": ["storage:worker-kv"],
+  "permissions": [
+    "storage:worker-kv"
+  ],
   "downloadCount": 0,
   "versions": [
     {
