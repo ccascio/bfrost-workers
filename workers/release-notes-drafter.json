@@ -1,53 +1,53 @@
 {
-    "id": "release-notes-drafter",
-    "name": "Release Notes Drafter",
-    "tagline": "Turns merged PRs and changelog entries into clear user-facing release notes.",
-    "description": "Drafts user-facing release notes from merged PR or changelog source data.\n\nThis source-backed package includes the backend worker, dashboard bundle, Config surface, scheduled job manifest, and README. It connects to GitHub merged PRs, changelog exports, or release feed endpoints through operator-configured HTTPS source endpoints and bearer-token environment variables.",
-    "author": "@ccascio",
-    "repoUrl": "https://github.com/ccascio/bfrost-workers",
-    "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/release-notes-drafter/README.md",
-    "category": "Productivity",
-    "tags": [
-        "release-notes",
-        "github",
-        "pull-requests",
-        "changelog",
-        "drafting"
+  "id": "release-notes-drafter",
+  "name": "Release Notes Drafter",
+  "tagline": "Turns merged PRs and changelog entries into clear user-facing release notes.",
+  "description": "Drafts user-facing release notes from merged PR or changelog source data.\n\nThis source-backed package includes the backend worker, dashboard bundle, Config surface, scheduled job manifest, and README. It connects to GitHub merged PRs, changelog exports, or release feed endpoints through operator-configured HTTPS source endpoints and bearer-token environment variables.",
+  "author": "@ccascio",
+  "repoUrl": "https://github.com/ccascio/bfrost-workers",
+  "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/release-notes-drafter/README.md",
+  "category": "Productivity",
+  "tags": [
+    "release-notes",
+    "github",
+    "pull-requests",
+    "changelog",
+    "drafting"
+  ],
+  "trust": "Community",
+  "latestVersion": "0.1.0",
+  "bfrostEngine": ">=0.3.0",
+  "license": "MIT",
+  "createdAt": "2026-06-01T00:00:00Z",
+  "updatedAt": "2026-06-01T00:00:00Z",
+  "capabilities": {
+    "jobs": [
+      "release-notes-draft"
     ],
-    "trust": "Review",
-    "latestVersion": "0.1.0",
-    "bfrostEngine": ">=0.3.0",
-    "license": "MIT",
-    "createdAt": "2026-06-01T00:00:00Z",
-    "updatedAt": "2026-06-01T00:00:00Z",
-    "capabilities": {
-        "jobs": [
-            "release-notes-draft"
-        ],
-        "tools": [],
-        "channels": [],
-        "providers": [],
-        "itemProduces": [
-            "release.notes-draft"
-        ],
-        "itemConsumes": []
-    },
-    "permissions": [
-        "network:https",
-        "storage:worker-kv"
+    "tools": [],
+    "channels": [],
+    "providers": [],
+    "itemProduces": [
+      "release.notes-draft"
     ],
-    "downloadCount": 0,
-    "versions": [
-        {
-            "version": "0.1.0",
-            "bfrostEngine": ">=0.3.0",
-            "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v0.1.0",
-            "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v0.1.0/release-notes-drafter.tar.gz",
-            "changelog": "Initial source-backed worker package.",
-            "publishedAt": "2026-06-01T00:00:00Z",
-            "yanked": false,
-            "bundleSha256": "eef320176ce77d6e2dddd1f21346fad7670847909c65bcbc220d3187e27976c8",
-            "bundleSizeBytes": 10030
-        }
-    ]
+    "itemConsumes": []
+  },
+  "permissions": [
+    "network:https",
+    "storage:worker-kv"
+  ],
+  "downloadCount": 0,
+  "versions": [
+    {
+      "version": "0.1.0",
+      "bfrostEngine": ">=0.3.0",
+      "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v0.1.0",
+      "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v0.1.0/release-notes-drafter.tar.gz",
+      "changelog": "Initial source-backed worker package.",
+      "publishedAt": "2026-06-01T00:00:00Z",
+      "yanked": false,
+      "bundleSha256": "eef320176ce77d6e2dddd1f21346fad7670847909c65bcbc220d3187e27976c8",
+      "bundleSizeBytes": 10030
+    }
+  ]
 }

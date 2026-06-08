@@ -15,7 +15,7 @@
       "slack",
       "digest"
     ],
-    "trust": "Review",
+    "trust": "Community",
     "latestVersion": "0.1.0",
     "bfrostEngine": ">=0.3.0",
     "license": "MIT",
@@ -68,7 +68,7 @@
       "npm",
       "updates"
     ],
-    "trust": "Review",
+    "trust": "Community",
     "latestVersion": "0.1.0",
     "bfrostEngine": ">=0.3.0",
     "license": "MIT",
@@ -121,7 +121,7 @@
       "drafts",
       "inbox"
     ],
-    "trust": "Review",
+    "trust": "Community",
     "latestVersion": "0.1.0",
     "bfrostEngine": ">=0.3.0",
     "license": "MIT",
@@ -174,7 +174,7 @@
       "github-actions",
       "quality"
     ],
-    "trust": "Review",
+    "trust": "Community",
     "latestVersion": "0.1.0",
     "bfrostEngine": ">=0.3.0",
     "license": "MIT",
@@ -227,7 +227,7 @@
       "bugs",
       "feature-requests"
     ],
-    "trust": "Review",
+    "trust": "Community",
     "latestVersion": "0.1.0",
     "bfrostEngine": ">=0.3.0",
     "license": "MIT",
@@ -280,7 +280,7 @@
       "digest",
       "ci"
     ],
-    "trust": "Review",
+    "trust": "Community",
     "latestVersion": "0.1.0",
     "bfrostEngine": ">=0.3.0",
     "license": "MIT",
@@ -333,7 +333,7 @@
       "changelog",
       "drafting"
     ],
-    "trust": "Review",
+    "trust": "Community",
     "latestVersion": "0.1.0",
     "bfrostEngine": ">=0.3.0",
     "license": "MIT",
@@ -386,7 +386,7 @@
       "sentry",
       "ops"
     ],
-    "trust": "Review",
+    "trust": "Community",
     "latestVersion": "0.2.0",
     "bfrostEngine": ">=0.3.0",
     "license": "MIT",

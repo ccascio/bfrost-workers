@@ -1,53 +1,53 @@
 {
-    "id": "flaky-test-tracker",
-    "name": "Flaky Test Tracker",
-    "tagline": "Finds tests that pass and fail intermittently across recent CI runs.",
-    "description": "Tracks intermittent test failures across recent CI runs and highlights likely flaky tests.\n\nThis source-backed package includes the backend worker, dashboard bundle, Config surface, scheduled job manifest, and README. It connects to GitHub Actions, CI exports, JUnit summaries, or compatible test-report endpoints through operator-configured HTTPS source endpoints and bearer-token environment variables.",
-    "author": "@ccascio",
-    "repoUrl": "https://github.com/ccascio/bfrost-workers",
-    "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/flaky-test-tracker/README.md",
-    "category": "Developer Tools",
-    "tags": [
-        "ci",
-        "tests",
-        "flaky-tests",
-        "github-actions",
-        "quality"
+  "id": "flaky-test-tracker",
+  "name": "Flaky Test Tracker",
+  "tagline": "Finds tests that pass and fail intermittently across recent CI runs.",
+  "description": "Tracks intermittent test failures across recent CI runs and highlights likely flaky tests.\n\nThis source-backed package includes the backend worker, dashboard bundle, Config surface, scheduled job manifest, and README. It connects to GitHub Actions, CI exports, JUnit summaries, or compatible test-report endpoints through operator-configured HTTPS source endpoints and bearer-token environment variables.",
+  "author": "@ccascio",
+  "repoUrl": "https://github.com/ccascio/bfrost-workers",
+  "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/flaky-test-tracker/README.md",
+  "category": "Developer Tools",
+  "tags": [
+    "ci",
+    "tests",
+    "flaky-tests",
+    "github-actions",
+    "quality"
+  ],
+  "trust": "Community",
+  "latestVersion": "0.1.0",
+  "bfrostEngine": ">=0.3.0",
+  "license": "MIT",
+  "createdAt": "2026-06-01T00:00:00Z",
+  "updatedAt": "2026-06-01T00:00:00Z",
+  "capabilities": {
+    "jobs": [
+      "flaky-test-tracker"
     ],
-    "trust": "Review",
-    "latestVersion": "0.1.0",
-    "bfrostEngine": ">=0.3.0",
-    "license": "MIT",
-    "createdAt": "2026-06-01T00:00:00Z",
-    "updatedAt": "2026-06-01T00:00:00Z",
-    "capabilities": {
-        "jobs": [
-            "flaky-test-tracker"
-        ],
-        "tools": [],
-        "channels": [],
-        "providers": [],
-        "itemProduces": [
-            "dev.flaky-test-report"
-        ],
-        "itemConsumes": []
-    },
-    "permissions": [
-        "network:https",
-        "storage:worker-kv"
+    "tools": [],
+    "channels": [],
+    "providers": [],
+    "itemProduces": [
+      "dev.flaky-test-report"
     ],
-    "downloadCount": 0,
-    "versions": [
-        {
-            "version": "0.1.0",
-            "bfrostEngine": ">=0.3.0",
-            "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v0.1.0",
-            "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v0.1.0/flaky-test-tracker.tar.gz",
-            "changelog": "Initial source-backed worker package.",
-            "publishedAt": "2026-06-01T00:00:00Z",
-            "yanked": false,
-            "bundleSha256": "9ba06c1274d78be642167834b954c0cee5e84cfc4af15f50b28b6250cb64b010",
-            "bundleSizeBytes": 10045
-        }
-    ]
+    "itemConsumes": []
+  },
+  "permissions": [
+    "network:https",
+    "storage:worker-kv"
+  ],
+  "downloadCount": 0,
+  "versions": [
+    {
+      "version": "0.1.0",
+      "bfrostEngine": ">=0.3.0",
+      "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v0.1.0",
+      "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v0.1.0/flaky-test-tracker.tar.gz",
+      "changelog": "Initial source-backed worker package.",
+      "publishedAt": "2026-06-01T00:00:00Z",
+      "yanked": false,
+      "bundleSha256": "9ba06c1274d78be642167834b954c0cee5e84cfc4af15f50b28b6250cb64b010",
+      "bundleSizeBytes": 10045
+    }
+  ]
 }

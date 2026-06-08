@@ -1,53 +1,53 @@
 {
-    "id": "briefing",
-    "name": "Briefing",
-    "tagline": "Turns your calendar, email, and message context into a focused daily briefing.",
-    "description": "Builds a concise summary of calendar, email, and message context from configured source endpoints.\n\nThis source-backed package includes the backend worker, dashboard bundle, Config surface, scheduled job manifest, and README. It connects to Google Calendar, Gmail, Slack, or compatible export/API endpoints through operator-configured HTTPS source endpoints and bearer-token environment variables.",
-    "author": "@ccascio",
-    "repoUrl": "https://github.com/ccascio/bfrost-workers",
-    "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/briefing/README.md",
-    "category": "Productivity",
-    "tags": [
-        "briefing",
-        "calendar",
-        "gmail",
-        "slack",
-        "digest"
+  "id": "briefing",
+  "name": "Briefing",
+  "tagline": "Turns your calendar, email, and message context into a focused daily briefing.",
+  "description": "Builds a concise summary of calendar, email, and message context from configured source endpoints.\n\nThis source-backed package includes the backend worker, dashboard bundle, Config surface, scheduled job manifest, and README. It connects to Google Calendar, Gmail, Slack, or compatible export/API endpoints through operator-configured HTTPS source endpoints and bearer-token environment variables.",
+  "author": "@ccascio",
+  "repoUrl": "https://github.com/ccascio/bfrost-workers",
+  "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/briefing/README.md",
+  "category": "Productivity",
+  "tags": [
+    "briefing",
+    "calendar",
+    "gmail",
+    "slack",
+    "digest"
+  ],
+  "trust": "Community",
+  "latestVersion": "0.1.0",
+  "bfrostEngine": ">=0.3.0",
+  "license": "MIT",
+  "createdAt": "2026-06-01T00:00:00Z",
+  "updatedAt": "2026-06-01T00:00:00Z",
+  "capabilities": {
+    "jobs": [
+      "daily-briefing"
     ],
-    "trust": "Review",
-    "latestVersion": "0.1.0",
-    "bfrostEngine": ">=0.3.0",
-    "license": "MIT",
-    "createdAt": "2026-06-01T00:00:00Z",
-    "updatedAt": "2026-06-01T00:00:00Z",
-    "capabilities": {
-        "jobs": [
-            "daily-briefing"
-        ],
-        "tools": [],
-        "channels": [],
-        "providers": [],
-        "itemProduces": [
-            "briefing.digest"
-        ],
-        "itemConsumes": []
-    },
-    "permissions": [
-        "network:https",
-        "storage:worker-kv"
+    "tools": [],
+    "channels": [],
+    "providers": [],
+    "itemProduces": [
+      "briefing.digest"
     ],
-    "downloadCount": 0,
-    "versions": [
-        {
-            "version": "0.1.0",
-            "bfrostEngine": ">=0.3.0",
-            "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v0.1.0",
-            "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v0.1.0/briefing.tar.gz",
-            "changelog": "Initial source-backed worker package.",
-            "publishedAt": "2026-06-01T00:00:00Z",
-            "yanked": false,
-            "bundleSha256": "c7ada96820fab8c0922faa2857cda3ac535ffa7d4291b1f12df25b8399bc2ea6",
-            "bundleSizeBytes": 10068
-        }
-    ]
+    "itemConsumes": []
+  },
+  "permissions": [
+    "network:https",
+    "storage:worker-kv"
+  ],
+  "downloadCount": 0,
+  "versions": [
+    {
+      "version": "0.1.0",
+      "bfrostEngine": ">=0.3.0",
+      "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v0.1.0",
+      "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v0.1.0/briefing.tar.gz",
+      "changelog": "Initial source-backed worker package.",
+      "publishedAt": "2026-06-01T00:00:00Z",
+      "yanked": false,
+      "bundleSha256": "c7ada96820fab8c0922faa2857cda3ac535ffa7d4291b1f12df25b8399bc2ea6",
+      "bundleSizeBytes": 10068
+    }
+  ]
 }

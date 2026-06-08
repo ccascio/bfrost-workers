@@ -14,7 +14,7 @@
     "sentry",
     "ops"
   ],
-  "trust": "Review",
+  "trust": "Community",
   "latestVersion": "0.2.0",
   "bfrostEngine": ">=0.3.0",
   "license": "MIT",
