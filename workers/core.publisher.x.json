@@ -2,7 +2,7 @@
     "id": "core.publisher.x",
     "name": "Post to X",
     "tagline": "Turns approved digest items into X posts. Drafts go out only after you say yes — nothing posted behind your back.",
-    "description": "A consumer worker that selects approved queue items, generates X posts with an LLM, and either posts them directly or stages them as drafts for review.\n\nConfigurable character limit, tone, template, and post timing. Requires X OAuth credentials.\n\nThis is a built-in BFrost plugin worker. If you have deleted it, you can restore it here.",
+    "description": "A consumer worker that selects approved queue items, generates X posts with an LLM, and either posts them directly or stages them as drafts for review.\n\nPost parameters (signature, character limit, eligibility window), writing instructions (prompt template), and X credentials are all configured from the worker's Config subtab — not from the Jobs panel.\n\nThis is a built-in BFrost plugin worker. If you have deleted it, you can restore it here.",
     "author": "@bfrost",
     "repoUrl": "https://github.com/ccascio/bfrost-workers",
     "category": "Core / Plugin",
@@ -13,7 +13,7 @@
     "license": "MIT",
     "builtIn": true,
     "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-05-24T00:00:00Z",
+    "updatedAt": "2026-06-09T00:00:00Z",
     "capabilities": {
         "jobs": ["post-to-x"],
         "tools": [],
