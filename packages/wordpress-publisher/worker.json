@@ -3,8 +3,8 @@
   "bfrostApiVersion": "0.1",
   "id": "wordpress-publisher",
   "name": "WordPress Publisher",
-  "version": "1.3.0",
-  "description": "Publishes news.article items from the Item Bus to your WordPress site via the REST API.",
+  "version": "1.4.0",
+  "description": "Generates reviewable WordPress drafts from news.article items and prepares them for publishing via the REST API.",
   "owner": "@ccascio",
   "kind": "feature",
   "language": "typescript",
@@ -38,14 +38,16 @@
             "defaultValue": "",
             "placeholder": "https://my-site.example.com",
             "helpText": "No trailing slash, no /wp-json - just the site root.",
-            "seedPath": "wordpress-publisher.settings.baseUrl"
+            "seedPath": "wordpress-publisher.settings.baseUrl",
+            "group": "connection"
           },
           {
             "key": "username",
             "label": "WordPress username",
             "type": "text",
             "defaultValue": "",
-            "seedPath": "wordpress-publisher.settings.username"
+            "seedPath": "wordpress-publisher.settings.username",
+            "group": "connection"
           },
           {
             "key": "applicationPassword",
@@ -54,7 +56,8 @@
             "defaultValue": "",
             "placeholder": "xxxx xxxx xxxx xxxx xxxx xxxx",
             "helpText": "Generate one at Users > Profile > Application Passwords.",
-            "seedPath": "wordpress-publisher.settings.applicationPassword"
+            "seedPath": "wordpress-publisher.settings.applicationPassword",
+            "group": "connection"
           },
           {
             "key": "defaultStatus",
@@ -62,12 +65,25 @@
             "type": "select",
             "defaultValue": "draft",
             "options": [
-              { "value": "draft", "label": "Draft" },
-              { "value": "pending", "label": "Pending review" },
-              { "value": "publish", "label": "Publish immediately" },
-              { "value": "private", "label": "Private" }
+              {
+                "value": "draft",
+                "label": "Draft"
+              },
+              {
+                "value": "pending",
+                "label": "Pending review"
+              },
+              {
+                "value": "publish",
+                "label": "Publish immediately"
+              },
+              {
+                "value": "private",
+                "label": "Private"
+              }
             ],
-            "seedPath": "wordpress-publisher.settings.defaultStatus"
+            "seedPath": "wordpress-publisher.settings.defaultStatus",
+            "group": "publishing"
           },
           {
             "key": "postType",
@@ -75,7 +91,8 @@
             "type": "text",
             "defaultValue": "posts",
             "helpText": "REST collection name, usually posts.",
-            "seedPath": "wordpress-publisher.settings.postType"
+            "seedPath": "wordpress-publisher.settings.postType",
+            "group": "publishing"
           },
           {
             "key": "categorySlugs",
@@ -84,7 +101,8 @@
             "defaultValue": [],
             "rows": 3,
             "helpText": "One slug per line. Saved slugs are resolved against cached WordPress categories.",
-            "seedPath": "wordpress-publisher.settings.categorySlugs"
+            "seedPath": "wordpress-publisher.settings.categorySlugs",
+            "group": "publishing"
           },
           {
             "key": "tagSlugs",
@@ -92,7 +110,203 @@
             "type": "string-list",
             "defaultValue": [],
             "rows": 3,
-            "seedPath": "wordpress-publisher.settings.tagSlugs"
+            "seedPath": "wordpress-publisher.settings.tagSlugs",
+            "group": "publishing"
+          },
+          {
+            "key": "allowedHosts",
+            "group": "selection",
+            "label": "Allowed source hosts",
+            "type": "string-list",
+            "defaultValue": [],
+            "rows": 4,
+            "helpText": "Only use news from these hosts. Leave empty to allow any host.",
+            "seedPath": "wordpress-publisher.settings.allowedHosts"
+          },
+          {
+            "key": "blockedHosts",
+            "group": "selection",
+            "label": "Blocked source hosts",
+            "type": "string-list",
+            "defaultValue": [],
+            "rows": 4,
+            "helpText": "Never use news from these hosts.",
+            "seedPath": "wordpress-publisher.settings.blockedHosts"
+          },
+          {
+            "key": "allowedFeedUrls",
+            "group": "selection",
+            "label": "Allowed RSS feed URLs",
+            "type": "string-list",
+            "defaultValue": [],
+            "rows": 4,
+            "helpText": "For rss-harvester items, only use articles from these feed URLs.",
+            "seedPath": "wordpress-publisher.settings.allowedFeedUrls"
+          },
+          {
+            "key": "requiredTags",
+            "group": "selection",
+            "label": "Required tags/topics",
+            "type": "string-list",
+            "defaultValue": [],
+            "rows": 4,
+            "helpText": "At least one of these item tags or LLM topic tags must be present.",
+            "seedPath": "wordpress-publisher.settings.requiredTags"
+          },
+          {
+            "key": "excludedTags",
+            "group": "selection",
+            "label": "Excluded tags/topics",
+            "type": "string-list",
+            "defaultValue": [],
+            "rows": 4,
+            "helpText": "Reject items with any of these tags or LLM topic tags.",
+            "seedPath": "wordpress-publisher.settings.excludedTags"
+          },
+          {
+            "key": "minimumRelevanceScore",
+            "group": "selection",
+            "label": "Minimum relevance score",
+            "type": "number",
+            "defaultValue": 0,
+            "min": 0,
+            "max": 5,
+            "step": 1,
+            "helpText": "For rss-harvester items with relevanceScore, require this score or higher. 0 disables.",
+            "seedPath": "wordpress-publisher.settings.minimumRelevanceScore"
+          },
+          {
+            "key": "includeKeywords",
+            "group": "selection",
+            "label": "Required keywords",
+            "type": "string-list",
+            "defaultValue": [],
+            "rows": 4,
+            "helpText": "At least one keyword must appear in the title, summary, description, or excerpt.",
+            "seedPath": "wordpress-publisher.settings.includeKeywords"
+          },
+          {
+            "key": "excludeKeywords",
+            "group": "selection",
+            "label": "Excluded keywords",
+            "type": "string-list",
+            "defaultValue": [],
+            "rows": 4,
+            "helpText": "Reject items containing any of these keywords.",
+            "seedPath": "wordpress-publisher.settings.excludeKeywords"
+          },
+          {
+            "key": "consumeApprovedOnly",
+            "group": "selection",
+            "label": "Only consume approved queue items",
+            "type": "boolean",
+            "defaultValue": false,
+            "helpText": "When enabled, WordPress drafts are generated only from items approved in the queue.",
+            "seedPath": "wordpress-publisher.settings.consumeApprovedOnly"
+          },
+          {
+            "key": "brandVoice",
+            "label": "Brand voice",
+            "type": "textarea",
+            "defaultValue": "",
+            "rows": 4,
+            "helpText": "Describe the site voice, point of view, and wording preferences.",
+            "seedPath": "wordpress-publisher.settings.brandVoice",
+            "group": "style"
+          },
+          {
+            "key": "audience",
+            "label": "Audience",
+            "type": "text",
+            "defaultValue": "",
+            "placeholder": "e.g. IT leaders, developers, local customers",
+            "seedPath": "wordpress-publisher.settings.audience",
+            "group": "style"
+          },
+          {
+            "key": "tonePreset",
+            "label": "Tone preset",
+            "type": "select",
+            "defaultValue": "factual",
+            "options": [
+              {
+                "value": "factual",
+                "label": "Factual"
+              },
+              {
+                "value": "expert",
+                "label": "Expert"
+              },
+              {
+                "value": "friendly",
+                "label": "Friendly"
+              },
+              {
+                "value": "executive",
+                "label": "Executive"
+              },
+              {
+                "value": "tutorial",
+                "label": "Tutorial"
+              },
+              {
+                "value": "seo-focused",
+                "label": "SEO-focused"
+              },
+              {
+                "value": "custom",
+                "label": "Custom"
+              }
+            ],
+            "seedPath": "wordpress-publisher.settings.tonePreset",
+            "group": "style"
+          },
+          {
+            "key": "contentFormat",
+            "label": "Content format",
+            "type": "select",
+            "defaultValue": "news-brief",
+            "options": [
+              {
+                "value": "news-brief",
+                "label": "News brief"
+              },
+              {
+                "value": "long-form-article",
+                "label": "Long-form article"
+              },
+              {
+                "value": "tutorial",
+                "label": "Tutorial"
+              },
+              {
+                "value": "landing-page",
+                "label": "Landing page"
+              },
+              {
+                "value": "listicle",
+                "label": "Listicle"
+              },
+              {
+                "value": "faq",
+                "label": "FAQ"
+              },
+              {
+                "value": "product-update",
+                "label": "Product update"
+              }
+            ],
+            "seedPath": "wordpress-publisher.settings.contentFormat",
+            "group": "style"
+          },
+          {
+            "key": "ctaText",
+            "label": "Call to action",
+            "type": "text",
+            "defaultValue": "",
+            "placeholder": "Optional CTA to weave into the conclusion",
+            "seedPath": "wordpress-publisher.settings.ctaText",
+            "group": "style"
           },
           {
             "key": "modelAlias",
@@ -100,7 +314,8 @@
             "type": "text",
             "defaultValue": "",
             "helpText": "Leave blank to use the BFrost default model.",
-            "seedPath": "wordpress-publisher.settings.modelAlias"
+            "seedPath": "wordpress-publisher.settings.modelAlias",
+            "group": "publishing"
           },
           {
             "key": "prompt",
@@ -109,7 +324,30 @@
             "defaultValue": "",
             "rows": 10,
             "helpText": "Controls tone, structure, and length. Leave blank to use the built-in default.",
-            "seedPath": "wordpress-publisher.settings.prompt"
+            "seedPath": "wordpress-publisher.settings.prompt",
+            "group": "style"
+          }
+        ],
+        "fieldGroups": [
+          {
+            "id": "connection",
+            "label": "Connection",
+            "description": "WordPress site URL and credentials."
+          },
+          {
+            "id": "publishing",
+            "label": "Publishing defaults",
+            "description": "Default content type, status, taxonomy, and model."
+          },
+          {
+            "id": "selection",
+            "label": "Content selection",
+            "description": "Choose which news.article items are eligible for WordPress drafts."
+          },
+          {
+            "id": "style",
+            "label": "Tone and look",
+            "description": "Brand voice, audience, tone, format, CTA, and prompt."
           }
         ]
       }
@@ -118,7 +356,7 @@
       {
         "id": "wordpress-publisher-dashboard",
         "label": "WordPress",
-        "description": "WordPress publishing status, cached taxonomies, recent posts, and manual run controls.",
+        "description": "WordPress draft review status, cached taxonomies, recent posts, and manual run controls.",
         "path": "/api/workers/wordpress-publisher/dashboard"
       }
     ]

@@ -1,8 +1,8 @@
 {
     "id": "wordpress-publisher",
     "name": "WordPress Publisher",
-    "tagline": "Publishes news.article items from the Item Bus to your WordPress site via the REST API.",
-    "description": "A consumer worker that subscribes to `news.article` items on the BFrost Item Bus and turns each one into a WordPress post. Supports configurable publish status (draft, publish, pending), custom post types, per-run deduplication, and a runtime dashboard.\n\nThe install bundle includes the worker manifest, TypeScript backend source, dashboard bundle source, and README.",
+    "tagline": "Creates reviewable WordPress drafts and publishes them through the REST API.",
+    "description": "A consumer worker that subscribes to Item Bus article items, generates reviewable local WordPress drafts, supports source filtering and brand/style controls, browses remote posts/pages/media, and publishes approved drafts through the WordPress REST API.\n\nThe install bundle includes the worker manifest, TypeScript backend source, dashboard bundle source, and README.",
     "author": "@ccascio",
     "repoUrl": "https://github.com/ccascio/bfrost-workers",
     "readmeUrl": "https://raw.githubusercontent.com/ccascio/bfrost-workers/main/packages/wordpress-publisher/README.md",
@@ -14,11 +14,11 @@
         "consumer"
     ],
     "trust": "Community",
-    "latestVersion": "1.3.0",
+    "latestVersion": "1.4.0",
     "bfrostEngine": ">=0.2.0",
     "license": "MIT",
     "createdAt": "2026-01-15T10:00:00Z",
-    "updatedAt": "2026-05-24T19:45:00Z",
+    "updatedAt": "2026-06-23T06:21:33Z",
     "capabilities": {
         "jobs": [
             "wordpress-publish"
@@ -28,7 +28,8 @@
         "providers": [],
         "itemProduces": [],
         "itemConsumes": [
-            "news.article"
+            "news.article",
+            "rss.article"
         ]
     },
     "permissions": [
@@ -37,6 +38,17 @@
     ],
     "downloadCount": 0,
     "versions": [
+        {
+            "version": "1.4.0",
+            "bfrostEngine": ">=0.2.0",
+            "releaseUrl": "https://github.com/ccascio/bfrost-workers/releases/tag/v1.4.0",
+            "changelog": "Adds the reviewable draft workflow, source filtering, richer WordPress post/page/media management, and a redesigned publishing dashboard.",
+            "publishedAt": "2026-06-23T06:21:33Z",
+            "yanked": false,
+            "bundleSha256": "d073c8d60a352f84704477159b885bc70b3ae31d25c29641d67d688a6f0d1998",
+            "bundleSizeBytes": 40634,
+            "bundleUrl": "https://github.com/ccascio/bfrost-workers/releases/download/v1.4.0/wordpress-publisher.tar.gz"
+        },
         {
             "version": "1.3.0",
             "bfrostEngine": ">=0.2.0",
